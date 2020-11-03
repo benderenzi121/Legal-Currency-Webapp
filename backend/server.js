@@ -1,15 +1,13 @@
-const express = require('express');
-const app = express();
-const connectDB = require('../config/db');
+const 
+    express = require('express'),
+    connectDB = require('../config/db'),
+    cors = require('cors'),
+    app = express(),
+    PORT = process.env.PORT || 5000;
 
-app.get('/', (req , res) => res.send('API is runnig'));
 connectDB();
-
+app.use(cors());
 app.use( express.json({ extended: false }));
-
 app.use('/api/users', require('./routes/users'));
-
-
-const PORT = process.env.PORT || 5000;
-
+app.get('/', (req , res) => res.send('API is runnig'));
 app.listen(PORT, () => console.log(`server started on port ${PORT}`));

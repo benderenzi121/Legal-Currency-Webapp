@@ -1,21 +1,28 @@
-const express = require('express');
-const router = express.Router();
+const 
+    express = require('express'),
+    router = express.Router(),
+    bcrypt = require('bcrypt'),
+    jwt = require('jsonwebtoken'),
+    config = require('config'),
+    { check, validationResult } = require('express-validator'),
+    User = require('../models/User')
 
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const config = require('config');
-const {check, validationResult} = require('express-validator');
 
-const User = require('../models/User')
+router.get('/', async (req, res) => {
+    try {
+        const users = await User.find();
+        console.log(users);
+        return res.status(200).send(users);
+    }
+    catch(err) {
+        return res.sendStatus(400);
+    }
+});
 
 router.post('/', [
-    check('firstName','name is required')
-    .not()
-    .isEmpty(),
-    check('email', 'please include a valid email')
-    .isEmail(),
-    check('password' , 'please enter a password with 6 or more charecters')
-    .isLength({min: 6})
+    check('firstName','name is required').not().isEmpty(),
+    check('email', 'please include a valid email').isEmail(),
+    check('password' , 'please enter a password with 6 or more charecters').isLength({min: 6})
 ],
 async (req,res) => {
     const  errors = validationResult(req);
