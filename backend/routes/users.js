@@ -7,7 +7,11 @@ const config = require('config');
 const {check, validationResult} = require('express-validator');
 
 const User = require('../models/User')
-
+router.get('/', async (req,res) => {
+    const user = await User.find()
+    console.log(user)
+    return res.sendStatus(200)
+})
 router.post('/', [
     check('firstName','name is required')
     .not()
@@ -31,6 +35,7 @@ async (req,res) => {
 
         if (user){
             res.status(400).json({errors: [{msg: 'user already exists' }] });
+            
         }
 
         user = new User({

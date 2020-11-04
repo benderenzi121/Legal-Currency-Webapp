@@ -5,14 +5,15 @@ const ProductSchema = new mongoose.Schema({
 
     title: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     description: {
         type: String,
         required: true
     },
     price:{
-        type: number,
+        type: Number,
         required: true
     },
     tag:{
@@ -26,8 +27,8 @@ const ProductSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    instock:{
-        type: number,
+    inStock:{
+        type: Number,
         required:true
     }
 });
