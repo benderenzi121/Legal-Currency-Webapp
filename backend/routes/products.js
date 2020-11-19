@@ -14,7 +14,7 @@ router.post('/update-stock',[
    check('change', 'change (increment/decrement) integer required').not().isEmpty()     
 ], async (req,res) => {
     const errors = validationResult(req);
-    if(errors){
+    if(!errors.isEmpty()){
         res.status(400).json({errors: errors.array() });
     }
 
@@ -36,6 +36,11 @@ router.post('/update-stock',[
     }
 })
 
+
+
+
+
+// Returns list of all products 
 router.get('/' , async (req,res) => {
     const productList = await Product.find();
     console.log(productList);
@@ -82,7 +87,7 @@ router.post('/new-product', [
                 price, 
                 tag, 
                 date, 
-                imagePath, 
+                imagePath,  
                 inStock   
             })
 

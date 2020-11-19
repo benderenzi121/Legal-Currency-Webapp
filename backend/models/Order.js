@@ -6,10 +6,10 @@ const OrderSchema = new mongoose.Schema({
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'user'
     },
-    orderItems:{
+    orderItems:[{
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'orderItem'
-    },
+    }],
     shipping:{
         type:mongoose.SchemaTypes.ObjectId,
         ref:'shipping'

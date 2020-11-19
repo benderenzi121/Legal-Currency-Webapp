@@ -8,8 +8,7 @@ const OrderItemSchema = new mongoose.Schema({
         ref: 'product'
     },
     name:{
-        type:String,
-        required:true
+        type:String
     },
     qty:{
         type: Number,
@@ -26,4 +25,4 @@ const OrderItemSchema = new mongoose.Schema({
 });
 
 
-module.exports = OrderItem =  mongoose.Model('OrderItem', OrderItemSchema)
+module.exports = OrderItem =  mongoose.model('OrderItem', OrderItemSchema)

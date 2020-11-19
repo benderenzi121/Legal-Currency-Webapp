@@ -11,7 +11,7 @@ const ShippingSchema = new mongoose.Schema({
         type: String,
         required:true 
     },
-    Address: {
+    address: {
         type: String,
         required:true 
     },
@@ -19,7 +19,7 @@ const ShippingSchema = new mongoose.Schema({
         type: String,
         required:true 
     },
-    Country: {
+    country: {
         type: String,
         required:true 
     },
