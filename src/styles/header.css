@@ -1,0 +1,18 @@
+.header{
+    background-color: #e1b907;
+    display:flex;
+}
+.header-right{
+    text-align: end;
+
+}
+.header-center{
+    text-align: center;
+    font-size:2rem;
+    font-family: oswald;
+    
+}
+
+.header-text{
+    color:whitesmoke;
+}

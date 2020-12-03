@@ -24,6 +24,11 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    permissions:{
+        type: String,
+        required: true, 
+        default: "user"
+    },
 
     date:{
         type: Date,

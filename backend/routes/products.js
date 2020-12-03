@@ -1,6 +1,7 @@
 const express = require('express');
 const {check, validationResult} = require('express-validator');
-
+const auth = require('../middleware/auth');
+const authAdmin = require('../middleware/adminAuth');
 const Product = require('../models/Product');
  
 
@@ -10,6 +11,8 @@ const router = express.Router();
 //                   'change' the value in which to increment/decrement by
 // **************************NEEDS MIDDLEWEAR***********************
 router.post('/update-stock',[
+   auth,
+   authAdmin,
    check('id', 'Product id required').not().isEmpty(),
    check('change', 'change (increment/decrement) integer required').not().isEmpty()     
 ], async (req,res) => {
@@ -49,8 +52,8 @@ router.get('/' , async (req,res) => {
 
 //  Creates a new Product
 //  
-// **************************NEEDS MIDDLEWEAR***********************
-router.post('/new-product', [
+// 
+router.post('/new-product', [auth,authAdmin,
     check('title', 'title is required')
         .not()
         .isEmpty(),

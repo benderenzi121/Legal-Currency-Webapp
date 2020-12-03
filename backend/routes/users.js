@@ -1,3 +1,5 @@
+const adminAuth = require('../middleware/adminAuth');
+
 const 
     express = require('express'),
     router = express.Router(),
@@ -5,10 +7,12 @@ const
     jwt = require('jsonwebtoken'),
     config = require('config'),
     { check, validationResult } = require('express-validator'),
-    User = require('../models/User')
+    User = require('../models/User');
+    auth = require('../middleware/auth');
+    auth = require('../middleware/adminAuth');
 
 
-router.get('/', async (req, res) => {
+router.get('/', [auth,adminAuth], async (req, res) => {
     try {
         const users = await User.find();
         console.log(users);
@@ -52,7 +56,8 @@ router.post('/', [
         //  creates a payload to be loaded into the token
             const payload = {
                 user: {
-                    id: user.id
+                    id: user.id,
+                    permission: user.permissions
                 }
             }
 

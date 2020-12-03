@@ -11,5 +11,6 @@ app.use( express.json({ extended: false }));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/products', require('./routes/products'));
 app.use('/api/orderItems', require('./routes/orderItems'));
+app.use('/api/auth', require('./routes/auth'));
 app.get('/', (req , res) => res.send('API is runnig'));
 app.listen(PORT, () => console.log(`server started on port ${PORT}`));
