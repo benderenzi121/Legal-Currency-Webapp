@@ -5,7 +5,7 @@ class Nav extends React.Component {
     state = {  }
     render() { 
         return ( 
-        <div class = 'container-fluid'>
+        <div>
            <nav class="navbar navbar-expand-sm mynav row"> 
                 <ul class="navbar-nav col-sm"> 
                     <li class="nav-item col-lg-8 "> 
@@ -18,7 +18,9 @@ class Nav extends React.Component {
                     </li> 
                     <li class="nav-item nav-right col-lg-1"> 
                         <a class="nav-text" href="#"> 
-                            Settings 
+                        <i class="fas fa-shopping-cart"></i>
+
+ 
                         </a> 
                     </li> 
                 </ul> 

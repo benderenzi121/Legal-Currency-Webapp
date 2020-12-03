@@ -7,10 +7,12 @@ import Nav from './components/nav';
 import Header from './components/header';
 import Landing from './components/landing';
 import Slider from './components/slider';
+import ProductSlider from './components/productSlider';
 
 
-//ReactDOM.render(<Header/>, document.getElementById('header'));
-//ReactDOM.render(<Nav />, document.getElementById('root'));
-//ReactDOM.render(<Slider />, document.getElementById('slider'));
-ReactDOM.render(<Landing />, document.getElementById('landing'));
+ReactDOM.render(<Header/>, document.getElementById('header'));
+ReactDOM.render(<Nav />, document.getElementById('root'));
+ReactDOM.render(<Slider />, document.getElementById('slider'));
+ReactDOM.render(<ProductSlider />, document.getElementById('productSlider'));
+//ReactDOM.render(<Landing />, document.getElementById('landing'));
 
