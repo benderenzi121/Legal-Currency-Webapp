@@ -1,3 +1,8 @@
+.product{
+    margin:15px;
+}
+
+
 .product-slider{
     margin-top:5%;
     letter-spacing: 1px;
@@ -23,10 +28,7 @@
     position:relative;
 }
 
-.product-slider row{
-    
 
-}
 .product-slider img{
     width:100%;
 
@@ -73,12 +75,12 @@
 .hoverme:hover .product-overlay{
     opacity:1;
     margin-left: 5%;
-    transition:0.5s;
+    transition:0.2s;
 }
 
 .product-overlay .fas{
     cursor:pointer;
-    background-color:#555;
+    background-color: #e1b907;
     color:whitesmoke;
     height:35px;
     width:35px;

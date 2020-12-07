@@ -2,9 +2,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Basic React Boiler Plate</title>
+   
     <link rel="stylesheet" href="../src/index.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" /> 
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
     <script src="https://kit.fontawesome.com/d3793037b7.js" crossorigin="anonymous"></script>
+
 
 <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
 </head>
@@ -13,9 +17,20 @@
     <div  id="header"></div>
     <div  id="root"></div>
     <div  id="slider"></div>
-    
     <div  id="productSlider"></div>
 
+    <script src='glider.min.js'></script>
+    <script>
+        new Glider(document.querySelector('.glider'), {
+            slidesToshow:2,
+            draggable:2,
+            dots:'#dots',
+            arrows:{
+                prev:'.glider-prev',
+                next:'.glider-next'
+            }
+        })
+    </script>
 
     
 </body>
