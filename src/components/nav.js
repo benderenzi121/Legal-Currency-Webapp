@@ -6,19 +6,19 @@ class Nav extends React.Component {
     render() { 
         return ( 
         <div>
-           <nav class="navbar navbar-expand-sm mynav row"> 
-                <ul class="navbar-nav col-sm"> 
-                    <li class="nav-item col-lg-8 "> 
+           <nav className="navbar navbar-expand-sm mynav row"> 
+                <ul className="navbar-nav col-sm"> 
+                    <li className="nav-item col-lg-8 "> 
                         
                     </li> 
-                    <li class="nav-item col-lg-3  nav-center"> 
-                        <a class="nav-text " href="#"> 
+                    <li className="nav-item col-lg-3  nav-center"> 
+                        <a className="nav-text " href="#"> 
                             View Products 
                         </a> 
                     </li> 
-                    <li class="nav-item nav-right col-lg-1"> 
-                        <a class="nav-text" href="#"> 
-                        <i class="fas fa-shopping-cart"></i>
+                    <li className="nav-item nav-right col-lg-1"> 
+                        <a className="nav-text" href="#"> 
+                        <i className="fas fa-shopping-cart"></i>
 
  
                         </a> 
