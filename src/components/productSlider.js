@@ -5,8 +5,6 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 const ProductSlider = (props) => {
-    console.log('%cProductSlider Props','color:cyan',props);
-
     const settings= {
         dots:true,
         infinite:true,
@@ -30,7 +28,7 @@ const ProductSlider = (props) => {
             <h2>Featured Collection</h2>
                 <div> 
                     <Slider {...settings}>
-                        { mockData && mockData.map(i => <ProductCard title={i.title} price ={i.price} imageUrl={i.imageUrl}/> ) }
+                        { mockData.map(i => <ProductCard title={i.title} price ={i.price} imageUrl={i.imageUrl}/> ) }
                     </Slider>
             </div>
         </div>
