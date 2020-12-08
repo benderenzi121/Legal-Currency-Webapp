@@ -7,7 +7,7 @@ class ProductCard extends React.Component {
         return ( 
             <div className='hoverme product'>
                       <div className='product-top'>
-                        <img className='rounded-top' src={this.props.img}></img>
+                        <img className='rounded-top' src={this.props.imageUrl}></img>
                         </div>
                         
                         <div className='product-overlay '>
