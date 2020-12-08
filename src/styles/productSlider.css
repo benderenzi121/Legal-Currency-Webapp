@@ -31,6 +31,11 @@
 
 .product-slider img{
     width:100%;
+    height:30vh;
+    display:flex;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
 
 }
 .rounded-top{
@@ -95,4 +100,19 @@
     background:transparent;
     border: none !important;
     box-shadow:none !important;
+}
+
+.slick-dots{
+    position: relative;
+    top:50%;
+    z-index: 1;
+}
+
+.slides .slick-prev,
+.slides .slick-next {
+ 
+    
+    top: 10%;
+    z-index: 1;
+ 
 }
