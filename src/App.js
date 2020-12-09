@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import './App.css';
 import Header from './components/header';
 import Nav from './components/nav';
-import Slider from './components/slider';
+import BannerSlider from './components/bannerSlider';
 import ProductSlider from './components/productSlider';
 import Landing from './components/landing';
 
@@ -32,7 +32,7 @@ class App extends Component{
                 {/* <Landing/> */}
                 <Header/>
                 <Nav/>
-                <Slider/>
+                <BannerSlider/>
                 <ProductSlider/>
             </Fragment>
         );

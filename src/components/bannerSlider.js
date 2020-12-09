@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/slider.css';
 
-const Slider = () => (
+const BannerSlider = () => (
     <div id="carouselExampleFade " className="carousel carousel-fade slider" data-ride="carousel">
         <div className="carousel-inner">
             <div className="carousel-item active">
@@ -31,4 +31,4 @@ const Slider = () => (
     </div>
 );
 
-export default Slider;
+export default BannerSlider;
