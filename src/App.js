@@ -3,7 +3,9 @@ import './App.css';
 import Header from './components/header';
 import Nav from './components/nav';
 import Slider from './components/slider';
+import Landing from './components/landing';
 import ProductSlider from './components/productSlider';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 const API_KEY = '';
 
@@ -27,10 +29,14 @@ class App extends Component{
 
     render(){
         return <Fragment>
-            <Header/>
-            <Nav/>
-            <Slider/>
-            <ProductSlider/>
+            <Router>
+                <Route path="/" exact component={Landing}/>
+                <Route path="/" exact component={Header}/>
+                <Route path="/" exact component={Nav}/>
+                <Route path="/" exact component={Slider}/>
+                <Route path="/" exact component={ProductSlider}/>
+                
+            </Router>
         </Fragment>
     };
 }
