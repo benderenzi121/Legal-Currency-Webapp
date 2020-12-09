@@ -23,14 +23,16 @@ const ProductSlider = (props) => {
         { title: 'MTG Black Lotus', price: '$41999', imageUrl: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTUo8Bi8D3QbQCKJ2NMuhB2J-ORBB-rj4ycM5u2BlBhHjUbLOHjIPmqy3dQVP7SBz7U4klPPoDk9zp26yc1nolXWDZqwpmBU3q3uief7L0&usqp=CAc' }
     ];
 
+    const getProductCards = () => {
+        return mockData.map(productCardData => <ProductCard title={productCardData.title} price ={productCardData.price} imageUrl={productCardData.imageUrl}/> );
+    };
+
     return ( 
         <div className='container product-slider'>
             <h2>Featured Collection</h2>
-                <div> 
-                    <Slider {...settings}>
-                        { mockData.map(i => <ProductCard title={i.title} price ={i.price} imageUrl={i.imageUrl}/> ) }
-                    </Slider>
-            </div>
+            <Slider {...settings}>
+                { getProductCards() }
+            </Slider>
         </div>
     );
 }

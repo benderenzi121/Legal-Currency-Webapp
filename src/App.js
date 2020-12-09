@@ -4,6 +4,7 @@ import Header from './components/header';
 import Nav from './components/nav';
 import Slider from './components/slider';
 import ProductSlider from './components/productSlider';
+import Landing from './components/landing';
 
 const API_KEY = '';
 
@@ -26,13 +27,15 @@ class App extends Component{
     }
 
     render(){
-        return <Fragment>
-            <Header/>
-            <Nav/>
-            <Slider/>
-            <ProductSlider/>
-        </Fragment>
->>>>>>> 1701b56af77e93084521c5d5cfbba98bd6b87134
+        return (
+            <Fragment>
+                {/* <Landing/> */}
+                <Header/>
+                <Nav/>
+                <Slider/>
+                <ProductSlider/>
+            </Fragment>
+        );
     };
 }
 
