@@ -1,6 +1,4 @@
 import React from 'react';
-import '../styles/nav.css';
-import '../styles/global.css';
 class Nav extends React.Component {
     state = {  }
     render() { 

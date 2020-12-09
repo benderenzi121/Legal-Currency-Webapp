@@ -1,11 +1,17 @@
 .header{
     background-color: #e1b907;
     display:flex;
+
+    a:hover{
+        color:whitesmoke;
+    }
 }
+
 .header-right{
     text-align: end;
 
 }
+
 .header-center{
     text-align: center;
     font-size:2rem;
@@ -14,9 +20,5 @@
 }
 
 .header-text{
-    color:whitesmoke;
-}
-
-.header a:hover{
     color:whitesmoke;
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/ProductSlider.css';
 
 const ProductCard = (props) => (
     <div className='hoverme product'>

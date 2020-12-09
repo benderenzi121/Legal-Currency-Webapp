@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import './App.css';
+import './styles/_index.scss';
 import Header from './components/header.jsx';
 import Nav from './components/nav.jsx';
 import Landing from './components/Pages/landing.jsx';
