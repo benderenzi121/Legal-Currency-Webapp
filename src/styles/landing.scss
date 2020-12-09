@@ -1,38 +1,38 @@
-#showcase{
-    background-image: url('../static/img/showcase.jpg');
-    height:100vh;
+#showcase {
+    background-image: url("../static/img/showcase.jpg");
+    height: 100vh;
     background-size: cover;
     background-position: center;
-    display:flex;
+    display: flex;
     justify-content: center;
-    opacity:95%;
+    opacity: 95%;
     padding: 0 20px;
-    font-size:1rem;
-    
-    h1{
+    font-size: 1rem;
+
+    h1 {
         font-size: 75px;
     }
-    
-    p{
+
+    p {
         font-size: 30px;
     }
 
-    .button{
-        font-size:15px;
+    .button {
+        font-size: 15px;
         border: 1px solid whitesmoke;
-        padding:10px 20px;
+        padding: 10px 20px;
         border-radius: 10px;
-        
-        &:hover{
-            background:whitesmoke;
-            color:rgb(121, 120, 120);
+
+        &:hover {
+            background: whitesmoke;
+            color: rgb(121, 120, 120);
         }
     }
 }
 
-.landing{
+.landing {
     color: whitesmoke;
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;

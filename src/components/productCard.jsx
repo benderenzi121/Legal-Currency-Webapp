@@ -10,8 +10,8 @@ const ProductCard = (props) => (
             <button type='button' className='btn btn-secondary' title='Add to cart'><i className="fas fa-cart-plus"></i></button>
         </div>
         <div className='product-bottom text-center rounded-bottom'>
-            <h3>{props.title}</h3> 
-            <h5>{props.price}</h5> 
+            <h3>{props.title}</h3>
+            <h5>{props.price}</h5>
         </div>
     </div>
 );
