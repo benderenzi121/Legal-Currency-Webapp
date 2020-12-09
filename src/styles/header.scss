@@ -1,5 +1,7 @@
+@import './commonVariables';
+
 .header{
-    background-color: #e1b907;
+    background-color: $primaryColor;
     display:flex;
 
     a:hover{

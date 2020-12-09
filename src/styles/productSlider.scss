@@ -1,3 +1,4 @@
+@import './commonVariables';
 @import '../../node_modules/slick-carousel/slick/slick.css';
 @import '../../node_modules/slick-carousel/slick/slick-theme.css';
 
@@ -10,7 +11,7 @@
     letter-spacing: 1px;
 
     h2 {
-        background:#e1b907;
+        background: $primaryColor;
         color:#fff;
         padding:1px;
         width:250px;
@@ -21,7 +22,7 @@
             left:5px;
             top:44px;
             content:'';
-            border-top: 40px solid #e1b907;
+            border-top: 40px solid $primaryColor;
             border-right:40px solid transparent;
         }
     }
@@ -45,7 +46,7 @@
 }
 
 .product-bottom{
-    background-color: #e1b907;
+    background-color: $primaryColor;
 
     h3{
         font-size:1.75rem;
@@ -77,7 +78,7 @@
 
     .fas{
         cursor:pointer;
-        background-color: #e1b907;
+        background-color: $primaryColor;
         color:whitesmoke;
         height:35px;
         width:35px;
