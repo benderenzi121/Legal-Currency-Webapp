@@ -5,20 +5,20 @@ class Header extends React.Component {
     render() { 
         return ( 
             <div >
-                <nav class="navbar ml-auto navbar-expand-sm header row">
-                    <ul class="navbar-nav  header col-sm"> 
-                        <li class="nav-item col-sm-4"> 
-                            <a class="nav-link nav-text" href="#"> 
+                <nav className="navbar ml-auto navbar-expand-sm header row">
+                    <ul className="navbar-nav  header col-sm"> 
+                        <li className="nav-item col-sm-4"> 
+                            <a className="nav-link nav-text" href="#"> 
                                 Login/Create Account 
                             </a> 
                         </li> 
-                        <li class="nav-item col-sm-4 header-center"> 
-                            <a class="nav-link header-text" href="#"> 
+                        <li className="nav-item col-sm-4 header-center"> 
+                            <a className="nav-link header-text" href="#"> 
                                 Amazing Games TCG 
                             </a> 
                         </li> 
-                        <li class="nav-item col-sm-4 header-right"> 
-                            <a class="nav-link nav-text" href="#"> 
+                        <li className="nav-item col-sm-4 header-right"> 
+                            <a className="nav-link nav-text" href="#"> 
                                 Login/Create Account 
                             </a> 
                         </li> 
