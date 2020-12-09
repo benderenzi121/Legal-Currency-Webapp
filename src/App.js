@@ -1,10 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
-import Header from './components/header';
-import Nav from './components/nav';
-import BannerSlider from './components/bannerSlider';
-import ProductSlider from './components/productSlider';
-import Landing from './components/landing';
+import Header from './components/header.jsx';
+import Nav from './components/nav.jsx';
+import Landing from './components/Pages/landing.jsx';
+import Home from './components/Pages/home.jsx';
 
 const API_KEY = '';
 
@@ -32,8 +31,7 @@ class App extends Component{
                 {/* <Landing/> */}
                 <Header/>
                 <Nav/>
-                <BannerSlider/>
-                <ProductSlider/>
+                <Home/>
             </Fragment>
         );
     };
