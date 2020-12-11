@@ -3,13 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry : './src/index.js',
-    output : {
-        path : path.resolve(__dirname , 'dist'),
+    entry: './src/index.js',
+    output: {
+        path: path.resolve(__dirname, 'dist'),
         filename: 'index_bundle.js'
     },
-    module : {
-        rules : [
+    module: {
+        rules: [
             {
                 test: /\.(js|jsx)?$/,
                 exclude: /node_modules/,
@@ -24,8 +24,8 @@ module.exports = {
                 }]
             },
             {
-                test: /\.css$/, 
-                use: [ 'style-loader', 'css-loader' ]
+                test: /\.(css|scss)$/,
+                use: ['style-loader', 'css-loader', 'sass-loader']
             },
             {
                 test: /\.(png|jpe?g|gif)$/i,
@@ -38,13 +38,13 @@ module.exports = {
             {
                 test: /\.(eot|woff|woff2|ttf|svg)$/,
                 use: {
-                  loader: 'url-loader',
-                  options: {
-                    limit: 100000,
-                    name: '[name].[ext]'
-                  }
+                    loader: 'url-loader',
+                    options: {
+                        limit: 100000,
+                        name: '[name].[ext]'
+                    }
+                }
             }
-        }
         ]
     },
     plugins: [

@@ -1,17 +1,22 @@
 import React from 'react';
-import ProductCard from './productCard';
+import ProductCard from '../components/productCard.jsx';
 import Slider from "react-slick";
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+
+// const Arrow = (props) => {
+//     const { className, style, onClick } = props;
+//     return <div className={className} style={...style} onClick={onClick} />
+// };
 
 const ProductSlider = (props) => {
-    const settings= {
-        dots:true,
-        infinite:true,
-        speed:500,
-        slidesToShow:4,
-        slidesToScroll:1, 
-        arrows:true
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        arrows: true,
+        // nextArrow: <div className="" />,
+        // prevArrow: <Arrow />
     };
 
     // mock data will be replaced by array of data from props
@@ -23,14 +28,16 @@ const ProductSlider = (props) => {
         { title: 'MTG Black Lotus', price: '$41999', imageUrl: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTUo8Bi8D3QbQCKJ2NMuhB2J-ORBB-rj4ycM5u2BlBhHjUbLOHjIPmqy3dQVP7SBz7U4klPPoDk9zp26yc1nolXWDZqwpmBU3q3uief7L0&usqp=CAc' }
     ];
 
-    return ( 
+    const getProductCards = () => {
+        return mockData.map(productCardData => <ProductCard title={productCardData.title} price={productCardData.price} imageUrl={productCardData.imageUrl} />);
+    };
+
+    return (
         <div className='container product-slider'>
             <h2>Featured Collection</h2>
-                <div> 
-                    <Slider {...settings}>
-                        { mockData.map(i => <ProductCard title={i.title} price ={i.price} imageUrl={i.imageUrl}/> ) }
-                    </Slider>
-            </div>
+            <Slider {...settings}>
+                {getProductCards()}
+            </Slider>
         </div>
     );
 }

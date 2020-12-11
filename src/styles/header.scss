@@ -1,0 +1,24 @@
+@import "./commonVariables";
+
+.header {
+    background-color: $primaryColor;
+    display: flex;
+
+    a:hover {
+        color: whitesmoke;
+    }
+}
+
+.header-right {
+    text-align: end;
+}
+
+.header-center {
+    text-align: center;
+    font-size: 2rem;
+    font-family: oswald;
+}
+
+.header-text {
+    color: whitesmoke;
+}

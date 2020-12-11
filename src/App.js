@@ -1,11 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import './App.css';
-import Header from './components/header';
-import Nav from './components/nav';
-import Slider from './components/slider';
-import Landing from './components/landing';
-import ProductSlider from './components/productSlider';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import './styles/_index.scss';
+import Header from './components/header.jsx';
+import Nav from './components/nav.jsx';
+import Landing from './components/Pages/landing.jsx';
+import Home from './components/Pages/home.jsx';
 
 const API_KEY = '';
 
@@ -28,16 +26,14 @@ class App extends Component{
     }
 
     render(){
-        return <Fragment>
-            <Router>
-                <Route path="/" exact component={Landing}/>
-                <Route path="/" exact component={Header}/>
-                <Route path="/" exact component={Nav}/>
-                <Route path="/" exact component={Slider}/>
-                <Route path="/" exact component={ProductSlider}/>
-                
-            </Router>
-        </Fragment>
+        return (
+            <Fragment>
+                {/* <Landing/> */}
+                <Header/>
+                <Nav/>
+                <Home/>
+            </Fragment>
+        );
     };
 }
 
