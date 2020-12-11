@@ -22,10 +22,12 @@
         border: 1px solid whitesmoke;
         padding: 10px 20px;
         border-radius: 10px;
+        color:whitesmoke;
 
         &:hover {
             background: whitesmoke;
             color: rgb(121, 120, 120);
+            text-decoration: none;
         }
     }
 }

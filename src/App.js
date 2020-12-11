@@ -1,4 +1,12 @@
 import React, { Component, Fragment } from 'react';
+
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
+
 import './styles/_index.scss';
 import Header from './components/header.jsx';
 import Nav from './components/nav.jsx';
@@ -27,12 +35,18 @@ class App extends Component{
 
     render(){
         return (
-            <Fragment>
-                {/* <Landing/> */}
-                <Header/>
-                <Nav/>
-                <Home/>
-            </Fragment>
+            
+            <Router>
+                <Fragment>
+                    {/* <Landing/> */}
+                    
+                    <Route path='/' exact component={Landing}/>
+                    <Route path='/home' exact component={Header}/>
+                    <Route path='/home' exact component={Nav}/>
+                    <Route path='/home' exact component={Home}/>
+                </Fragment>
+            </Router>
+        
         );
     };
 }
