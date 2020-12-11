@@ -41,8 +41,8 @@ class App extends Component{
                     {/* <Landing/> */}
                     
                     <Route path='/' exact component={Landing}/>
-                    <Route path='/home' exact component={Header}/>
-                    <Route path='/home' exact component={Nav}/>
+                    <Route exact component={Header}/>
+                    <Route exact component={Nav}/>
                     <Route path='/home' exact component={Home}/>
                 </Fragment>
             </Router>
