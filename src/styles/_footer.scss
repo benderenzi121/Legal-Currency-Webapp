@@ -1,0 +1,26 @@
+@import "./commonVariables";
+
+.footer{
+    padding:50px;
+    background-color: #212529;
+    
+    &__title{
+        padding-bottom: 26px;
+        border-bottom: 1px solid;
+        border-color: $primaryColor;
+        color:whitesmoke;
+        font-size:1.2rem;
+    }
+    &__content{
+        color:whitesmoke;  
+        
+    }
+    &__ul{
+        padding: 0;
+        margin-top:0;
+        margin-bottom:1rem;
+        font-size:.9rem;
+    }
+
+    
+}
