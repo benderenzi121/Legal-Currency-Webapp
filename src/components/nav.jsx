@@ -10,14 +10,14 @@ class Nav extends React.Component {
                         <Switch>
                         <li className="nav-item col-lg-8 "></li>
                         <li className="nav-item col-lg-3 nav-center">
-                            <Nav.Link to='/' className="nav-text" href="#">
+                            <Link to='/' className="nav-text" href="#">
                                 View Products
-                            </Nav.Link>
+                            </Link>
                         </li>
                         <li className="nav-item nav-right col-lg-1">
-                            <Nav.Link to='/' className="nav-text" href="#">
+                            <Link to='/' className="nav-text" href="#">
                                 <i className="fas fa-shopping-cart"></i>
-                            </Nav.Link>
+                            </Link>
                         </li>
                         </Switch>
                     </ul>

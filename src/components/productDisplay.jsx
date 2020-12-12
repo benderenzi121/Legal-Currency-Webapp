@@ -21,7 +21,6 @@ export default class ProductDisplay extends Component {
     };
     return (
       <div className="product-display" >
-        <h2>Custom Paging</h2>
         <Slider {...settings}>
           <div>
             <img src="https://lh3.googleusercontent.com/proxy/EvfYhQb11baSLEY0c1IJNCG86MwfPIQmv56WXchFookAYuxyBkFaO5LCZjSJbf9sZdeK7K6XsKZl1QWkp8EqYCxZISIHSvHH1DpMnKIyKcWiav4ToIgpTHA" />

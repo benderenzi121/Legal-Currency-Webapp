@@ -6,10 +6,38 @@
     margin-bottom:10vh;
     background-color: #ffff;
     border-radius:1%;
-    &__content-col{
+    &__description-col{
+        padding:5vh;
+    }
+    &__title{
+        font-size:2rem;
+        text-align:center;
+    }
+    &__sub-title{
+        font-size:1.5rem;
+        text-align:center;
+        padding-bottom:15px;
+            
         
     }
-    &__{
-        
+    &__title-section{
+        border: 2px solid black;
+        padding-left:2.5vw;
+        padding-right:2.5vw;
+        padding-top:2vh;
+        margin-bottom:10vh;
     }
+    &__description{
+        padding-bottom:15px;
+        border-bottom: 2px solid $primaryColor;
+        text-align:center;
+    }
+    &__description-item{
+        font-size:1.2rem;
+        text-align:center;
+    }
+    &__cart-button{
+       
+    }
+   
 }

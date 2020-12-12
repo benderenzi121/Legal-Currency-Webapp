@@ -1,10 +1,13 @@
 @import 'commonVariables';
 
 .product-display{
+
+
     button{
         background-color:$primaryColor;
         color:black;
         top:40%;
+        border-radius:15%;
     }
     li{
         height:auto;
@@ -19,5 +22,9 @@
        width:100%;
         
     }
+    h2{
+        text-align: center;
+    }
+    
 
 }
