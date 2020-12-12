@@ -11,7 +11,7 @@ const LogoNav = () => (
                     </a>
                 </li>
                 <li className="nav-item col-sm-4 header-center">
-                    <Link className="nav-link header-text" href="#">
+                    <Link className="nav-link header-text" to="/home">
                         Amazing Games TCG
                     </Link>
                 </li>
