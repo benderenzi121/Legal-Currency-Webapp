@@ -1,0 +1,23 @@
+@import 'commonVariables';
+
+.product-display{
+    button{
+        background-color:$primaryColor;
+        color:black;
+        top:40%;
+    }
+    li{
+        height:auto;
+        display:block;
+        
+        
+        
+    }
+    &__active-img{
+       height:auto;;
+       display:block;
+       width:100%;
+        
+    }
+
+}

@@ -1,0 +1,15 @@
+@import "commonVariables";
+
+.item-scope{
+    padding:10vh 15vh;
+    margin-top:10vh;
+    margin-bottom:10vh;
+    background-color: #ffff;
+    border-radius:1%;
+    &__content-col{
+        
+    }
+    &__{
+        
+    }
+}
