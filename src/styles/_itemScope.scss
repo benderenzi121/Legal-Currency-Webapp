@@ -21,7 +21,7 @@
         
     }
     &__title-section{
-        border: 2px solid black;
+        
         padding-left:2.5vw;
         padding-right:2.5vw;
         padding-top:2vh;
@@ -32,12 +32,34 @@
         border-bottom: 2px solid $primaryColor;
         text-align:center;
     }
+    &__price{
+        padding-top:5vh;
+        padding-bottom:7.5px;
+        border-bottom: 2px solid $primaryColor;
+        text-align: center;
+    }
     &__description-item{
         font-size:1.2rem;
         text-align:center;
     }
+    &__quantity-selector{
+        float:left;
+    }
     &__cart-button{
+        
+            background-color:$primaryColor;
+            border-radius:5%;
+            height:7vh;
+            width:15vh;
+            margin-top:9vh;
+            margin-left:10vw;
+            float:right;
+        
        
     }
+
    
+}
+.MuiButtonGroup-root{
+    float:left;
 }

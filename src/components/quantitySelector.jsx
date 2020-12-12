@@ -7,9 +7,9 @@ class QuantitySelector extends Component {
         return (
             <div className="quantity-selector">
                 <ButtonGroup size="small" aria-label="small outlined button group">
-                    <Button>One</Button>
+                    <Button><i class="far fa-minus-square"></i></Button>
                     <TextField id="outlined-basic" label="Qty" variant="outlined" />
-                    <Button>Three</Button>
+                    <Button><i class="far fa-plus-square"></i></Button>
                 </ButtonGroup>
             </div>
         );

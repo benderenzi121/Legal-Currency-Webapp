@@ -23,10 +23,17 @@ class ItemScope extends Component {
                     <p className="item-scope__description-item">This product is the best actually</p>
                     <p className="item-scope__description-item">Wow</p>
                     
+                    <h2 className="item-scope__price">Price</h2>
+                    <p className="item-scope__description-item">$4.20</p>
+
                     <div className='row'>
-                    <QuantitySelector className="col-md-5 item-scope__cart-button"/>
-                    <div className="col-md-4"></div>
-                    <Button className="col-md-3"variant="contained">ADD TO CART</Button>
+                    <div className="col-md-6">
+                        <QuantitySelector/>
+                    </div>
+                    
+                    <div className="col-md-6">
+                        <button className="item-scope__cart-button ">ADD TO CART</button>
+                    </div>
                     </div>
                 </div>
                 </div>
