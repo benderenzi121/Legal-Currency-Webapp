@@ -33,7 +33,7 @@ const ProductSlider = (props) => {
     };
 
     return (
-        <div className='container product-slider'>
+        <div className='container-fluid product-slider'>
             <h2>Featured Collection</h2>
             <Slider {...settings}>
                 {getProductCards()}
