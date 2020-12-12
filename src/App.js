@@ -8,7 +8,7 @@ import {
   } from "react-router-dom";
 
 import './styles/_index.scss';
-import Header from './components/header.jsx';
+import Header from './components/logoNav.jsx';
 import Nav from './components/nav.jsx';
 import Landing from './components/Pages/landing.jsx';
 import Home from './components/Pages/home.jsx';
@@ -40,9 +40,7 @@ class App extends Component{
                 <Fragment>
                     {/* <Landing/> */}
                     
-                    <Route path='/' exact component={Landing}/>
-                    <Route exact component={Header}/>
-                    <Route exact component={Nav}/>
+                    <Route path= '/' exact component={Landing}/>
                     <Route path='/home' exact component={Home}/>
                 </Fragment>
             </Router>

@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import BannerSlider from '../bannerSlider.jsx';
 import ProductSlider from '../productSlider.jsx';
+import Header from '../header.jsx';
 
 class Home extends Component {
     constructor(props) {
@@ -11,6 +12,7 @@ class Home extends Component {
     render() { 
         return ( 
             <Fragment>
+                <Header/>
                 <BannerSlider/>
                 <ProductSlider/>
             </Fragment>
