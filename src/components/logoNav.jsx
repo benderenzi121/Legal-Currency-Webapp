@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const LogoNav = () => (
     <div >
@@ -10,9 +11,9 @@ const LogoNav = () => (
                     </a>
                 </li>
                 <li className="nav-item col-sm-4 header-center">
-                    <a className="nav-link header-text" href="#">
+                    <Link className="nav-link header-text" href="#">
                         Amazing Games TCG
-                    </a>
+                    </Link>
                 </li>
                 <li className="nav-item col-sm-4 header-right">
                     <a className="nav-link nav-text" href="#">
