@@ -38,13 +38,11 @@ class App extends Component{
         return (
             
             <Router>
-                <Fragment>
                     {/* <Landing/> */}
                     
                     <Route path= '/' exact component={Landing}/>
                     <Route path='/home' exact component={Home}/>
                     <Route path= '/view-product' exact component={ViewProduct}/>
-                </Fragment>
             </Router>
         
         );

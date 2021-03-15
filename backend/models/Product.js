@@ -30,6 +30,12 @@ const ProductSchema = new mongoose.Schema({
     inStock:{
         type: Number,
         required:true
+    },
+    pricePaid:{
+        type:Number, 
+        required:true,
+        default:0.00
+
     }
 });
 

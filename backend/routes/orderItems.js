@@ -4,12 +4,14 @@ const express = require('express'),
       {check, validationResult} = require('express-validator'),
       //Order model
       OrderItem = require('../models/OrderItem'),
-      Product = require('../models/Product');
+      Product = require('../models/Product'),
+      auth = require('../middleware/auth');
 
 //API ROUTE 
 //POST
 //Creates an order-item document in the mongoDB 
 router.post('/add-order-item', [
+    auth,
     //Validation checks. 
     //productTitle is used to query the DB for a unique matching title
     //qty is used to ensure there is enough of an item in stock
@@ -56,7 +58,7 @@ router.post('/add-order-item', [
             await orderItem.save();
             
             //Update stock to reflect new quantity after order
-            product.inStock -= qty;
+            //*************MOVED TO ORDER ENDPOINT************
             product.save();
             return res.status(200).send('We did it!!!')
         }

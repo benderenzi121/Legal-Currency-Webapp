@@ -1,3 +1,13 @@
-const express = require('express');
-const router = express.Router();
-const Order = require('../models/Order');
+const express = require('express'),
+      router = express.Router(),
+      Order = require('../models/Order');
+
+
+
+router.post('/',[
+    auth,
+    
+    
+], async (req,res,next) => {
+    
+})

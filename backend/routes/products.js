@@ -47,7 +47,7 @@ router.post('/update-stock',[
 router.get('/' , async (req,res) => {
     const productList = await Product.find();
     console.log(productList);
-    return res.sendStatus(200);
+    return res.status(200).send(productList);
 })
 
 //  Creates a new Product

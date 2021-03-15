@@ -9,7 +9,7 @@ const
     { check, validationResult } = require('express-validator'),
     User = require('../models/User');
     auth = require('../middleware/auth');
-    auth = require('../middleware/adminAuth');
+  
 
 
 router.get('/', [auth,adminAuth], async (req, res) => {
@@ -17,6 +17,36 @@ router.get('/', [auth,adminAuth], async (req, res) => {
         const users = await User.find();
         console.log(users);
         return res.status(200).send(users);
+    }
+    catch(err) {
+        return res.sendStatus(400);
+    }
+});
+
+//gets default shipping information for current signed in user.
+router.get('/userShipping', [auth], async (req, res) => {
+    //Takes token from the header
+    const token = req.header('x-auth-token');
+    if (!token){
+        return res.status(401).json({ msg: 'no token, auth denied'});
+    }
+
+    //Decodes JWT 
+    const decoded = jwt.verify(token, config.get('jwtSecret'));
+    let user = decoded.user;
+    let userEmail = user.email;
+
+    
+
+    try {
+        // Finds the User associated with token
+        let dbUser = await User.findOne({userEmail});
+        console.log(dbUser.shipping);
+        //Queries shipping information from database
+        let dbShipping = await Shipping.findById(dbUser.shipping[0]);
+        console.log(dbShipping);
+        //returns Users default shipping information
+        return res.status(200).send(dbShipping);
     }
     catch(err) {
         return res.sendStatus(400);
@@ -81,5 +111,7 @@ router.post('/', [
             res.status(500).send('server error');
         }
     });
+
+
 
 module.exports = router;

@@ -9,8 +9,7 @@ const UserSchema = new mongoose.Schema({
     },
 
     lastName: {
-        type: String,
-        required:true 
+        type: String
     },
 
     email: {
@@ -18,7 +17,7 @@ const UserSchema = new mongoose.Schema({
         required: true,
         unique:true
     },
-
+   
     password:
     {
         type: String,
@@ -33,7 +32,11 @@ const UserSchema = new mongoose.Schema({
     date:{
         type: Date,
         default: Date.now
-    }
+    },
+    shipping:[{
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'product'
+    }],
 
 });
 

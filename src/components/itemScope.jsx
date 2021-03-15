@@ -7,11 +7,13 @@ class ItemScope extends Component {
     render() {
         return (
             <div className="container item-scope">
+                <button className="item-scope__back-btn"><i class="fas fa-arrow-left"></i></button>
                 <div className="row">
-                <div className="col-md-4 item-scope__content-col">
+                <div className="col-md-5 item-scope__content-col item-scope__image-col">
                     <ProductDisplay/>
                 </div>
-                <div className="col-md-8 item-scope__content-col item-scope__description-col">
+                <div className="col-md-1"></div>
+                <div className="container-fluid col-md-6 item-scope__content-col item-scope__description-col">
                     <div className="item-scope__title-section">
                     <h1 className="item-scope__title">Product Title</h1>
                     <h1 className="item-scope__sub-title">Sub Title</h1>
@@ -28,11 +30,11 @@ class ItemScope extends Component {
 
                     <div className='row'>
                     <div className="col-md-6">
-                        <QuantitySelector/>
+                        {/* <QuantitySelector/> */}
                     </div>
                     
                     <div className="col-md-6">
-                        <button className="item-scope__cart-button ">ADD TO CART</button>
+                        <button className="item-scope__cart-button "><i className="fas fa-cart-plus"></i></button>
                     </div>
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const config = require('config');
+const { TrendingUpOutlined } = require('@material-ui/icons');
 const db = config.get('mongoURI');
 
 
@@ -8,7 +9,8 @@ const connectDB = async() => {
         await mongoose.connect(db, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            useCreateIndex: true
+            useCreateIndex: true,
+            useFindAndModify:true
         });
         console.log('mongoDB connected...');
     }

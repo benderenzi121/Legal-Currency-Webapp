@@ -1,3 +1,4 @@
+const { TrendingUpOutlined } = require('@material-ui/icons');
 const mongoose = require('mongoose');
 
 
@@ -23,7 +24,15 @@ const ShippingSchema = new mongoose.Schema({
         type: String,
         required:true 
     },
-
+    city:{
+        type:String,
+        required: true
+    },
+    state:{
+        type:String,
+        required: true
+    }
+    
 });
 
 module.exports = Shipping = mongoose.model('shipping', ShippingSchema)

@@ -20,7 +20,8 @@ const OrderSchema = new mongoose.Schema({
     },
     tax:{
         type: Number,
-        required:true
+        required:true,
+        default:.08875
     },
     shippingPrice:{
         type: Number,
@@ -32,10 +33,15 @@ const OrderSchema = new mongoose.Schema({
     },
     paid:{
         type: Boolean,
-        default: false
+        default: false,
+        required:true
     },
     paidOn:{
         type: Date
+    },
+    placedOn:{
+        type:Date,
+        default:Date.now
     }
 
 })

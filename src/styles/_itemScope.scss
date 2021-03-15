@@ -6,15 +6,29 @@
     margin-bottom:10vh;
     background-color: #ffff;
     border-radius:1%;
+    &__back-btn{
+        border:none;
+        background: #ffff;
+        opacity:25%;
+        font-size: 1.5rem;
+        
+    }
+    &__image-col{
+        
+        padding-left:1px;
+        
+        transform: translateY(15%);
+    }
     &__description-col{
-        padding:5vh;
+        
+        
     }
     &__title{
-        font-size:2rem;
+        font-size:1.7rem;
         text-align:center;
     }
     &__sub-title{
-        font-size:1.5rem;
+        font-size:1.2rem;
         text-align:center;
         padding-bottom:15px;
             
@@ -25,12 +39,13 @@
         padding-left:2.5vw;
         padding-right:2.5vw;
         padding-top:2vh;
-        margin-bottom:10vh;
+        margin-bottom:1vh;
     }
     &__description{
         padding-bottom:15px;
         border-bottom: 2px solid $primaryColor;
         text-align:center;
+        font-size:1.5rem;
     }
     &__price{
         padding-top:5vh;
@@ -39,8 +54,9 @@
         text-align: center;
     }
     &__description-item{
-        font-size:1.2rem;
+        font-size:1rem;
         text-align:center;
+
     }
     &__quantity-selector{
         float:left;
