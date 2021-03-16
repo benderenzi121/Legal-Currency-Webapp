@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 // Schema for User model
 
 const UserSchema = new mongoose.Schema({
-
     firstName: {
         type: String,
         required: true

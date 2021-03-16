@@ -59,7 +59,7 @@ router.post('/add-order-item', [
             
             //Update stock to reflect new quantity after order
             //*************MOVED TO ORDER ENDPOINT************
-            product.save();
+            //product.save();
             return res.status(200).send('We did it!!!')
         }
         else{
