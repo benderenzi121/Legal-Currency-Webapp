@@ -93,7 +93,7 @@ router.post('/add-to-cart',[
         //Takes token from the header
         const token = req.header('x-auth-token');
         if (!token){
-            return res.status(401).json({ msg: 'no token, auth denied'});
+            return res.Status(401).json({ msg: 'no token, auth denied'});
         }
 
         //decode token and find associated user

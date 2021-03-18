@@ -1,3 +1,4 @@
+const { TrendingUpOutlined } = require('@material-ui/icons');
 const mongoose = require('mongoose');
 
 
@@ -36,6 +37,11 @@ const ProductSchema = new mongoose.Schema({
         required:true,
         default:0.00
 
+    },
+    featured:{
+        type: Boolean,
+        required: true,
+        default: false
     }
 });
 
