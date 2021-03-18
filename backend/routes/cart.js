@@ -14,7 +14,69 @@ const jwt = require('jsonwebtoken'),
       config = require('config');
 
 
+router.post('/remove-from-cart',[
+      auth,
+      check('productId','productId is required').not().isEmpty(),
+      check('quantity','quantity is required').not().isEmpty(),
+    ], 
+    async (req,res) => {
+        //checks field validation
+        const errors = validationResult(req);
 
+        if(!errors.isEmpty()){
+            res.status(400).json({errors:errors.array()});
+        };
+
+        //Takes token from the header
+        const token = req.header('x-auth-token');
+        if (!token){
+            return res.status(401).json({ msg: 'no token, auth denied'});
+        }
+
+        //decode token and find associated user
+        const decoded = jwt.verify(token, config.get('jwtSecret'));
+        let userPayload = decoded.user;
+        const {productId, quantity} = req.body;
+
+        try{
+            let product = await Product.findById(productId);
+            let user = await User.findById(userPayload.id);
+            let cart = await Cart.findOne({user:user});
+
+            let found = false;
+                let i=0;
+                for (i=0;i<cart.orderItems.length;i++)
+                {
+                    
+                    if(cart.orderItems[i].product._id.toString() == product._id.toString()){
+                        found=true;
+                        console.log(cart + "before decrement" + cart.orderItems[i].qty + '////////');
+                        cart.orderItems[i].qty -= quantity;
+                        cart.orderItems[i].total = product.price * cart.orderItems[i].qty;
+                        if(cart.orderItems[i].qty == 0){
+                            cart.orderItems.splice(i,1);
+                            console.log(cart);
+                            res.status(200).send(cart.orderItems);
+                            await cart.save();
+                            break;
+                           
+                        }
+                        cart.markModified('orderItems');
+                        res.status(200).send(cart.orderItems);
+                        await cart.save();
+                    }}
+            if(found==false){
+                res.status(400).send('product was not in cart');
+            }
+            
+            
+        }
+        catch(err){
+            console.error(err);
+            //res.status(500).send('server error');
+        }
+
+    });
 router.post('/add-to-cart',[
       auth,
       check('productId','productId is required').not().isEmpty(),

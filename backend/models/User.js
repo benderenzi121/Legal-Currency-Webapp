@@ -34,7 +34,7 @@ const UserSchema = new mongoose.Schema({
     },
     shipping:[{
         type: mongoose.SchemaTypes.ObjectId,
-        ref: 'product'
+        ref: 'shipping'
     }],
 
 });

@@ -6,28 +6,40 @@ const OrderSchema = new mongoose.Schema({
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'user'
     },
-    cart:{
-        type:mongoose.SchemaTypes.ObjectId,
-        ref:'cart'
+    orderCart:{
+        type:Object,
+        required:true,
+        user: {
+            type: mongoose.SchemaTypes.ObjectId,
+            ref:'user',
+            unqiue:true,
+            required: true
+        },
+        orderItems:[{
+            type:Object,
+            required:true,
+            product:{
+                type: mongoose.SchemaTypes.ObjectId,
+                ref: 'product',
+                unique:true
+            },
+            qty:{
+                type: Number,
+                required:true
+            },
+            total:{
+                type:Number,
+                required:true
+            }
+    
+          
+        }]
     },
     shipping:{
         type:mongoose.SchemaTypes.ObjectId,
         ref:'shipping'
     },
     subTotal:{
-        type: Number,
-        required:true
-    },
-    tax:{
-        type: Number,
-        required:true,
-        default:.08875
-    },
-    shippingPrice:{
-        type: Number,
-        required:true
-    },
-    total:{
         type: Number,
         required:true
     },
@@ -47,4 +59,4 @@ const OrderSchema = new mongoose.Schema({
 })
 
 
-module.exports = Order = mongoose.Model('order', OrderSchema)
+module.exports = Order = mongoose.model('order', OrderSchema)

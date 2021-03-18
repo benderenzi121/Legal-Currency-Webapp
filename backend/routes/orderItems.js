@@ -3,7 +3,7 @@ const express = require('express'),
       //validation
       {check, validationResult} = require('express-validator'),
       //Order model
-      OrderItem = require('../models/OrderItem'),
+      OrderItem = require('../models/Cart'),
       Product = require('../models/Product'),
       auth = require('../middleware/auth');
 

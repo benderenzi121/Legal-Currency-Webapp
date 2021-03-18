@@ -57,10 +57,10 @@ router.post('/',[
         let userEmail = user.email; 
         
 
-        let dbUser = await User.findById(user.id);
+        let doc = await User.findById(user.id);
         
         //update user object adding new shipping information
-        await User.updateOne({email: dbUser.email},{$push:{shipping: shipping}});
+        await User.updateOne({email: doc.email},{$push:{shipping: shipping}});
        
         //save shipping information to its respected collection
         await shipping.save();

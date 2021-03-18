@@ -14,5 +14,6 @@ app.use('/api/products', require('./routes/products'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/shipping', require('./routes/shipping'));
 app.use('/api/cart', require('./routes/cart'));
+app.use('/api/order', require('./routes/order'));
 app.get('/', (req , res) => res.send('API is runnig'));
 app.listen(PORT, () => console.log(`server started on port ${PORT}`));
