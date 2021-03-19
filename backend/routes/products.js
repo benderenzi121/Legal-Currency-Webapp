@@ -3,6 +3,7 @@ const {check, validationResult} = require('express-validator');
 const auth = require('../middleware/auth');
 const authAdmin = require('../middleware/adminAuth');
 const Product = require('../models/Product');
+const { find } = require('../models/Product');
  
 
 const router = express.Router();
@@ -29,8 +30,7 @@ router.post('/update-stock',[
         product.inStock += change;
         
         await product.save();
-        console.log(product);
-        res.status(200).send('nioce')
+        res.status(200).send(product);
 
     }
     catch(err){
@@ -106,6 +106,8 @@ router.post('/new-product', [auth,authAdmin,
         ;
     }
 );
+
+
 // Gets product ID from the database 
 // Takes 1 parameter 'title' and queries the DB to see if it finds a matching title
 // Returns the ID of the product with the requests title
@@ -122,3 +124,36 @@ router.get('/product-id', async (req,res) => {
         }
 });
 module.exports = router;
+
+//Custom Queries Based on User tags 
+router.get('/product-list',
+      async (req,res,next) => {
+      //get list of tags from req and store it in a variable
+      let {tags} = req.body;
+      let results = [];
+      
+      try{
+            //if no tags selected return all products
+            if (!tags){
+                let products = await Product.find();
+                //if no products return an error
+                if(!products){
+                    return res.status(401).send('No Products WTHHHH');
+                }
+                return res.status(200).send(products);
+            }
+            //find all products that have any of the associated tags
+            for (let i=0; i< tags.length; i++){
+                let prod = await Product.find({tag:tags[i]});
+                results.push(prod);
+            };
+            
+            //send a list of the products queried for by tag
+            return res.status(200).send(results);
+    }
+    catch(err){
+        console.error(err);
+        return res.status(500).send('server error');
+    };
+})
+

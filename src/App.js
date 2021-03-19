@@ -12,7 +12,7 @@ import Header from './components/logoNav.jsx';
 import Nav from './components/nav.jsx';
 import Landing from './components/Pages/landing.jsx';
 import Home from './components/Pages/home.jsx';
-import ViewProduct from './components/Pages/viewProduct.jsx';
+//import ViewProduct from './components/Pages/viewProduct.jsx';
 
 const API_KEY = '';
 
@@ -42,7 +42,7 @@ class App extends Component{
                     
                     <Route path= '/' exact component={Landing}/>
                     <Route path='/home' exact component={Home}/>
-                    <Route path= '/view-product' exact component={ViewProduct}/>
+                    
             </Router>
         
         );

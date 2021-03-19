@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import BannerSlider from '../bannerSlider.jsx';
-import ProductSlider from '../productSlider.jsx';
 import Header from '../header.jsx';
-import Footer from '../footer.jsx';
+import Register from '../../components/auth/Register.jsx';
+
 
 class Home extends Component {
     constructor(props) {
@@ -14,9 +13,10 @@ class Home extends Component {
         return ( 
             <Fragment>
                 <Header/>
-                <BannerSlider/>
-                <ProductSlider/>
-                <Footer/>
+                    <div className = 'container'>
+                <Register/>
+                </div>
+                
             </Fragment>
         );
     }

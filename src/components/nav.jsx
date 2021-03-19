@@ -5,24 +5,39 @@ class Nav extends React.Component {
     render() {
         return (
             <div>
-                <nav className="navbar navbar-expand-sm mynav row">
-                    <ul className="navbar-nav col-sm">
-                        <Switch>
-                            <li className="nav-item col-lg-8 "></li>
-                            <li className="nav-item col-lg-3 nav-center">
-                                <Link to='/' className="nav-text" href="#">
-                                    View Products
-                                </Link>
+                    <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+                    <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                        <ul className="navbar-nav mr-auto">
+                            <li className="nav-item active">
+                                <a className="nav-link" href="#">Left</a>
                             </li>
-                            <li className="nav-item nav-right col-lg-1">
-                                <Link to='/' className="nav-text" href="#">
-                                    <i className="fas fa-shopping-cart"></i>
-                                </Link>
+                            <li className="nav-item">
+                                <a className="nav-link" href="//codeply.com">Codeply</a>
                             </li>
-                        </Switch>
-                    </ul>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">Link</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">Link</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">Link</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                        <ul className="navbar-nav ml-auto">
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">Right</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">Link</a>
+                            </li>
+                        </ul>
+                    </div>
                 </nav>
-            </div>
+                        </div>
         );
     }
 }

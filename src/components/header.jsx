@@ -8,7 +8,7 @@ export default class Header extends Component {
         return (
             <div>
                 <LogoNav/>
-                <Nav/>
+                <Nav/> 
             </div>
         )
     }
