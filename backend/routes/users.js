@@ -54,7 +54,7 @@ router.get('/userShipping', [auth], async (req, res) => {
 });
 
 router.post('/', [
-        check('firstName','name is required').not().isEmpty(),
+        check('name','name is required').not().isEmpty(),
         check('email', 'please include a valid email').isEmail(),
         check('password' , 'please enter a password with 6 or more charecters').isLength({min: 6})
     ],
@@ -64,7 +64,7 @@ router.post('/', [
             return res.status(400).json({errors: errors.array()});
         }
 
-        const { firstName, lastName, email, password } = req.body;
+        const { name, email, password } = req.body;
 
         try{
             let user = await User.findOne({ email })
@@ -72,7 +72,7 @@ router.post('/', [
                 res.status(400).json({errors: [{msg: 'user already exists' }] });
             }
 
-            user = new User({ firstName, lastName, email, password });
+            user = new User({ name, email, password });
         
             const salt = await bcrypt.genSalt(10);
 

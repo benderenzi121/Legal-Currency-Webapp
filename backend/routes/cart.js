@@ -66,7 +66,7 @@ router.post('/remove-from-cart',[
                         await cart.save();
                     }}
             if(found==false){
-                res.status(400).send('product was not in cart');
+                res.status(400).json({errors: [{msg: 'product was not in cart' }] });
             }
             
             

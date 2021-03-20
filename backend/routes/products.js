@@ -138,7 +138,7 @@ router.get('/product-list',
                 let products = await Product.find();
                 //if no products return an error
                 if(!products){
-                    return res.status(401).send('No Products WTHHHH');
+                    res.status(400).json({errors: [{msg: 'no products in database?' }] });
                 }
                 return res.status(200).send(products);
             }

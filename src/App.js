@@ -12,6 +12,7 @@ import Header from './components/logoNav.jsx';
 import Nav from './components/nav.jsx';
 import Landing from './components/Pages/landing.jsx';
 import Home from './components/Pages/home.jsx';
+import Alert from './components/layout/alert.js';
 //import ViewProduct from './components/Pages/viewProduct.jsx';
 //redux 
 import { Provider } from 'react-redux';
@@ -42,7 +43,8 @@ class App extends Component{
             <Provider store={store}>
             <Router>
                     {/* <Landing/> */}
-                    
+                    <Header/>
+                    <Alert/>
                     <Route path= '/' exact component={Landing}/>
                     <Route path='/home' exact component={Home}/>
                     

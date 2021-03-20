@@ -13,7 +13,6 @@ class Home extends Component {
     render() { 
         return ( 
             <Fragment>
-                <Header/>
                     <div className = 'container'>
                 <Register/>
                 
