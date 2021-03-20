@@ -1,25 +1,46 @@
 import React, {Fragment, useState} from 'react';
+import {connect} from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
+import axios from 'axios';
+import {setAlert} from '../../actions/alert';
 
-
-const Register = () => {
+const Register = (props) => {
     const [formData, setFormData] =useState({
-        name:'',
+        firstName:'',
         email:'',
         password:'',
         password2:''
     });
 
-    const {name, email, password, password2} = formData;
+    const {firstName, email, password, password2} = formData;
 
     const onChange = e => setFormData({ ...formData,[e.target.name]:e.target.value });
-    const onSubmit = e => {
+    const onSubmit = async e => {
         e.preventDefault();
         if(password != password2) {
-            console.log('passwords do not match')
+            props.setAlert('passwords do not match')
         }
         else{
-            console.log(formData);
+            // const newUser = {
+            //     firstName,
+            //     email,
+            //     password
+            // }
+
+            // try{
+            //     const config = {
+            //         headers: {
+            //             'content-type': 'application/json'
+            //         }
+            //     }
+
+            //     const body = JSON.stringify(newUser);
+            //     const res = await axios.post('http://localhost:5000/api/users',body,config);
+            //     console.log(res.data);
+            // }
+            // catch(err) {
+            //     console.log(err.response.data);
+            // }
         }
     }
     return (
@@ -34,8 +55,8 @@ const Register = () => {
           <input
             type="text"
             placeholder="Name"
-            name="name"
-            value={name}
+            name="firstName"
+            value={firstName}
             onChange={onChange}
           />
         </div>
@@ -70,11 +91,11 @@ const Register = () => {
         <input type="submit" className="btn btn-primary" value="Register" />
       </form>
       <p className="my-1">
-        Already have an account? <Link to="/login">Sign In</Link>
+        Already have an account? <Link to="/register">Sign Up</Link>
       </p>
         </Fragment>
     )
     };
 
-    export default Register;
+    export default connect(null, { setAlert })(Register);
 

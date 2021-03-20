@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import Header from '../header.jsx';
 import Register from '../../components/auth/Register.jsx';
+import Login from '../../components/auth/Login.jsx';
 
 
 class Home extends Component {
@@ -15,6 +16,7 @@ class Home extends Component {
                 <Header/>
                     <div className = 'container'>
                 <Register/>
+                
                 </div>
                 
             </Fragment>

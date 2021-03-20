@@ -13,6 +13,9 @@ import Nav from './components/nav.jsx';
 import Landing from './components/Pages/landing.jsx';
 import Home from './components/Pages/home.jsx';
 //import ViewProduct from './components/Pages/viewProduct.jsx';
+//redux 
+import { Provider } from 'react-redux';
+import store from './store';
 
 const API_KEY = '';
 
@@ -36,7 +39,7 @@ class App extends Component{
 
     render(){
         return (
-            
+            <Provider store={store}>
             <Router>
                     {/* <Landing/> */}
                     
@@ -44,6 +47,7 @@ class App extends Component{
                     <Route path='/home' exact component={Home}/>
                     
             </Router>
+            </Provider>
         
         );
     };
