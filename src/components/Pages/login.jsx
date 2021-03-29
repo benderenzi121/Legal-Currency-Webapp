@@ -1,0 +1,16 @@
+import React, { Component, Fragment } from 'react';
+import Header from '../header.jsx';
+import Nav from '../nav.jsx';
+import Login from '../auth/Login.jsx';
+class SignIn extends Component {
+    state = {  }
+    render() { 
+        return ( 
+        <Fragment>
+            <Header/>
+            <Login/>
+        </Fragment> );
+    }
+}
+ 
+export default SignIn;

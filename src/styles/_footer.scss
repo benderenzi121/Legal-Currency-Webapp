@@ -1,25 +1,38 @@
 @import "./commonVariables";
 
 .footer{
-    padding:50px;
-    background-color: #212529;
     
-    &__title{
-        padding-bottom: 26px;
-        border-bottom: 1px solid;
-        border-color: $primaryColor;
-        color:whitesmoke;
-        font-size:1.2rem;
+    background-color: #3D372C;
+    position:fixed;
+    bottom:0;
+    width:100%;
+    &__socialIcn{
+        margin-left:auto;
+        margin-right:auto;
+        width:2vw;
+        height:4vh;
+        border-radius: 5px;
     }
-    &__content{
-        color:whitesmoke;  
+    &__trademark{
         
+        padding-top: 1rem;
+        bottom:0;
+        font-size:.75rem;
     }
-    &__ul{
-        padding: 0;
-        margin-top:0;
-        margin-bottom:1rem;
-        font-size:.9rem;
+    &__column{
+        text-align: center;
+        color:#FDF3C3;
+        padding-left:2rem;
+        &__title{
+            font-size:1rem;
+            padding-top:.5rem;
+        }
+       
+        &__subText{
+            font-size:.5rem;
+            list-style-type: none;
+            
+        }
     }
 
     

@@ -1,0 +1,35 @@
+.featured{
+    margin-top:5rem;
+    background:rgba(0, 0, 0, .40);
+    width:90%;
+    margin: 4rem auto;
+    border-radius: 10px;
+    
+    &__item{
+        padding-top:1rem;
+        text-align: center;
+        color:#FDF3C3;
+        &__title{
+            font-size:1rem;
+        }
+        &__price{
+            font-size:.75rem;
+        }
+    }
+    &__arrow{
+        padding-top:4rem;
+        font-size: 3rem;
+        color:whitesmoke;
+        &-left{
+            padding-left:3rem;
+        }
+        &-right{
+            padding-right:3rem;
+        }
+    }
+    &__image{
+        height:10vh;
+        margin-bottom:2rem;
+        border:solid #FDF3C3;
+    }
+}

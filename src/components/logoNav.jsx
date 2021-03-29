@@ -1,28 +1,46 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-
-const LogoNav = () => (
-    <div >
-        <nav className="navbar ml-auto navbar-expand-sm header row">
-            <ul className="navbar-nav  header col-sm">
-                <li className="nav-item col-sm-4">
-                    <a className="nav-link nav-text" href="#">
-                        Login/Create Account
-                    </a>
-                </li>
-                <li className="nav-item col-sm-4 header-center">
-                    <Link className="nav-link header-text" to="/home">
-                        Amazing Games TCG
-                    </Link>
-                </li>
-                <li className="nav-item col-sm-4 header-right">
-                    <a className="nav-link nav-text" href="#">
-                        Login/Create Account
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
+import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
+import amazinglogo from "../static/img/amazinglogo.png";
+import { connect } from "react-redux";
+const login = (
+  <Link to="/login" className="header__link">
+    Login
+  </Link>
 );
+const profile = (
+  <Link to="/login" className="header__link">
+    Profile
+  </Link>
+);
+const LogoNav = ({ auth: { isAuthenticated, loading, user }, logout }) => (
+  <div className="row header">
+    <div className="col">
+      <div className="row">
+        <div className="col-1 header__item">
+          <img src={amazinglogo} className="nav__logo"></img>
+        </div>
+        <div className="col header__item">
+          <h1 className="header__title">Amazing Games TCG</h1>
+        </div>
+      </div>
+    </div>
+    <div className="col header__login">
+      {!loading && (
+        <Fragment>
+          {isAuthenticated ? (
+            <Link to="/login" className="header__link">
+              {user.firstName}
+            </Link>
+          ) : (
+            login
+          )}
+        </Fragment>
+      )}
+    </div>
+  </div>
+);
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
 
-export default LogoNav;
+export default connect(mapStateToProps, null)(LogoNav);

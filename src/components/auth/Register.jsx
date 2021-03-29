@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { setAlert } from '../../actions/alert';
-import { register } from '../../actions/auth';
+import { loadUser, register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
 const Register = ({ setAlert, register, isAuthenticated }) => {
@@ -24,11 +24,12 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
       setAlert('Passwords do not match', 'danger');
     } else {
       register({ name, email, password });
+      loadUser();
     }
   };
 
   if (isAuthenticated) {
-    return <Redirect to="/dashboard" />;
+    return <Redirect to="/home" />;
   }
 
   return (
@@ -93,7 +94,7 @@ Register.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  //isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(mapStateToProps, { setAlert, register })(Register);

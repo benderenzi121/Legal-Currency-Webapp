@@ -1,19 +1,30 @@
-.mynav {
-    background-color: black;
-    opacity: 87%;
-    font-size: 1.1rem;
-}
+@import './commonVariables';
+.nav{
+    width:100%;
+    background:rgba(0, 0, 0, .40);
+    &__text{
+        padding:.5rem;
+        font-size: .75rem;
+        color:#FFF;
+    }
 
-.nav-text {
-    color: whitesmoke;
-}
-
-.nav-right {
-    text-align: right;
-    margin-left: 0px;
-}
-
-.nav-center {
-    text-align: right;
-    margin-right: 0px;
+    &__logo{
+        height:7vh;
+        padding-bottom:.5rem;
+        
+    }
+    &__search{
+        padding:.25rem;
+        font-size:1rem;
+        padding-left:1rem;
+        border-radius: 3px;
+    }
+    &__search__input{
+        border-radius: 3px;
+        border:none;
+        box-shadow: transparent;
+    }
+    &__right{
+        padding-top:1rem;
+    }
 }
