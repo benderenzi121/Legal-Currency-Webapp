@@ -1,0 +1,29 @@
+.product-list {
+  margin-top: 4rem;
+  text-align: center;
+  &__item {
+      border-radius: 10px;
+      width:75%;
+      padding:2rem;
+      margin:1rem auto;
+      background-color: #FBEA9D;
+      list-style-type: none;
+      
+      
+    &__img {
+      height: 10vh;
+      border-radius: 10px;
+      margin-top: 1rem;
+    }
+    &__title {
+      padding-top: 0.75rem;
+      color:#141001;
+    }
+    &__tag{
+        border:1px solid black;
+        margin:.25rem .25rem ;
+        color:#141001;
+        
+    }
+  }
+}

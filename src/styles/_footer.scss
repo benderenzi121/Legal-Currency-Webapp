@@ -3,9 +3,11 @@
 .footer{
     
     background-color: #3D372C;
-    position:fixed;
+    position:relative;
     bottom:0;
     width:100%;
+    margin:auto;
+    
     &__socialIcn{
         margin-left:auto;
         margin-right:auto;
@@ -29,11 +31,22 @@
         }
        
         &__subText{
-            font-size:.5rem;
+            font-size:.65rem;
             list-style-type: none;
             
         }
     }
 
     
+}
+
+.page-container{
+    display:flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position:relative;
+    
+}
+.content-wrapper{
+    flex:1;
 }

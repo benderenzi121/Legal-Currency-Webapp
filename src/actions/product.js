@@ -18,6 +18,7 @@ export const getProducts = () => async dispatch => {
             loading:false
         });
     } catch(err){
+        
         dispatch({
             type: PRODUCTS_FAIL,
             payload: { msg: err.response.statusText, status: err.response.status},

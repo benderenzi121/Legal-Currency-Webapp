@@ -40,6 +40,7 @@ class Home extends Component {
         console.log(this.state.products);
         return ( 
             <Fragment>
+                
                 <div className='container-fluid'>
                     <LogoNav/>
                     <Welcome/>
@@ -55,8 +56,9 @@ class Home extends Component {
                             </div>
                         </div>
                     
-                        <Footer/>
+                        
                     </div>
+                
                     
 
                

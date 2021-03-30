@@ -8,7 +8,7 @@ import {
   } from "react-router-dom";
 
 import './styles/_index.scss';
-import Header from './components/logoNav.jsx';
+import Footer from './components/footer.jsx';
 import Nav from './components/nav.jsx';
 import Landing from './components/Pages/landing.jsx';
 import Home from './components/Pages/home.jsx';
@@ -42,19 +42,23 @@ class App extends Component{
 
     render(){
         return (
+            <div className='page-container'>
+           
             <Provider store={store}>
             <Router>
                     
-                    
+                <div className='content-wrapper'>
                     <Alert/>
                     <Route path= '/' exact component={Landing}/>
                     <Route path='/home' exact component={Home}/>
                     <Route path='/login' exact component={SignIn}/>
                     <Route path='/products' exact component={Products}/>
-                    
+                </div>    
+                <Footer/>
             </Router>
             </Provider>
-        
+            
+            </div>
         );
     };
 }

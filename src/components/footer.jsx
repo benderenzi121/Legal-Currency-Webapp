@@ -9,7 +9,7 @@ class Footer extends Component {
         return ( 
             <div className='row footer'>
                 <div className='row'></div>
-                <div className='col-1 footer__column'>
+                <div className='col-2 footer__column'>
                     <div className='col'>
                         <h1 className='footer__column__title'>About</h1>
                         <hr/>
@@ -24,25 +24,7 @@ class Footer extends Component {
                             </li>
                     </div>
                 </div>
-                <div className='col-1 footer__column'>
-                    <h1 className='footer__column__title'>Products</h1>
-                    <hr/>
-                    <li className='footer__column__subText'>
-                            DBZ Card Game
-                            </li>
-                            <li className='footer__column__subText'>
-                            Magic the Gathering
-                            </li>
-                            <li className='footer__column__subText'>
-                            Yuhgioh
-                            </li>
-                            <li className='footer__column__subText'>
-                            Accessories
-                            </li>
-                            <li className='footer__column__subText'>
-                            Pop Vinyls
-                            </li>
-                </div>
+                
                 <div className='col-2'></div>
                 <div className='col footer__column'>
                     <h1 className='footer__column__title'>Social</h1>

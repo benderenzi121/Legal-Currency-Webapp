@@ -30,12 +30,15 @@ export default function(state = initialState, action) {
       case LOGIN_SUCCESS:
       case REGISTER_SUCCESS:
           localStorage.setItem('token', payload.token);
+          console.log('yurr');
           return {
               ...state,
               ...payload,
               isAuthenticated: true,
               loading:false
+            
           };
+          
       case REGISTER_FAIL:
       case LOGIN_FAIL:
       case AUTH_ERROR:

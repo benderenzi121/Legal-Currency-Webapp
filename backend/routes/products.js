@@ -35,7 +35,7 @@ router.post('/update-stock',[
     }
     catch(err){
         console.error(err);
-        res.status(500).send('server error');
+        res.status(500).send(err);
     }
 })
 
@@ -46,7 +46,7 @@ router.post('/update-stock',[
 // Returns list of all products 
 router.get('/' , async (req,res) => {
     const productList = await Product.find();
-    console.log(productList);
+    
     return res.status(200).send(productList);
 })
 
@@ -95,12 +95,12 @@ router.post('/new-product', [auth,authAdmin,
             })
 
             await product.save();
-            res.Status(200).send('it worked, should be in DB');
+            res.status(200).send('it worked, should be in DB');
             
         }
         catch(err){
             console.error(err);
-            res.status(500).send('server error');
+            res.status(500).send(err);
 
         }
         ;
@@ -153,7 +153,7 @@ router.get('/product-list',
     }
     catch(err){
         console.error(err);
-        return res.status(500).send('server error');
+        return res.status(400).json({errors: [{msg: 'no products in database?' }] });
     };
 })
 

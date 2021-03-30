@@ -68,9 +68,9 @@ const Nav = ({ auth: { isAuthenticated, loading }, logout }) => {
               <a className="nav__text" href="#!">
                 Singles
               </a>
-              <a className="nav__text" href="#!">
+              <Link to="/products" className="nav__text">
                 All Products
-              </a>
+                </Link>
             </li>
             <li>
         <form onSubmit={onSubmit}>
