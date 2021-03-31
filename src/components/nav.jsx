@@ -26,7 +26,7 @@ const Nav = ({ auth: { isAuthenticated, loading }, logout }) => {
             </a>
       </li>
       <li>
-        <a className="nav__text" href="//codeply.com">
+        <a className="nav__text" href="#!">
           Orders/history
         </a>
       </li>

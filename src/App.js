@@ -15,6 +15,7 @@ import Home from './components/Pages/home.jsx';
 import Alert from './components/layout/alert.js';
 import SignIn from './components/Pages/login.jsx';
 import Products from './components/Pages/products.jsx';
+
 //import ViewProduct from './components/Pages/viewProduct.jsx';
 //redux 
 import { Provider } from 'react-redux';

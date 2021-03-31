@@ -5,8 +5,15 @@
     &__text{
         padding:.5rem;
         font-size: .75rem;
-        color:#FFF;
+        color:$creme-white;
+        text-decoration: none;
+        :hover{
+            color:$creme-white;
+            text-decoration: none;
+        }
+        
     }
+ 
 
     &__logo{
         height:7vh;
