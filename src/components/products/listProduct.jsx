@@ -1,10 +1,15 @@
-import React, {Fragment} from 'react'
+import React, {Fragment} from 'react';
+import {connect} from 'react-redux';
+import {addToCart} from '../../utils/addToCart';
+
 
 
  const ListProduct = ({products, loading}) => {
     if(loading){
         return <h2>loading...</h2>
     }
+
+ 
     return (
        <ul className='list-group mb-4'>
            <div className='row'> 
@@ -17,6 +22,7 @@ import React, {Fragment} from 'react'
                        <h3 className='product-list__item__title'>{product.title}</h3>
                        <p>{product.description}</p>
                        <p>$ {product.price}</p>
+                       <p>qty: {product.inStock}</p>
                        <div className='row'>
                        {product.tag.map(tag => (
                            <div className='col-6'>
@@ -24,7 +30,10 @@ import React, {Fragment} from 'react'
                            </div>
                        ))}
                        </div>
-                       
+                       <div className='product-list__item__footer'>
+                           
+                       <button onClick={async () => addToCart(product._id,1)}  className='product-list__item__cart-button'> Add to Cart </button>
+                       </div>
                     </li>
                     </div>
                     
@@ -35,5 +44,8 @@ import React, {Fragment} from 'react'
        </ul>
     )
 }
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+  })
 
-export default ListProduct;
+export default connect(mapStateToProps,null)(ListProduct);

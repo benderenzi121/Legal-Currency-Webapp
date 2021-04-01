@@ -1,5 +1,5 @@
 .product-list {
-  margin-top: 4rem;
+  margin-top: 2rem;
   text-align: center;
   &__item {
       border-radius: 10px;
@@ -24,6 +24,21 @@
         margin:.25rem .25rem ;
         color:#141001;
         margin-bottom:1rem;
+        
+    }
+    &__footer{
+        margin-top:1rem;
+    }
+    &__cart-button{
+        text-decoration: none;
+        color:$dark-chocolate;
+        border:1px solid $dark-chocolate;
+        padding:.55rem;
+        background-color: $light-chocolate;
+        color:$creme-white;
+        border-radius: 5px;
+        
+        
         
     }
   }

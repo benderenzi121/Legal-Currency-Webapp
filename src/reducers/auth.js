@@ -1,4 +1,4 @@
-import { loadUser } from '../actions/auth';
+
 import {
     REGISTER_SUCCESS,
     REGISTER_FAIL,

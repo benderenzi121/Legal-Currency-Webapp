@@ -1,0 +1,17 @@
+.filters{
+    background-color: $creme;
+    margin-top:7rem;
+    margin-bottom:2rem;
+    padding:2rem;
+    text-align:center;
+    &__heading{
+        text-decoration: underline;
+        padding:.35rem;
+    }
+    &__tag{
+        padding:.25rem;
+        font-size:1.25rem;
+        border:1px solid;
+        color:$dark-chocolate;
+    }
+}

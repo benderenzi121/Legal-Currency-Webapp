@@ -109,7 +109,7 @@ router.post('/add-to-cart',[
             let user = await User.findById(userPayload.id);
             //get the product from db
             let product = await Product.findById(productId);
-            
+            console.log(product);
             //calculate price of item(s) added to cart
             let total = ( quantity * product.price);
 

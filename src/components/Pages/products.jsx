@@ -8,10 +8,11 @@ import Nav from '../nav.jsx';
 import Footer from '../footer.jsx';
 import ListProduct from '../products/listProduct.jsx';
 import Pagination from '../pagination/pagination';
+import Filters from '../products/Filters.jsx';
 
 const Products = ({products:{products,loading},getProducts}) => {
     const [currentPage,setCurrentPage] = useState(1);
-    const [productsPerPage] = useState(2);
+    const [productsPerPage] = useState(6);
     
     useEffect(() => {
         getProducts();
@@ -32,11 +33,17 @@ const Products = ({products:{products,loading},getProducts}) => {
         <div className='container-fluid'>
         <LogoNav/>
         <Nav/>
-        
-        <div className='product-list'>
-        <h1> products </h1>
-        <ListProduct products={currentProducts} loading={loading}/>
-        <Pagination productsPerPage={productsPerPage} totalProducts={products.length} paginate={paginate}/>   
+        <div className='row'>
+        <div className='col-2'>
+            <Filters products={products}/>
+        </div>
+        <div className='col-10'>
+            <div className='product-list'>
+            <h1> products </h1>
+            <ListProduct products={currentProducts} loading={loading}/>
+            <Pagination productsPerPage={productsPerPage} totalProducts={products.length} paginate={paginate}/>   
+        </div>
+        </div>
         </div>
     </div>
     
