@@ -9,6 +9,7 @@ import Footer from '../footer.jsx';
 import ListProduct from '../products/listProduct.jsx';
 import Pagination from '../pagination/pagination';
 import Filters from '../products/Filters.jsx';
+import Alert from '../layout/alert';
 
 const Products = ({products:{products,loading},getProducts}) => {
     const [currentPage,setCurrentPage] = useState(1);
@@ -33,6 +34,7 @@ const Products = ({products:{products,loading},getProducts}) => {
         <div className='container-fluid'>
         <LogoNav/>
         <Nav/>
+        <Alert/>
         <div className='row'>
         <div className='col-2'>
             <Filters products={products}/>

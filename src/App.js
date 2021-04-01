@@ -49,10 +49,11 @@ class App extends Component{
             <Router>
                     
                 <div className='content-wrapper'>
-                    <Alert/>
+                    
                     <Route path= '/' exact component={Landing}/>
                     <Route path='/home' exact component={Home}/>
                     <Route path='/login' exact component={SignIn}/>
+                    
                     <Route path='/products' exact component={Products}/>
                 </div>    
                 <Footer/>

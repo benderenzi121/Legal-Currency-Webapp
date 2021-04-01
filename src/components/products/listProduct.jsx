@@ -1,13 +1,41 @@
 import React, {Fragment} from 'react';
 import {connect} from 'react-redux';
-import {addToCart} from '../../utils/addToCart';
+import PropTypes from 'prop-types';
+import { setAlert } from '../../actions/alert';
+import axios from 'axios';
 
 
 
- const ListProduct = ({products, loading}) => {
+ const ListProduct = ({products, loading,isAuthenticated,setAlert}) => {
     if(loading){
         return <h2>loading...</h2>
     }
+    const addToCart = async (productId,quantity,isAuthenticated) => {
+   
+        console.log('iran');
+        const body = JSON.stringify({productId,quantity});
+        console.log(body);
+        const config={
+            headers: {
+                'content-type' : 'application/json'
+            }
+          }
+        try{
+            if(isAuthenticated){
+            const res = await axios.post('http://localhost:5000/api/cart/add-to-cart', body, config);
+            console.log(res.data);
+            setAlert('success', 'success');
+            }
+            else{
+                console.log('not logged in');
+                setAlert('Please Login', 'danger');
+            }
+        }catch(err){
+            console.log(err);
+            
+        }
+    }
+    
 
  
     return (
@@ -32,7 +60,7 @@ import {addToCart} from '../../utils/addToCart';
                        </div>
                        <div className='product-list__item__footer'>
                            
-                       <button onClick={async () => addToCart(product._id,1)}  className='product-list__item__cart-button'> Add to Cart </button>
+                       <button onClick={async () => addToCart(product._id,1,isAuthenticated)}  className='product-list__item__cart-button'> Add to Cart </button>
                        </div>
                     </li>
                     </div>
@@ -44,8 +72,12 @@ import {addToCart} from '../../utils/addToCart';
        </ul>
     )
 }
+
+ListProduct.propTypes = {
+    setAlert: PropTypes.func.isRequired,
+}
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated
   })
 
-export default connect(mapStateToProps,null)(ListProduct);
+export default connect(mapStateToProps,{setAlert})(ListProduct);

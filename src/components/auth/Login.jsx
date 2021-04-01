@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {loadUser, login} from '../../actions/auth';
+import Alert from '../layout/alert';
 import axios from 'axios';
 
 const Login = ({ login, isAuthenticated }) => {
@@ -25,6 +26,7 @@ const Login = ({ login, isAuthenticated }) => {
       return <Redirect to ='home'/>
     }
     return (
+      
         <Fragment>
             
             <h1 className="large text-primary">Sign In</h1>
