@@ -14,6 +14,30 @@ const jwt = require('jsonwebtoken'),
       config = require('config');
 
 
+
+
+router.get('/get-cart',
+    [auth,
+    ], async (req,res) => {
+    
+        const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        res.status(400).json({errors:errors.array()});
+    };
+
+    //Takes token from the header
+    const token = req.header('x-auth-token');
+    if (!token){
+        return res.status(401).json({ msg: 'no token, auth denied'});
+    }
+
+    //decode token and find associated user
+    const decoded = jwt.verify(token, config.get('jwtSecret'));
+    let userPayload = decoded.user;
+    let cart = await Cart.findOne({user:userPayload.id});
+    res.status(200).send(cart);
+    
+})
 router.post('/remove-from-cart',[
       auth,
       check('productId','productId is required').not().isEmpty(),

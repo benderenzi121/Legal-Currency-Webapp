@@ -3,7 +3,7 @@
   text-align: center;
   &__item {
       border-radius: 10px;
-      width:75%;
+      width:100%;
       padding:2rem;
       margin:1rem auto;
       background-color: #FBEA9D;
@@ -21,9 +21,10 @@
     }
     &__tag{
         border:1px solid black;
-        margin:.25rem .25rem ;
+        margin:auto ;
         color:#141001;
         margin-bottom:1rem;
+        width:75%;
         
     }
     &__footer{

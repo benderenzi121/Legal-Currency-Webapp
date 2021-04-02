@@ -43,7 +43,7 @@ import axios from 'axios';
            <div className='row'> 
            {products.map(product => (
                <Fragment>
-                 
+            
                    <div className='col-4'>
                    <li key={product._id} className='product-list__item '>
                        <img className='product-list__item__img' src={product.imagePath} alt=""/>
@@ -53,7 +53,7 @@ import axios from 'axios';
                        <p>qty: {product.inStock}</p>
                        <div className='row'>
                        {product.tag.map(tag => (
-                           <div className='col-6'>
+                           <div className='col-4'>
                            <p className='product-list__item__tag'>{tag}</p>
                            </div>
                        ))}

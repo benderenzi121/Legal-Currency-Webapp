@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import React, { useEffect, useState,Fragment} from 'react';
 import {getProducts} from '../../actions/product';
+import {getCart} from '../../actions/cart';
 import LogoNav from '../logoNav.jsx';
 import Nav from '../nav.jsx';
 import Footer from '../footer.jsx';
@@ -11,11 +12,12 @@ import Pagination from '../pagination/pagination';
 import Filters from '../products/Filters.jsx';
 import Alert from '../layout/alert';
 
-const Products = ({products:{products,loading},getProducts}) => {
+const Products = ({products:{products,loading},getProducts,getCart}) => {
     const [currentPage,setCurrentPage] = useState(1);
     const [productsPerPage] = useState(6);
     
     useEffect(() => {
+        getCart();
         getProducts();
         
         
@@ -55,10 +57,12 @@ const Products = ({products:{products,loading},getProducts}) => {
 
 Products.propTypes = {
     getProducts: PropTypes.func.isRequired,
+    getCart: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-    products: state.product
+    products: state.product,
+    
 });
 
-export default connect(mapStateToProps, { getProducts })(Products)
+export default connect(mapStateToProps, { getProducts,getCart })(Products)
