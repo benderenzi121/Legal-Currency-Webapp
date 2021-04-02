@@ -3,11 +3,11 @@ import { Link, Redirect } from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {loadUser, login} from '../../actions/auth';
-import Alert from '../layout/alert';
+
 import axios from 'axios';
 
 const Login = ({ login, isAuthenticated }) => {
-    const [formData, setFormData] =useState({
+    const [formData, setFormData] = useState({
         email:'',
         password:'',
     });
@@ -27,7 +27,7 @@ const Login = ({ login, isAuthenticated }) => {
     }
     return (
       
-        <Fragment>
+        <div className='container-fluid'>
             
             <h1 className="large text-primary">Sign In</h1>
       <p className="lead">
@@ -58,7 +58,7 @@ const Login = ({ login, isAuthenticated }) => {
       <p className="my-1">
         Don't have an account? <Link to="/login">Sign In</Link>
       </p>
-        </Fragment>
+        </div>
     )
     };
 

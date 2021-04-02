@@ -15,13 +15,13 @@ export default function(state = initialState, action ) {
                 ...state,
                 cart:payload,
                 loading:false
-            }
+            };
         case GET_CART_FAIL:
         return {
             ...state,
             error:payload,
             loading:false
-        }
+        };
 
         default:
             return state;

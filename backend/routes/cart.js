@@ -35,7 +35,8 @@ router.get('/get-cart',
     const decoded = jwt.verify(token, config.get('jwtSecret'));
     let userPayload = decoded.user;
     let cart = await Cart.findOne({user:userPayload.id});
-    res.status(200).send(cart);
+    console.log(cart);
+    res.status(200).send(cart.orderItems);
     
 })
 router.post('/remove-from-cart',[

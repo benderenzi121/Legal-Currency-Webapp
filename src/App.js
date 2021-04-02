@@ -15,6 +15,7 @@ import Home from './components/Pages/home.jsx';
 import Alert from './components/layout/alert.js';
 import SignIn from './components/Pages/login.jsx';
 import Products from './components/Pages/products.jsx';
+import Cart from './components/Pages/cart.jsx';
 
 //import ViewProduct from './components/Pages/viewProduct.jsx';
 //redux 
@@ -53,7 +54,7 @@ class App extends Component{
                     <Route path= '/' exact component={Landing}/>
                     <Route path='/home' exact component={Home}/>
                     <Route path='/login' exact component={SignIn}/>
-                    
+                    <Route path='/cart' exact component={Cart}/>
                     <Route path='/products' exact component={Products}/>
                 </div>    
                 <Footer/>

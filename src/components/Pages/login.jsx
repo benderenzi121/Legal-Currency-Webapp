@@ -10,7 +10,11 @@ class SignIn extends Component {
         <Fragment>
             <Header/>
             <Alert/>
+            <div className='container'>
+
             <Login/>
+            </div>
+            
         </Fragment> );
     }
 }
