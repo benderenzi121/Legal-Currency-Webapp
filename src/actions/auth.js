@@ -11,6 +11,7 @@ import {
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
 
+
 //Load User
 
 export const loadUser = () => async dispatch => {
@@ -48,7 +49,7 @@ export const register = ({name, email, password}) =>  async dispatch => {
   try{
     const res = await axios.post('http://localhost:5000/api/users', body, config);
     console.log(res.data);
-    let test = res.data;
+    
     dispatch({
         type:REGISTER_SUCCESS,
         payload:res.data
@@ -80,15 +81,16 @@ export const login = (email, password) =>  async dispatch => {
 
   try{
     const res = await axios.post('http://localhost:5000/api/auth', body, config);
+   
     dispatch({
         type:LOGIN_SUCCESS,
         payload:res.data
-    })
+    });
     
     
 
   } catch(err){
-      console.log(err);
+      
     const errors = err.response.data.errors;
     if(errors) {
         errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));

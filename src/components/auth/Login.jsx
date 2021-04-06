@@ -6,7 +6,7 @@ import {loadUser, login} from '../../actions/auth';
 
 import axios from 'axios';
 
-const Login = ({ login, isAuthenticated }) => {
+const Login = ({ login, isAuthenticated,loadUser }) => {
     const [formData, setFormData] = useState({
         email:'',
         password:'',
@@ -17,8 +17,13 @@ const Login = ({ login, isAuthenticated }) => {
     const onChange = e => setFormData({ ...formData,[e.target.name]:e.target.value });
     const onSubmit = async e => {
         e.preventDefault();
-        await loadUser();
+        
+        
         await login(email,password);
+        
+        
+        console.log('thisstuffhappens');
+        
         
     }
     // Redirect if logged in
@@ -64,11 +69,12 @@ const Login = ({ login, isAuthenticated }) => {
 
     Login.propTypes ={
       login: PropTypes.func.isRequired,
+      loadUser: PropTypes.func.isRequired,
       isAuthenticated: PropTypes.bool,
     }
 
     const mapStateToProps = state => ({
       isAuthenticated: state.auth.isAuthenticated
     })
-    export default connect (mapStateToProps, { login }) (Login);
+    export default connect (mapStateToProps, { login,loadUser }) (Login);
 

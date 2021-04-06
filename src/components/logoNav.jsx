@@ -7,11 +7,8 @@ const login = (
     Login
   </Link>
 );
-const profile = (
-  <Link to="/login" className="header__link">
-    Profile
-  </Link>
-);
+
+
 const LogoNav = ({ auth: { isAuthenticated, loading, user }, logout }) => (
   <div className="row header">
     <div className="col">
@@ -28,9 +25,8 @@ const LogoNav = ({ auth: { isAuthenticated, loading, user }, logout }) => (
       {!loading && (
         <Fragment>
           {isAuthenticated ? (
-            <Link to="/login" className="header__link">
-              {user.firstName}
-            </Link>
+            <i className="fas fa-user"></i>
+            
           ) : (
             login
           )}

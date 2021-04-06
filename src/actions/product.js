@@ -11,7 +11,7 @@ import {
 //gets all products in database
 export const getProducts = () => async dispatch => {
     try {
-        const res = await axios.get('http://localhost:5000/api/products/');
+        const res = await axios.get('http://localhost:5000/api/products/product-list');
         dispatch({
             type:GET_PRODUCTS,
             payload:res.data,

@@ -127,7 +127,7 @@ module.exports = router;
 
 //Custom Queries Based on User tags 
 router.get('/product-list',
-      async (req,res,next) => {
+      async (req,res) => {
       //get list of tags from req and store it in a variable
       let {tags} = req.body;
       let results = [];
@@ -135,7 +135,7 @@ router.get('/product-list',
       try{
             //if no tags selected return all products
             if (!tags){
-                let products = await Product.find();
+                let products = await Product.find({inStock : {$gte: 1}});
                 //if no products return an error
                 if(!products){
                     res.status(400).json({errors: [{msg: 'no products in database?' }] });
@@ -144,7 +144,7 @@ router.get('/product-list',
             }
             //find all products that have any of the associated tags
             for (let i=0; i< tags.length; i++){
-                let prod = await Product.find({tag:tags[i]});
+                let prod = await Product.find({tag:tags[i],inStock : {$gte: 1}});
                 results.push(prod);
             };
             

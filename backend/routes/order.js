@@ -55,8 +55,30 @@ router.post('/place-order',[
             products.push(orderItems[i].product);
         }
         let orderCart = cart;
-        //create order object 
-        const order = new Order({
+        let flag = false;
+     
+
+        //update inventory quantity
+        for (let i=0; i< products.length; i++){
+            
+            let prod = await Product.findById(products[i]._id);
+            if (prod.inStock < orderItems[i].qty){
+                const productTitle = prod.title.toString();
+                res.status(400).json({errors: [{msg: 'not enough ' + productTitle + ' in stock'}] });
+                flag=true;
+                break;
+            }
+            prod.inStock -= orderItems[i].qty;
+            prod.markModified('inStock');
+            await prod.save();
+
+            
+        }
+        if(flag){
+            res.status(400).json({errors: [{msg: 'not enough ' + productTitle + ' in stock'}] });
+        }
+         //create order object 
+         const order = new Order({
             user:user._id,
             orderCart:orderCart,
             shipping:user.shipping,
@@ -64,15 +86,6 @@ router.post('/place-order',[
         })
         await order.save();
         await Cart.findByIdAndDelete(cart._id);
-
-        //update inventory quantity
-        for (let i=0; i< products.length; i++){
-            let prod = await Product.findById(products[i]._id);
-            prod.inStock -= orderItems[i].qty;
-            prod.markModified('inStock');
-            await prod.save();
-            
-        }
         res.status(200).send(order);
     }
     else{

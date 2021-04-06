@@ -67,7 +67,7 @@ import axios from 'axios';
                     
                    
                 </Fragment>
-               ))};
+               ))}
             </div> 
        </ul>
     )

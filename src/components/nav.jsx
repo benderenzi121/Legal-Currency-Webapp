@@ -41,9 +41,9 @@ const Nav = ({ auth: { isAuthenticated, loading }, logout }) => {
         </a>
       </li>
       <li>
-        <a className="nav__text" href="#!">
+        <Link className="nav__text"  to="/cart">
         <i className="fas fa-shopping-cart"></i>
-        </a>
+        </Link>
       </li>
     </ul>
   );

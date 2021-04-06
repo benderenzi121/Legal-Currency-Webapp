@@ -19,7 +19,7 @@ router.get('/', [auth,adminAuth], async (req, res) => {
         return res.status(200).send(users);
     }
     catch(err) {
-        return res.sendStatus(400);
+        return res.status(400).send({msg:'please refresh the page'});
     }
 });
 

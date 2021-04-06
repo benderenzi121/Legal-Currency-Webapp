@@ -1,0 +1,35 @@
+.cart{
+    margin:2rem 0rem;
+    text-align: center;
+    background-color:$chocolate;
+    padding:2rem;
+    
+    &__table{
+        text-align: center;
+        width:100%;
+        tr:nth-child(0){
+            background-color:$creme;
+        }
+        tr:nth-child(even){
+            background-color:$creme-white;
+        }
+        tr:nth-child(odd){
+            background-color:$creme;
+        }
+        &__item{
+            &__img{
+                height:7vh;
+            }
+            
+        }
+        }
+       
+        td{
+            padding:1rem;
+        }
+        th{
+            padding:1rem;
+        }
+    }
+    
+   
