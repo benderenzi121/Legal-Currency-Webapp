@@ -17,7 +17,7 @@ const LogoNav = ({ auth: { isAuthenticated, loading, user }, logout }) => (
           <img src={amazinglogo} className="nav__logo"></img>
         </div>
         <div className="col header__item">
-          <h1 className="header__title">Amazing Games TCG</h1>
+          <Link to='/home'><h1 className="header__title">Amazing Games TCG</h1></Link>
         </div>
       </div>
     </div>

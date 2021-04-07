@@ -22,8 +22,6 @@ const Login = ({ login, isAuthenticated,loadUser }) => {
         await login(email,password);
         
         
-        console.log('thisstuffhappens');
-        
         
     }
     // Redirect if logged in
@@ -32,11 +30,11 @@ const Login = ({ login, isAuthenticated,loadUser }) => {
     }
     return (
       
-        <div className='container-fluid'>
+        <div className='register__background'>
             
-            <h1 className="large text-primary">Sign In</h1>
-      <p className="lead">
-        <i className="fas fa-user" /> Sign Into Your Account
+            <h1 className="large register__title">Sign In</h1>
+      <p className="lead register__sub-title">
+        <i className="fas fa-user " /> Sign Into Your Account
       </p>
       <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
@@ -58,10 +56,10 @@ const Login = ({ login, isAuthenticated,loadUser }) => {
             onChange={onChange}
           />
         </div>
-        <input type="submit" className="btn btn-primary" value="Login" />
+        <input type="submit" className="btn btn-primary register__btn" value="Login" />
       </form>
-      <p className="my-1">
-        Don't have an account? <Link to="/login">Sign In</Link>
+      <p className="register__redirect">
+        Don't have an account? <Link to="/register">Register</Link>
       </p>
         </div>
     )

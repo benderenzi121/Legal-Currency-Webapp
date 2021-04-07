@@ -8,11 +8,13 @@ class SignIn extends Component {
     render() { 
         return ( 
         <Fragment>
+            <div className='container-fluid'>
             <Header/>
             <Alert/>
-            <div className='container'>
+            <div className='container register'>
 
             <Login/>
+            </div>
             </div>
             
         </Fragment> );
