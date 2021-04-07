@@ -11,8 +11,6 @@ const CartList = ({cart,removeFromCart}) => {
         if (value > maxQuantity) {
             document.getElementById(productId).getElementsByTagName("input")[0].value = maxQuantity
         }
-
-        console.log(`${productId}, ${value}, ${maxQuantity}`)
     }
 
     return (
