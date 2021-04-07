@@ -3,9 +3,6 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import { setAlert } from '../../actions/alert';
 import axios from 'axios';
-import {v4 as uuidv4} from 'uuid';
-
-
 
  const ListProduct = ({products, loading,isAuthenticated,setAlert}) => {
     if(loading){
@@ -51,7 +48,7 @@ import {v4 as uuidv4} from 'uuid';
                        <img className='product-list__item__img' src={product.imagePath} alt=""/>
                        <h3 className='product-list__item__title'>{product.title}</h3>
                        <p>{product.description}</p>
-                       <p>$ {product.price}</p>
+                       <p>$ {product.price.toFixed(2)}</p>
                        <p>qty: {product.inStock}</p>
                        <div className='row'>
                        {product.tag.map(tag => (

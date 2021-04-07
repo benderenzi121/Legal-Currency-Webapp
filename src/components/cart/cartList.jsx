@@ -32,8 +32,8 @@ const CartList = ({cart,removeFromCart}) => {
                     
                 </td>
                 <td><p>{item.qty}</p></td>
-                <td><p>{item.product.price}</p></td>
-                <td><p>{item.total}</p></td>
+                <td><p>{item.product.price.toFixed(2)}</p></td>
+                <td><p>{item.total.toFixed(2)}</p></td>
                 <td><button onClick={async () => removeFromCart(item.product._id.toString(),1)}>REMOVE 1 </button></td>
                 </tr>
             ))}
