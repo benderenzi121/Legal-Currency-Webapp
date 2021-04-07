@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-import amazinglogo from "../static/img/amazinglogo.png";
+import amazinglogo from "../../static/img/amazinglogo.png";
 import { connect } from "react-redux";
 const login = (
   <Link to="/login" className="header__link">

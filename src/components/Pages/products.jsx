@@ -4,9 +4,9 @@ import {connect} from 'react-redux';
 import React, { useEffect, useState,Fragment} from 'react';
 import {getProducts} from '../../actions/product';
 
-import LogoNav from '../logoNav.jsx';
-import Nav from '../nav.jsx';
-import Footer from '../footer.jsx';
+import LogoNav from '../layout/logoNav.jsx';
+import Nav from '../layout/nav.jsx';
+
 import ListProduct from '../products/listProduct.jsx';
 import Pagination from '../pagination/pagination';
 import Filters from '../products/Filters.jsx';
@@ -43,7 +43,7 @@ const Products = ({products:{products,loading},getProducts}) => {
         </div>
         <div className='col-10'>
             <div className='product-list'>
-            <h1> products </h1>
+            <h1 className='product-list__title'> products </h1>
             <ListProduct products={currentProducts} loading={loading}/>
             <Pagination productsPerPage={productsPerPage} totalProducts={products.length} paginate={paginate}/>   
         </div>

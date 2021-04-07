@@ -27,7 +27,7 @@ const CartList = ({cart,removeFromCart}) => {
                             <img className='cart__table__item__img' src={item.product.imagePath}/>
                         </div>
                         <div className='col'>
-                            <p>{item.product.title} </p>
+                            <p className='cart__table__item__title'>{item.product.title} </p>
                         </div>
                     
                 </td>

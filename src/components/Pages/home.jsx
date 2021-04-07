@@ -1,11 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import LogoNav from '../logoNav.jsx';
-import Register from '../../components/auth/Register.jsx';
-import Login from '../../components/auth/Login.jsx';
+import LogoNav from '../layout/logoNav.jsx';
 import Welcome from '../home/welcome.jsx';
-import Nav from '../nav.jsx';
+import Nav from '../layout/nav.jsx';
 import Featured from '../home/featured.jsx';
-import Footer from '../footer.jsx';
+
 
 const dummyItems = [
     {   

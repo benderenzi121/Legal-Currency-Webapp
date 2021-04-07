@@ -2,7 +2,7 @@ import React, { Fragment,useState } from "react";
 import { Link, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { logout } from "../actions/auth";
+import { logout } from "../../actions/auth";
 
 
 

@@ -8,8 +8,7 @@ import {
   } from "react-router-dom";
 
 import './styles/_index.scss';
-import Footer from './components/footer.jsx';
-import Nav from './components/nav.jsx';
+import Footer from './components/layout/footer.jsx';
 import Landing from './components/Pages/landing.jsx';
 import Home from './components/Pages/home.jsx';
 import Alert from './components/layout/alert.js';

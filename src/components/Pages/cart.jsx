@@ -4,7 +4,7 @@ import {getCart} from '../../actions/cart';
 import PropTypes from 'prop-types';
 import CartList from '../cart/cartList.jsx';
 
-import Header from '../header.jsx';
+import Header from '../layout/header.jsx';
 import { loadUser } from '../../actions/auth';
 
 
@@ -23,8 +23,9 @@ const Cart = ({cart:{cart},getCart,loadUser}) => {
    
     return (
         <Fragment>
-            <Header/>
             <div className='container-fluid'>
+            <Header/>
+            
                 <div className = 'cart'>
                     <table className = 'cart__table'>
                     <CartList cart={cart} />

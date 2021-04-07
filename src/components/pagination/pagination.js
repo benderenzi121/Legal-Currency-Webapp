@@ -14,7 +14,7 @@ export const Pagination = ({ productsPerPage,totalProducts,paginate}) => {
                 <div className='pagination'>
                 {pageNumbers.map(number => (
                     <div className='col-1'> 
-                        <li key = {number} >
+                        <li key={number} >
                             <a className='pagination__number' href='#!'onClick={() => paginate(number)}  className=''>{number}</a>
                         </li>
                     </div>

@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import { setAlert } from '../../actions/alert';
 import axios from 'axios';
+import {v4 as uuidv4} from 'uuid';
 
 
 
@@ -10,6 +11,7 @@ import axios from 'axios';
     if(loading){
         return <h2>loading...</h2>
     }
+    
     const addToCart = async (productId,quantity,isAuthenticated) => {
    
         console.log('iran');
@@ -53,8 +55,10 @@ import axios from 'axios';
                        <p>qty: {product.inStock}</p>
                        <div className='row'>
                        {product.tag.map(tag => (
-                           <div className='col-4'>
+                           <div key={tag} className='col-4'>
+                               
                            <p className='product-list__item__tag'>{tag}</p>
+                          
                            </div>
                        ))}
                        </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ebay from '../static/img/ebay.jpg';
-import facebook from '../static/img/facebook.png';
-import insta from '../static/img/insta.png';
+import ebay from '../../static/img/ebay.jpg';
+import facebook from '../../static/img/facebook.png';
+import insta from '../../static/img/insta.png';
 
 class Footer extends Component {
     state = {  }
