@@ -63,7 +63,7 @@ router.post('/remove-from-cart',[
         let userPayload = decoded.user;
         const {productId, quantity} = req.body;
 
-        // fail safe for sending negative quantity from the front end
+        // fail safe for receiving a negative quantity from the front end
         if (quantity < 1) {
             res.status(401).json({ error: 'invalid quantity amount' });
             return;
@@ -136,7 +136,7 @@ router.post('/add-to-cart',[
             //populate from request body
             const {productId, quantity} = req.body;
 
-            // fail safe for receiving negative quantity from the front end
+            // fail safe for receiving a negative quantity from the front end
             if (quantity < 1) {
                 return res.status(401).json({ error: 'invalid quantity amount' });
             }
