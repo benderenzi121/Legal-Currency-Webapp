@@ -6,7 +6,12 @@ import {removeFromCart} from '../../actions/cart';
 
 const CartList = ({cart,removeFromCart}) => {
     console.log(cart);
-    
+
+    const checkQuantity = (productId, value, maxQuantity) => {
+        if (value > maxQuantity) {
+            document.getElementById(productId).getElementsByTagName("input")[0].value = maxQuantity
+        }
+    }
 
     return (
         <Fragment>
@@ -34,7 +39,10 @@ const CartList = ({cart,removeFromCart}) => {
                 <td><p>{item.qty}</p></td>
                 <td><p>{item.product.price.toFixed(2)}</p></td>
                 <td><p>{item.total.toFixed(2)}</p></td>
-                <td><button onClick={async () => removeFromCart(item.product._id.toString(),1)}>REMOVE 1 </button></td>
+                <td id={`quantity-${item.product._id}`}>
+                    <input type="number" defaultValue={1} onChange={e => checkQuantity(`quantity-${item.product._id}`, e.target.value, item.qty)} />
+                    <button onClick={async () => removeFromCart(item.product._id.toString(), document.getElementById(`quantity-${item.product._id}`).getElementsByTagName("input")[0].value)}>Remove</button>
+                </td>
                 </tr>
             ))}
             </tbody>

@@ -78,7 +78,7 @@ router.post('/remove-from-cart',[
                         console.log(cart + "before decrement" + cart.orderItems[i].qty + '////////');
                         cart.orderItems[i].qty -= quantity;
                         cart.orderItems[i].total = product.price * cart.orderItems[i].qty;
-                        if(cart.orderItems[i].qty == 0){
+                        if(cart.orderItems[i].qty < 1){
                             cart.orderItems.splice(i,1);
                             console.log(cart);
                             res.status(200).send(cart.orderItems);

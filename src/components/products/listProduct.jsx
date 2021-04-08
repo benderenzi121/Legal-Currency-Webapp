@@ -34,6 +34,12 @@ import axios from 'axios';
             
         }
     }
+
+    const checkQuantity = (productId, value, maxQuantity) => {
+        if (value > maxQuantity) {
+            document.getElementById(productId).value = maxQuantity
+        }
+    }
     
 
  
@@ -60,8 +66,8 @@ import axios from 'axios';
                        ))}
                        </div>
                        <div className='product-list__item__footer'>
-                           
-                       <button onClick={async () => addToCart(product._id,1,isAuthenticated)}  className='product-list__item__cart-button'> Add to Cart </button>
+                        <input id={`quantity-selector__${product._id}`} type="number" defaultValue={1} onChange={e => checkQuantity(`quantity-selector__${product._id}`, e.target.value, product.inStock)} />
+                        <button onClick={async () => addToCart(product._id, document.getElementById(`quantity-selector__${product._id}`).value, isAuthenticated)}  className='product-list__item__cart-button'> Add to Cart </button>
                        </div>
                     </li>
                     </div>
