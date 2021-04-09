@@ -8,6 +8,8 @@ const CartList = ({cart,removeFromCart}) => {
     console.log(cart);
 
     const checkQuantity = (productId, value, maxQuantity) => {
+				console.log(value)
+
         if (value > maxQuantity) {
             document.getElementById(productId).getElementsByTagName("input")[0].value = maxQuantity
         } else if (value < 1) {

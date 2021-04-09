@@ -1,4 +1,4 @@
-node_modules
+node_modules/
 disnode_modules
 dist
 package-lock.json

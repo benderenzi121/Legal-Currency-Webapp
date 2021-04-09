@@ -48,13 +48,13 @@ router.post('/remove-from-cart',[
         //checks field validation
         const errors = validationResult(req);
 
-        if(!errors.isEmpty()){
+        if (!errors.isEmpty()) {
             res.status(400).json({errors:errors.array()});
         };
 
         //Takes token from the header
         const token = req.header('x-auth-token');
-        if (!token){
+        if (!token) {
             return res.status(401).json({ msg: 'no token, auth denied'});
         }
 
@@ -69,41 +69,41 @@ router.post('/remove-from-cart',[
             return;
         }
 
-        try{
+        try {
             let product = await Product.findById(productId);
             let user = await User.findById(userPayload.id);
-            let cart = await Cart.findOne({user:user});
+            let cart = await Cart.findOne({ user });
 
-            let found = false;
-                let i=0;
-                for (i=0;i<cart.orderItems.length;i++)
-                {
-                    
-                    if(cart.orderItems[i].product._id.toString() == product._id.toString()){
-                        found=true;
-                        console.log(cart + "before decrement" + cart.orderItems[i].qty + '////////');
-                        cart.orderItems[i].qty -= quantity;
-                        cart.orderItems[i].total = product.price * cart.orderItems[i].qty;
-                        if(cart.orderItems[i].qty < 1){
-                            cart.orderItems.splice(i,1);
-                            console.log(cart);
-                            res.status(200).send(cart.orderItems);
-                            await cart.save();
-                            break;
-                        }
-                        cart.markModified('orderItems');
-                        res.status(200).send(cart.orderItems);
-                        await cart.save();
-                    }}
-            if(found==false){
-                res.status(400).json({errors: [{msg: 'product was not in cart' }] });
-            }
-            
-            
+						for (let i = 0; i<cart.orderItems.length; i++) {
+							if (cart.orderItems[i].product._id.toString() == product._id.toString()) {
+									console.log(cart + "before decrement" + cart.orderItems[i].qty + '////////');
+
+									cart.orderItems[i].qty -= quantity;
+									cart.orderItems[i].total = product.price * cart.orderItems[i].qty;
+
+									if (cart.orderItems[i].qty < 1){
+											cart.orderItems.splice(i,1);
+
+											console.log(cart);
+
+											res.status(200).send(cart.orderItems);
+											await cart.save();
+											return;
+									}
+
+									cart.markModified('orderItems');
+									res.status(200).send(cart.orderItems);
+									await cart.save();
+									return;
+							}
+						}
+						
+						res.status(400).json({errors: [{msg: 'product was not in cart' }] });
+            return;
         }
         catch(err){
             console.error(err);
-            //res.status(500).send('server error');
+            res.status(500).json({ error: 'server error' });
         }
 
     });

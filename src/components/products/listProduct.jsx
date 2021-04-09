@@ -10,9 +10,7 @@ import axios from 'axios';
     }
     
     const addToCart = async (productId,quantity,isAuthenticated) => {
-   
-        console.log('iran');
-        const body = JSON.stringify({productId,quantity});
+        const body = { productId, quantity: Number(quantity) };
         console.log(body);
         const config={
             headers: {
