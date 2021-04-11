@@ -38,6 +38,8 @@ import axios from 'axios';
     const checkQuantity = (productId, value, maxQuantity) => {
         if (value > maxQuantity) {
             document.getElementById(productId).value = maxQuantity
+        } else if (value < 1) {
+            document.getElementById(productId).value = 1
         }
     }
     

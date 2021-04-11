@@ -63,6 +63,12 @@ router.post('/remove-from-cart',[
         let userPayload = decoded.user;
         const {productId, quantity} = req.body;
 
+        // fail safe for receiving a negative quantity from the front end
+        if (quantity < 1) {
+            res.status(401).json({ error: 'invalid quantity amount' });
+            return;
+        }
+
         try{
             let product = await Product.findById(productId);
             let user = await User.findById(userPayload.id);
@@ -84,7 +90,6 @@ router.post('/remove-from-cart',[
                             res.status(200).send(cart.orderItems);
                             await cart.save();
                             break;
-                           
                         }
                         cart.markModified('orderItems');
                         res.status(200).send(cart.orderItems);
@@ -130,6 +135,12 @@ router.post('/add-to-cart',[
         try{
             //populate from request body
             const {productId, quantity} = req.body;
+
+            // fail safe for receiving a negative quantity from the front end
+            if (quantity < 1) {
+                return res.status(401).json({ error: 'invalid quantity amount' });
+            }
+
             //find User using the payload
             let user = await User.findById(userPayload.id);
             //get the product from db
