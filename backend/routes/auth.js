@@ -86,4 +86,28 @@ async (req,res) => {
     }
     
 });
+
+router.get('/admin', auth, async (req,res) => {
+
+    //Get token from header 
+
+    const token = req.header('x-auth-token');
+    if (!token){
+        return res.status(401).json({ msg: 'no token, auth denied'});
+    }
+
+    try {
+        const decoded = jwt.verify(token, config.get('jwtSecret'));
+        
+        req.user = decoded.user;
+        console.log(decoded.user)
+        if (decoded.user.permission == "admin")
+        {
+            res.json(decoded.user);
+        }
+        else  res.status(401).json ({msg: ('user is not an admin')});
+    } catch(err){
+        res.status(401).json ({msg: ('token is not valid')});
+    }
+})
 module.exports = router;

@@ -16,6 +16,7 @@ import SignIn from './components/Pages/login.jsx';
 import Products from './components/Pages/products.jsx';
 import Cart from './components/Pages/cart.jsx';
 import Registration from './components/Pages/register.jsx';
+import Admin from './components/Pages/admin.jsx';
 
 //import ViewProduct from './components/Pages/viewProduct.jsx';
 //redux 
@@ -57,6 +58,7 @@ class App extends Component{
                     <Route path='/cart' exact component={Cart}/>
                     <Route path='/products' exact component={Products}/>
                     <Route path='/register' exact component={Registration}/>
+                    <Route path='/admin' exact component={Admin}/>
                 </div>    
                 <Footer/>
             </Router>

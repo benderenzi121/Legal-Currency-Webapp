@@ -5,15 +5,18 @@ import {
     USER_LOADED,
     AUTH_ERROR,
     LOGIN_SUCCESS,LOGIN_FAIL,
-    LOGOUT
+    LOGOUT,
+    PERMISSIONS_FAIL,
+    PERMISSIONS_SUCCESS
 } from '../actions/types';
 
 
 const initialState = {
     token: localStorage.getItem('token'),
-    isAuthenticate: null,
+    isAuthenticated: null,
     loading: true,
-    user: null
+    user: null,
+    permission:null
 }
 
 
@@ -38,10 +41,17 @@ export default function(state = initialState, action) {
               loading:false
             
           };
+    
+      case PERMISSIONS_SUCCESS:
+          return{
+              ...state,
+              permission:payload
+          };
           
       case REGISTER_FAIL:
       case LOGIN_FAIL:
       case AUTH_ERROR:
+      case PERMISSIONS_FAIL:
       case LOGOUT:
           localStorage.removeItem('token');
           return {

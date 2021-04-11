@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import React, { useEffect, useState,Fragment} from 'react';
 import {getProducts} from '../../actions/product';
 
+
 import LogoNav from '../layout/logoNav.jsx';
 import Nav from '../layout/nav.jsx';
 
@@ -17,7 +18,7 @@ const Products = ({products:{products,loading},getProducts}) => {
     const [productsPerPage] = useState(6);
     
     useEffect(() => {
-        
+       
         getProducts();
         
         
@@ -57,7 +58,7 @@ const Products = ({products:{products,loading},getProducts}) => {
 
 Products.propTypes = {
     getProducts: PropTypes.func.isRequired,
- 
+   
 };
 
 const mapStateToProps = state => ({

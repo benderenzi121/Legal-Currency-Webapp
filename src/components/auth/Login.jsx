@@ -2,11 +2,11 @@ import React, {Fragment, useState} from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {loadUser, login} from '../../actions/auth';
+import {login} from '../../actions/auth';
 
 import axios from 'axios';
 
-const Login = ({ login, isAuthenticated,loadUser }) => {
+const Login = ({ login, isAuthenticated}) => {
     const [formData, setFormData] = useState({
         email:'',
         password:'',
@@ -67,12 +67,11 @@ const Login = ({ login, isAuthenticated,loadUser }) => {
 
     Login.propTypes ={
       login: PropTypes.func.isRequired,
-      loadUser: PropTypes.func.isRequired,
       isAuthenticated: PropTypes.bool,
     }
 
     const mapStateToProps = state => ({
       isAuthenticated: state.auth.isAuthenticated
     })
-    export default connect (mapStateToProps, { login,loadUser }) (Login);
+    export default connect (mapStateToProps, { login}) (Login);
 

@@ -7,7 +7,9 @@ import {
     AUTH_ERROR,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
-    LOGOUT
+    LOGOUT,
+    PERMISSIONS_SUCCESS,
+    PERMISSIONS_FAIL
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
 
@@ -104,4 +106,31 @@ export const login = (email, password) =>  async dispatch => {
 
 export const logout = () =>dispatch => {
   dispatch({type: LOGOUT});
+}
+
+
+
+//get permissions
+
+export const loadPermissions = () => async dispatch => {
+  console.log('irun');
+  const config={
+    headers: {
+        'content-type' : 'application/json'
+    }}
+
+    try{
+      const res = await axios.get('http://localhost:5000/api/auth/admin', config);
+      
+      dispatch({
+        type:PERMISSIONS_SUCCESS,
+        payload:res.data.permission
+    });
+    }catch(err){
+        const errors = err.response.data.errors;
+        dispatch({
+          type:PERMISSIONS_FAIL,
+          errors: errors
+      });
+    }
 }

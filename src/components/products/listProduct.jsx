@@ -67,7 +67,7 @@ import axios from 'axios';
                        </div>
                        <div className='product-list__item__footer'>
                         <input id={`quantity-selector__${product._id}`} type="number" defaultValue={1} onChange={e => checkQuantity(`quantity-selector__${product._id}`, e.target.value, product.inStock)} />
-                        <button onClick={async () => addToCart(product._id, document.getElementById(`quantity-selector__${product._id}`).value, isAuthenticated)}  className='product-list__item__cart-button'> Add to Cart </button>
+                        <button onClick={async () => addToCart(product._id, Number(document.getElementById(`quantity-selector__${product._id}`).value), isAuthenticated)}  className='product-list__item__cart-button'> Add to Cart </button>
                        </div>
                     </li>
                     </div>
