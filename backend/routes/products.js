@@ -95,7 +95,7 @@ router.post('/new-product', [auth,authAdmin,
             })
 
             await product.save();
-            res.status(200).send('it worked, should be in DB');
+            res.status(200).send(await Product.find());
             
         }
         catch(err){

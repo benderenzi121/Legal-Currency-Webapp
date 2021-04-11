@@ -1,0 +1,23 @@
+.create-product{
+    background-color: $grulio;
+    margin: 1rem auto;
+    margin-top:2rem;
+    text-align: center;
+    background-color: $grulio;
+    padding:5rem;
+    border-radius: 10px;
+    &__background{
+        background-color:$chocolate;
+        width:45%;
+        margin:auto;
+        padding:1rem;
+        border-radius:10px;
+    }
+    &__title{
+        color: $creme-white;
+        text-decoration: underline;
+        padding-bottom:1rem;
+        text-shadow: horizontal-offset vertical-offset blur color;
+    }
+
+}
