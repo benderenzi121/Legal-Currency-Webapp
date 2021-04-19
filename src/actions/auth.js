@@ -113,7 +113,6 @@ export const logout = () =>dispatch => {
 //get permissions
 
 export const loadPermissions = () => async dispatch => {
-  console.log('irun');
   const config={
     headers: {
         'content-type' : 'application/json'

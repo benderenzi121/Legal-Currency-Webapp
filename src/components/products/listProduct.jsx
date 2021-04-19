@@ -11,9 +11,8 @@ import axios from 'axios';
     
     const addToCart = async (productId,quantity,isAuthenticated) => {
    
-        console.log('iran');
+        
         const body = JSON.stringify({productId,quantity});
-        console.log(body);
         const config={
             headers: {
                 'content-type' : 'application/json'
@@ -22,7 +21,6 @@ import axios from 'axios';
         try{
             if(isAuthenticated){
             const res = await axios.post('http://localhost:5000/api/cart/add-to-cart', body, config);
-            console.log(res.data);
             setAlert('success', 'success');
             }
             else{

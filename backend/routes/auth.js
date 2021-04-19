@@ -100,7 +100,6 @@ router.get('/admin', auth, async (req,res) => {
         const decoded = jwt.verify(token, config.get('jwtSecret'));
         
         req.user = decoded.user;
-        console.log(decoded.user)
         if (decoded.user.permission == "admin")
         {
             res.json(decoded.user);

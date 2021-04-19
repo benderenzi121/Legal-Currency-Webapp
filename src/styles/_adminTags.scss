@@ -1,0 +1,23 @@
+.adminTags {
+    background-color: $creme;
+    &__content {
+        text-align: center;
+        margin-top: 1rem;
+        color: $chocolate;
+    }
+    &__image {
+        height: 25vh;
+        margin-top: 3rem;
+        border-radius: 5px;
+    }
+    &__title {
+        padding: 1rem;
+        text-decoration: underline;
+    }
+    &__form {
+        margin: 2rem auto;
+        &__btn {
+            margin-left: 0;
+        }
+    }
+}

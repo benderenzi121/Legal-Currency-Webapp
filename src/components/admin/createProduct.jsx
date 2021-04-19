@@ -25,8 +25,6 @@ const CreateProduct = ({permission, createProduct,loadUser}) => {
     
     const onSubmit = async (e) => {
         e.preventDefault();
-        let body = {title, description, price, imagePath,tags, inStock, pricePaid};
-        console.log(body);
         createProduct({title, description, price,tags, imagePath, inStock, pricePaid});
     }
 

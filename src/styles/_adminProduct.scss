@@ -1,0 +1,58 @@
+.adminProduct {
+    width: 100%;
+    padding-top: 3rem;
+    padding-left: 1rem;
+    padding-bottom: 3rem;
+    margin-top: 1rem;
+    background-color: $creme;
+    text-align: center;
+    color: $chocolate;
+
+    &__img {
+        height: 30vh;
+
+        width: 15vw;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+    }
+    &__titleCol {
+        margin-left: 5%;
+    }
+    &__title {
+        font-size: 3rem;
+        padding-left: 1.5rem;
+
+        text-decoration: underline;
+    }
+    &__subtext {
+        font-size: 1rem;
+        padding-left: 1.5rem;
+    }
+    &__tags {
+        text-align: center;
+        width: 100%;
+    }
+    &__featured {
+        &__text {
+            padding-right: 1rem;
+            font-size: 1.25rem;
+        }
+    }
+    &__rightCol {
+        margin: 25% auto;
+    }
+    &__price {
+        font-size: 1.5rem;
+    }
+    &__input {
+        margin: 0 auto;
+
+        &-featured {
+            margin-top: 7rem;
+
+            &__button {
+                margin-left: 1rem;
+            }
+        }
+    }
+}
