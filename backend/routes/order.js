@@ -13,7 +13,7 @@ const jwt = require("jsonwebtoken"),
     Product = require("../models/Product"),
     Order = require("../models/Order");
 //config
-config = require("config");
+const secret = require("../../config/default");
 
 router.post("/place-order", [auth], async (req, res, next) => {
     //checks field validation
@@ -30,7 +30,7 @@ router.post("/place-order", [auth], async (req, res, next) => {
     }
 
     //decode token and find associated user
-    const decoded = jwt.verify(token, config.get("jwtSecret"));
+    const decoded = jwt.verify(token, secret.jwtSecret);
     let userPayload = decoded.user;
 
     try {
@@ -101,7 +101,7 @@ router.get("/get-orders", [auth], async (req, res) => {
     }
 
     //decode token and find associated user
-    const decoded = jwt.verify(token, config.get("jwtSecret"));
+    const decoded = jwt.verify(token, secret.jwtSecret);
     let userPayload = decoded.user;
 
     try {

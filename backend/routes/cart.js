@@ -10,7 +10,8 @@ const jwt = require("jsonwebtoken"),
     User = require("../models/User"),
     Product = require("../models/Product"),
     //config
-    config = require("config");
+
+    secret = require("../../config/default");
 
 router.get("/get-cart", [auth], async (req, res) => {
     const errors = validationResult(req);
@@ -25,7 +26,7 @@ router.get("/get-cart", [auth], async (req, res) => {
     }
 
     //decode token and find associated user
-    const decoded = jwt.verify(token, config.get("jwtSecret"));
+    const decoded = jwt.verify(token, secret.jwtSecret);
     let userPayload = decoded.user;
     let cart = await Cart.findOne({ user: userPayload.id });
     console.log(cart);
@@ -49,7 +50,7 @@ router.post(
         }
 
         //decode token and find associated user
-        const decoded = jwt.verify(token, config.get("jwtSecret"));
+        const decoded = jwt.verify(token, secret.jwtSecret);
         let userPayload = decoded.user;
         const { productId, quantity } = req.body;
 
@@ -111,7 +112,7 @@ router.post(
         }
 
         //decode token and find associated user
-        const decoded = jwt.verify(token, config.get("jwtSecret"));
+        const decoded = jwt.verify(token, secret.jwtSecret);
         let userPayload = decoded.user;
 
         //build cart object

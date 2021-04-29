@@ -6,11 +6,13 @@ const { check, validationResult } = require("express-validator");
 const Cart = require("../models/Cart");
 const queryString = require("querystring");
 const util = require("util");
+const secret = require("../../config/default");
+require("dotenv").config();
 
 paypal.configure({
     mode: "sandbox", //sandbox or live
-    client_id: "AfstjHc7adAU0U7tZp0KkiKbdRnhMBmpGEkqr4e596cHPouKUHY5oieA8Wf6pmtuOEr4VA8lIjPnf-Mo",
-    client_secret: "EF3dz29gfs-B7N2RDmu3f9n97Mk1SilNhLwvhtJXU3cnFx5haV6r1wdcyPS33vhB6G-92l35xUPUgPTj",
+    client_id: process.env.PAYPAL_CLIENT_ID,
+    client_secret: process.env.PAYPAL_CLIENT_SECRET,
 });
 
 const app = express();
@@ -32,7 +34,7 @@ router.post("/pay", [auth, check("shipping", "shipping is required").not().isEmp
     }
 
     //decode token and find associated user
-    const decoded = jwt.verify(token, config.get("jwtSecret"));
+    const decoded = jwt.verify(token, secret.jwtSecret);
     let userPayload = decoded.user;
     try {
         const cart = await Cart.findOne({ user: userPayload.id });
@@ -85,7 +87,7 @@ router.post("/pay", [auth, check("shipping", "shipping is required").not().isEmp
         paypal.payment.create(create_payment_json, function (error, payment) {
             if (error) {
                 console.error(error.response.details);
-                res.send(err.response.details);
+                res.send(error.response.details);
             } else {
                 const redirectUrl = payment.links.find((link) => link.rel === "approval_url").href;
                 const token = queryString.parse(redirectUrl).token;
@@ -117,7 +119,7 @@ router.post(
             return res.status(401).json({ msg: "no token, auth denied" });
         }
 
-        const decoded = jwt.verify(token, config.get("jwtSecret"));
+        const decoded = jwt.verify(token, secret.jwtSecret);
         let userPayload = decoded.user;
         const { paymentId, PayerID } = req.body;
 
