@@ -1,49 +1,44 @@
 .product-list {
-  margin-top: 2rem;
-  text-align: center;
-  &__title{
-    color:$creme-white;
-  }
-  &__item {
-      border-radius: 10px;
-      width:100%;
-      padding:2rem;
-      margin:1rem auto;
-      background-color: #FBEA9D;
-      list-style-type: none;
-      
-      
-    &__img {
-      height: 10vh;
-      border-radius: 10px;
-      
-    }
+    margin-top: 2rem;
+    text-align: center;
     &__title {
-      color:#141001;
-      padding-top:1rem;
+        color: $creme-white;
     }
-    &__tag{
-        border:1px solid black;
-        margin:auto ;
-        color:#141001;
-        margin-bottom:1rem;
-        width:75%;
-        
+    &__item {
+        border-radius: 10px;
+        width: 100%;
+        padding: 2rem;
+        margin: 1rem auto;
+        background-color: #fbea9d;
+        list-style-type: none;
+
+        &__img {
+            height: 10vh;
+            border-radius: 10px;
+        }
+        &__title {
+            color: #141001;
+            padding-top: 1rem;
+        }
+        &__tag {
+            border: 1px solid black;
+            margin: auto;
+            color: #141001;
+            margin-bottom: 1rem;
+            width: 100%;
+            font-size: 0.75rem;
+        }
+        &__footer {
+            margin-top: 1rem;
+        }
+        &__cart-button {
+            text-decoration: none;
+            color: $dark-chocolate;
+            border: 1px solid $dark-chocolate;
+            padding: 0.55rem;
+            background-color: $light-chocolate;
+            color: $creme-white;
+            border-radius: 5px;
+        }
     }
-    &__footer{
-        margin-top:1rem;
-    }
-    &__cart-button{
-        text-decoration: none;
-        color:$dark-chocolate;
-        border:1px solid $dark-chocolate;
-        padding:.55rem;
-        background-color: $light-chocolate;
-        color:$creme-white;
-        border-radius: 5px;
-        
-        
-        
-    }
-  }
 }

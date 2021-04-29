@@ -1,19 +1,38 @@
 import axios from "axios";
 import { CREATE_PAYMENT_FAIL, CREATE_PAYMENT_SUCCESS } from "./types";
+const util = require("util");
 
-export const createPayment = () => async (dispatch) => {
+const getPaypalUrl = (token) => `https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=${token}`;
+
+export const createPayment = ({ shipping }) => async (dispatch) => {
+    const body = { shipping };
+    console.log(body);
     try {
-        const res = await axios.post("http://localhost:5000/paypal/pay");
-        dispatch({
-            type: CREATE_PAYMENT_SUCCESS,
-            payload: res.data,
-            loading: false,
-        });
+        const res = await axios.post("http://localhost:5000/paypal/pay", body);
+        console.log(res.data);
+
+        const token = res.data.token;
+        const paypalUrl = getPaypalUrl(token);
+        window.location.assign(paypalUrl);
     } catch (err) {
         dispatch({
             type: CREATE_PAYMENT_FAIL,
             payload: { msg: err.response.statusText, status: err.response.status },
             loading: false,
         });
+    }
+};
+
+export const executePayment = ({ paymentId, PayerID }) => async (dispatch) => {
+    try {
+        const body = { paymentId, PayerID };
+
+        console.log("in payment action : ");
+        console.log(paymentId + PayerID + "\n\n");
+        console.log("body", body);
+        const res = await axios.post("http://localhost:5000/paypal/success", body);
+        console.log(res.data);
+    } catch (err) {
+        console.error(err);
     }
 };

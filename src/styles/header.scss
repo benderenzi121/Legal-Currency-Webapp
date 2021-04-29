@@ -2,35 +2,45 @@
 
 .header {
     background-color: $primaryColor;
-    &__item{
-        padding-top:1rem;
-        
+    @media screen and (max-width: 1200px) {
+        text-align: center;
     }
-    &__title{
-        
-        padding-top:.5rem;
-        padding-left:1rem;
-        color:#FFFF;
-        font-size:2.5rem;
-        
+    &__item {
+        @media screen and (max-width: 1200px) {
+            padding-top: 1rem;
+        }
+        margin: auto;
     }
-    &__login{
-        padding-top:1rem;
-        padding-right:2rem;
-        padding-bottom:0;
-        font-size:1.5rem;
-        text-align: right;
-        color:#FFFF;
+    &__title {
+        color: #ffff;
+        @media screen and (min-width: 1200px) {
+            padding-top: 0.5rem;
+            padding-left: 1rem;
+            color: #ffff;
+            font-size: 2.5rem;
+        }
+        @media screen and (max-width: 1200px) {
+            padding-top: 0;
+        }
+    }
+    &__login {
+        @media screen and (min-width: 1200px) {
+            text-align: right;
+        }
+        @media screen and (max-width: 1200px) {
+            padding-bottom: 1rem;
+        }
+        font-size: 1.5rem;
+        color: #ffff;
         text-decoration: none;
+        margin-top: 1rem;
     }
-    &__link{
+    &__link {
         text-decoration: none;
-        color:whitesmoke;
+        color: whitesmoke;
     }
-
 
     a:hover {
         color: whitesmoke;
     }
 }
-

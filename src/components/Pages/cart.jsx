@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import { connect } from "react-redux";
 import { getCart } from "../../actions/cart";
 import { createPayment } from "../../actions/payment";
@@ -9,6 +9,8 @@ import Header from "../layout/header.jsx";
 import { loadUser } from "../../actions/auth";
 
 const Cart = ({ cart: { cart }, getCart, loadUser, createPayment }) => {
+    const [shipping, setShipping] = useState(5);
+
     useEffect(() => {
         async function loadUserAndCart() {
             await loadUser();
@@ -16,8 +18,10 @@ const Cart = ({ cart: { cart }, getCart, loadUser, createPayment }) => {
         }
 
         loadUserAndCart();
-    }, [getCart]);
-
+    }, [getCart, loadUser]);
+    const handleChange = (event) => {
+        setShipping(Number(event.target.value));
+    };
     return (
         <Fragment>
             <div className="container-fluid">
@@ -27,7 +31,11 @@ const Cart = ({ cart: { cart }, getCart, loadUser, createPayment }) => {
                     <table className="cart__table">
                         <CartList cart={cart} />
                     </table>
-                    <button onClick={async () => createPayment()}> Checkout with Paypal </button>
+                    <select value={shipping} onChange={handleChange}>
+                        <option value={5}>Standard Shipping</option>
+                        <option value={10}>Express Shipping</option>
+                    </select>
+                    <button onClick={async () => createPayment({ shipping })}> Checkout with Paypal </button>
                 </div>
             </div>
         </Fragment>

@@ -6,22 +6,32 @@ const express = require("express"),
 
 connectDB();
 
-const corsMiddleware = (req, res, next) => {
-    //todo: this will only work locally when deploying will need to change
-    const allowedOrigins = ["http://localhost:5000", "http://localhost:8080", "https://www.sandbox.paypal.com/"];
-    const origin = req.headers.origin;
-    if (allowedOrigins.includes(origin)) {
-        res.setHeader("Access-Control-Allow-Origin", origin);
-    }
-    res.header("Access-Control-Allow-Methods", "*"); // or exact http methods like "GET, OPTIONS"
-    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-    res.header("Access-Control-Allow-Credentials", "true");
-    console.log("hi");
-    return next();
+// const corsMiddleware = (req, res, next) => {
+//     //todo: this will only work locally when deploying will need to change
+//     const allowedOrigins = ["http://localhost:5000", "http://localhost:8080", "https://www.sandbox.paypal.com/"];
+//     const origin = req.headers.origin;
+//     if (allowedOrigins.includes(origin)) {
+//         res.setHeader("Access-Control-Allow-Origin", origin);
+//     }
+//     res.header("Access-Control-Allow-Methods", "*"); // or exact http methods like "GET, OPTIONS"
+//     res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+//     res.header("Access-Control-Allow-Credentials", "true");
+//     return next();
+// };
+
+const whitelist = ["http://localhost:5000", "http://localhost:8080", "https://www.sandbox.paypal.com/"];
+var corsOptions = {
+    origin: function (origin, callback) {
+        if (whitelist.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
 };
 
 app.use(cors());
-app.use(corsMiddleware);
+// app.use(corsMiddleware);
 app.use(express.json({ extended: false }));
 app.use("/api/users", require("./routes/users"));
 app.use("/api/products", require("./routes/products"));
