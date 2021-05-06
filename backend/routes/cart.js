@@ -118,7 +118,7 @@ router.post(
         //build cart object
         try {
             //populate from request body
-            const { productId, quantity } = req.body;
+            const { productId, quantity, size } = req.body;
 
             // fail safe for receiving a negative quantity from the front end
             if (quantity < 1) {
@@ -138,7 +138,7 @@ router.post(
             let iscart = await Cart.findOne({ user: user });
             //there is an existing cart
 
-            if (iscart) {
+            if (iscart !== null) {
                 let found = false;
                 let i = 0;
                 for (i = 0; i < iscart.orderItems.length; i++) {
@@ -148,6 +148,8 @@ router.post(
                         console.log("found that product!");
                         iscart.orderItems[i].qty += quantity;
                         iscart.orderItems[i].total = product.price * iscart.orderItems[i].qty;
+                        iscart.orderItems[i].sizes.push(size);
+
                         try {
                             iscart.markModified("orderItems");
                             await iscart.save();
@@ -169,6 +171,7 @@ router.post(
                                     product: product,
                                     qty: quantity,
                                     total: total,
+                                    sizes: size,
                                 },
                             },
                         },
@@ -180,7 +183,7 @@ router.post(
             else {
                 const cart = new Cart({
                     user,
-                    orderItems: { product: product, qty: quantity, total: total },
+                    orderItems: { product: product, qty: quantity, total: total, sizes: [size] },
                 });
 
                 await cart.save();

@@ -1,57 +1,82 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import {removeFromCart} from '../../actions/cart';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { Fragment } from "react";
+import PropTypes from "prop-types";
+import { removeFromCart, getCart } from "../../actions/cart";
 
-const CartList = ({cart,removeFromCart}) => {
-    console.log(cart);
-
+const CartList = ({ cart, removeFromCart, getCart }) => {
+    useEffect(() => {
+        getCart();
+    }, [getCart]);
     const checkQuantity = (productId, value, maxQuantity) => {
         if (value > maxQuantity) {
-            document.getElementById(productId).getElementsByTagName("input")[0].value = maxQuantity
+            document.getElementById(productId).getElementsByTagName("input")[0].value = maxQuantity;
         } else if (value < 1) {
-            document.getElementById(productId).getElementsByTagName("input")[0].value = 1
+            document.getElementById(productId).getElementsByTagName("input")[0].value = 1;
         }
-    }
+    };
 
     return (
         <Fragment>
             <tbody>
-            <tr>
-                <th>Title</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Total</th>
-                <th></th>
-            </tr>
-            
-            {cart.map(item => (
-                <tr className='cart__table__item' key={item.product._id}>
-                <td>
-                    
-                        <div className='col'>
-                            <img className='cart__table__item__img' src={item.product.imagePath}/>
-                        </div>
-                        <div className='col'>
-                            <p className='cart__table__item__title'>{item.product.title} </p>
-                        </div>
-                    
-                </td>
-                <td><p>{item.qty}</p></td>
-                <td><p>{item.product.price.toFixed(2)}</p></td>
-                <td><p>{item.total.toFixed(2)}</p></td>
-                <td id={`quantity-${item.product._id}`}>
-                    <input type="number" defaultValue={1} onChange={e => checkQuantity(`quantity-${item.product._id}`, e.target.value, item.qty)} />
-                    <button onClick={async () => removeFromCart(item.product._id.toString(), document.getElementById(`quantity-${item.product._id}`).getElementsByTagName("input")[0].value)}>Remove</button>
-                </td>
+                <tr>
+                    <th>Title</th>
+                    <th>Sizes</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                    <th></th>
                 </tr>
-            ))}
+
+                {cart.map((item) => (
+                    <tr className="cart__table__item" key={item.product._id}>
+                        <td>
+                            <div className="col">
+                                <img className="cart__table__item__img" src={item.product.imagePath} />
+                            </div>
+                            <div className="col">
+                                <p className="cart__table__item__title">{item.product.title} </p>
+                            </div>
+                        </td>
+                        <td>{Array.isArray(item.sizes) ? item.sizes.map((size) => <p> {size},</p>) : <p>{item.sizes}</p>}</td>
+                        <td>
+                            <p>{item.qty}</p>
+                        </td>
+                        <td>
+                            <p>{item.product.price.toFixed(2)}</p>
+                        </td>
+                        <td>
+                            <p>{item.total.toFixed(2)}</p>
+                        </td>
+                        <td id={`quantity-${item.product._id}`}>
+                            <input
+                                type="number"
+                                defaultValue={1}
+                                onChange={(e) => checkQuantity(`quantity-${item.product._id}`, e.target.value, item.qty)}
+                            />
+                            <button
+                                onClick={async () =>
+                                    removeFromCart(
+                                        item.product._id.toString(),
+                                        document.getElementById(`quantity-${item.product._id}`).getElementsByTagName("input")[0].value,
+                                    )
+                                }
+                            >
+                                Remove
+                            </button>
+                        </td>
+                    </tr>
+                ))}
             </tbody>
         </Fragment>
-    )
-}
+    );
+};
 CartList.propTypes = {
     removeFromCart: PropTypes.func.isRequired,
-}
- export default connect (null,{removeFromCart})(CartList);
+    getCart: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+    cart: state.cart.cart,
+});
+export default connect(mapStateToProps, { removeFromCart, getCart })(CartList);

@@ -20,8 +20,6 @@ const app = express();
 router.get("/", (req, res) => res.render("index"));
 
 router.post("/pay", [auth, check("shipping", "shipping is required").not().isEmpty()], async (req, res) => {
-    console.log(req.body);
-
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         res.status(400).json({ errors: errors.array() });
@@ -44,12 +42,16 @@ router.post("/pay", [auth, check("shipping", "shipping is required").not().isEmp
         const { shipping } = req.body;
 
         for (let i = 0; i < orderItems.length; i++) {
+            let sizes = "";
+
+            sizes += ` ${orderItems[i].sizes}, \n`;
+
             const item = {
                 name: String(orderItems[i].product.title),
                 sku: String(orderItems[i].product._id),
                 price: String(orderItems[i].product.price.toFixed(2)),
                 quantity: orderItems[i].qty,
-                description: orderItems[i].product.description,
+                description: orderItems[i].product.description + ` sizes: ${sizes + " "}  `,
                 currency: "USD",
             };
             items.push(item);
@@ -158,6 +160,7 @@ router.post(
                     const cart = await Cart.findOne({ user: userPayload.id });
                     let orderCart = cart;
                     let orderItems = cart.orderItems;
+                    console.log(orderCart);
                     let products = [];
                     for (let i = 0; i < orderItems.length; i++) {
                         products.push(orderItems[i].product);
@@ -174,7 +177,7 @@ router.post(
                     //create order object
                     const order = new Order({
                         user: userPayload._id,
-                        orderCart: orderCart,
+                        orderItems: orderItems,
                         total: Number(payment.transactions[0].amount.total),
                     });
                     await order.save();

@@ -5,40 +5,33 @@ const OrderSchema = new mongoose.Schema({
         type: mongoose.SchemaTypes.ObjectId,
         ref: "user",
     },
-    orderCart: {
-        type: Object,
-        required: true,
-        user: {
-            type: mongoose.SchemaTypes.ObjectId,
-            ref: "user",
-            unqiue: true,
+
+    orderItems: [
+        {
+            type: Object,
             required: true,
-        },
-        orderItems: [
-            {
-                type: Object,
-                required: true,
-                product: {
-                    type: mongoose.SchemaTypes.ObjectId,
-                    ref: "product",
-                    unique: true,
-                },
-                qty: {
-                    type: Number,
-                    required: true,
-                },
-                total: {
-                    type: Number,
-                    required: true,
-                },
+            product: {
+                type: mongoose.SchemaTypes.ObjectId,
+                ref: "product",
+                unique: true,
             },
-        ],
-        shippingPrice: {
-            type: Number,
-            required: true,
-            default: 5.0,
+            qty: {
+                type: Number,
+                required: true,
+            },
+            total: {
+                type: Number,
+                required: true,
+            },
+            sizes: { type: [String] },
         },
+    ],
+    shippingPrice: {
+        type: Number,
+        required: true,
+        default: 5.0,
     },
+
     shipping: {
         type: mongoose.SchemaTypes.ObjectId,
         ref: "shipping",

@@ -42,7 +42,7 @@ export const getProduct = (id) => async (dispatch) => {
     } catch (err) {
         dispatch({
             type: GET_PRODUCT_FAIL,
-            payload: res.data,
+            payload: err.data,
             loading: false,
         });
     }

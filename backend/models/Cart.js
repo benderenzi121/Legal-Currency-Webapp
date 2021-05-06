@@ -24,6 +24,7 @@ const CartSchema = new mongoose.Schema({
                 type: Number,
                 required: true,
             },
+            sizes: { type: [String] },
         },
     ],
     shippingPrice: {

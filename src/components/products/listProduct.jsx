@@ -1,42 +1,14 @@
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { setAlert } from "../../actions/alert";
+
 import axios from "axios";
 
-const ListProduct = ({ products, loading, isAuthenticated, setAlert }) => {
+const ListProduct = ({ products, loading }) => {
     if (loading) {
         return <h2>loading...</h2>;
     }
-
-    const addToCart = async (productId, quantity, isAuthenticated) => {
-        const body = JSON.stringify({ productId, quantity });
-        const config = {
-            headers: {
-                "content-type": "application/json",
-            },
-        };
-        try {
-            if (isAuthenticated) {
-                const res = await axios.post("http://localhost:5000/api/cart/add-to-cart", body, config);
-                setAlert("success", "success");
-            } else {
-                console.log("not logged in");
-                setAlert("Please Login", "danger");
-            }
-        } catch (err) {
-            console.log(err);
-        }
-    };
-
-    const checkQuantity = (productId, value, maxQuantity) => {
-        if (value > maxQuantity) {
-            document.getElementById(productId).value = maxQuantity;
-        } else if (value < 1) {
-            document.getElementById(productId).value = 1;
-        }
-    };
-
     return (
         <ul className="list-group mb-4">
             <div className="row">
@@ -57,25 +29,9 @@ const ListProduct = ({ products, loading, isAuthenticated, setAlert }) => {
                                     ))}
                                 </div>
                                 <div className="product-list__item__footer">
-                                    <input
-                                        id={`quantity-selector__${product._id}`}
-                                        type="number"
-                                        defaultValue={1}
-                                        onChange={(e) => checkQuantity(`quantity-selector__${product._id}`, e.target.value, product.inStock)}
-                                    />
-                                    <button
-                                        onClick={async () =>
-                                            addToCart(
-                                                product._id,
-                                                Number(document.getElementById(`quantity-selector__${product._id}`).value),
-                                                isAuthenticated,
-                                            )
-                                        }
-                                        className="product-list__item__cart-button"
-                                    >
-                                        {" "}
-                                        Add to Cart{" "}
-                                    </button>
+                                    <Link to={`/products/${product._id}`}>
+                                        <button className="product-list__item__cart-button"> View Product </button>
+                                    </Link>
                                 </div>
                             </li>
                         </div>
@@ -86,11 +42,8 @@ const ListProduct = ({ products, loading, isAuthenticated, setAlert }) => {
     );
 };
 
-ListProduct.propTypes = {
-    setAlert: PropTypes.func.isRequired,
-};
 const mapStateToProps = (state) => ({
     isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { setAlert })(ListProduct);
+export default connect(mapStateToProps)(ListProduct);

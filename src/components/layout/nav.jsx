@@ -47,12 +47,6 @@ const Nav = ({ auth: { isAuthenticated, loading }, logout }) => {
                 <div className="navbar-collapse collapse w-100  dual-collapse2">
                     <ul className="navbar-nav ml-auto nav__right">
                         <li>
-                            <a className="nav__text" href="#!">
-                                Sealed Product
-                            </a>
-                            <a className="nav__text" href="#!">
-                                Singles
-                            </a>
                             <Link to="/products" className="nav__text">
                                 All Products
                             </Link>

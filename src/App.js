@@ -9,6 +9,7 @@ import Home from "./components/Pages/home.jsx";
 import Alert from "./components/layout/alert.js";
 import SignIn from "./components/Pages/login.jsx";
 import Products from "./components/Pages/products.jsx";
+import Product from "./components/products/product.jsx";
 import Orders from "./components/Pages/orders.jsx";
 import Order from "./components/orders/order.jsx";
 
@@ -55,6 +56,7 @@ class App extends Component {
                             <Route path="/login" exact component={SignIn} />
                             <PrivateRoute path="/cart" exact component={Cart} />
                             <Route path="/products" exact component={Products} />
+                            <Route path="/Products/:id" exact component={Product} />
                             <Route path="/register" exact component={Registration} />
                             <PrivateRoute path="/success" exact component={Success} />
 

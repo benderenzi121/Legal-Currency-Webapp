@@ -193,7 +193,7 @@ router.get("/product-list", async (req, res) => {
 });
 
 //returns a product when passed its ID
-router.get("/:id", auth, checkObjectId("id"), async (req, res) => {
+router.get("/:id", checkObjectId("id"), async (req, res) => {
     try {
         const product = await Product.findById(req.params.id);
 

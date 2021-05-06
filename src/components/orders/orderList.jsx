@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getOrders } from "../../actions/order";
+import { loadUser } from "../../actions/auth";
 import { ListItemAvatar } from "@material-ui/core";
-const OrderList = ({ order: { orders, loading }, getOrders }) => {
+const OrderList = ({ order: { orders, loading }, getOrders, loadUser }) => {
     useEffect(() => {
+        loadUser();
         getOrders();
-    }, [getOrders]);
+    }, [getOrders, loadUser]);
     return (
         <Fragment>
             <tbody>
@@ -17,7 +19,7 @@ const OrderList = ({ order: { orders, loading }, getOrders }) => {
                     <th>Total</th>
                     <th>Details</th>
                 </tr>
-                {loading ? (
+                {orders == null ? (
                     <tr>
                         <td>loading</td>
                         <td>loading</td>
@@ -44,8 +46,9 @@ const OrderList = ({ order: { orders, loading }, getOrders }) => {
 };
 OrderList.propTypes = {
     getOrders: PropTypes.func.isRequired,
+    loadUser: PropTypes.func.isRequired,
 };
 const mapStateToProps = (state) => ({
     order: state.order,
 });
-export default connect(mapStateToProps, { getOrders })(OrderList);
+export default connect(mapStateToProps, { getOrders, loadUser })(OrderList);
