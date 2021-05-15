@@ -53,7 +53,7 @@ const CartList = ({ cart, removeFromCart, getCart, isAuthenticated }) => {
                 </tr>
 
                 {cart.map((item) => (
-                    <tr className="cart__table__item" key={item.product._id}>
+                    <tr className="cart__table__item" key={item.product._id + item.size}>
                         <td>
                             <div className="col">
                                 <img className="cart__table__item__img" src={item.product.imagePath} />
@@ -65,7 +65,7 @@ const CartList = ({ cart, removeFromCart, getCart, isAuthenticated }) => {
                         <td>{item.size}</td>
                         <td>
                             <div className="row">
-                                <button onClick={async () => removeFromCart(item.product._id.toString(), 1)}>
+                                <button onClick={async () => removeFromCart(item.product._id.toString(), 1, item.size)}>
                                     <i className="fas fa-minus"></i>
                                 </button>
 

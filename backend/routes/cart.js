@@ -52,7 +52,8 @@ router.post(
         //decode token and find associated user
         const decoded = jwt.verify(token, secret.jwtSecret);
         let userPayload = decoded.user;
-        const { productId, quantity } = req.body;
+        const { productId, quantity, size } = req.body;
+        console.log(size);
 
         // fail safe for receiving a negative quantity from the front end
         if (quantity < 1) {
@@ -68,7 +69,7 @@ router.post(
             let found = false;
             let i = 0;
             for (i = 0; i < cart.orderItems.length; i++) {
-                if (cart.orderItems[i].product._id.toString() == product._id.toString()) {
+                if (cart.orderItems[i].product._id.toString() == product._id.toString() && cart.orderItems[i].size == size) {
                     found = true;
                     console.log(cart + "before decrement" + cart.orderItems[i].qty + "////////");
                     cart.orderItems[i].qty -= quantity;
