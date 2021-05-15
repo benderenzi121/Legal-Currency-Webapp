@@ -14,7 +14,7 @@ import Alert from "../layout/alert";
 
 const Products = ({ products: { products, loading }, getProducts }) => {
     const [currentPage, setCurrentPage] = useState(1);
-    const [productsPerPage] = useState(6);
+    const [productsPerPage] = useState(3);
 
     useEffect(() => {
         getProducts();
@@ -33,17 +33,11 @@ const Products = ({ products: { products, loading }, getProducts }) => {
                 <LogoNav />
                 <Nav />
                 <Alert />
-                <div className="row">
-                    <div className="col-lg-2">
-                        <Filters products={products} />
-                    </div>
-                    <div className="col-lg-10">
-                        <div className="product-list">
-                            <h1 className="product-list__title"> products </h1>
-                            <ListProduct products={currentProducts} loading={loading} />
-                            <Pagination productsPerPage={productsPerPage} totalProducts={products.length} paginate={paginate} />
-                        </div>
-                    </div>
+
+                <div className="product-list">
+                    <h1 className="product-list__title"> products </h1>
+                    <ListProduct products={currentProducts} loading={loading} />
+                    <Pagination productsPerPage={productsPerPage} totalProducts={products.length} paginate={paginate} />
                 </div>
             </div>
         </Fragment>

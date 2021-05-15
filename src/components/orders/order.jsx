@@ -65,7 +65,7 @@ const Order = ({ match, getOrder, order, loading }) => {
                         </table>
 
                         <div className="order__details">
-                            {order.shippingPrice !== null ? (
+                            {order.shippingPrice !== null && order.total !== null ? (
                                 <Fragment>
                                     <p>Shipping price: $ {order.shippingPrice.toFixed(2)}</p>
                                     <p>Total: $ {order.total.toFixed(2)}</p>

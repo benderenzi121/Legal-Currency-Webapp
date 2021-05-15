@@ -1,37 +1,34 @@
-@import './commonVariables';
-.nav{
-    width:100%;
-    background:rgba(0, 0, 0, .40);
-    &__text{
-        padding:.5rem;
-        font-size: .75rem;
-        color:$creme-white;
+@import "./commonVariables";
+.nav {
+    width: 100%;
+    background: $dark-chocolate;
+    &__text {
+        padding: 0.5rem;
+        font-size: 0.75rem;
+        color: $creme-white;
         text-decoration: none;
-        :hover{
-            color:$creme-white;
+        :hover {
+            color: $creme-white;
             text-decoration: none;
         }
-        
     }
- 
 
-    &__logo{
-        height:7vh;
-        padding-bottom:.5rem;
-        
+    &__logo {
+        height: 7vh;
+        padding-bottom: 0.5rem;
     }
-    &__search{
-        padding:.25rem;
-        font-size:1rem;
-        padding-left:1rem;
+    &__search {
+        padding: 0.25rem;
+        font-size: 1rem;
+        padding-left: 1rem;
         border-radius: 3px;
     }
-    &__search__input{
+    &__search__input {
         border-radius: 3px;
-        border:none;
+        border: none;
         box-shadow: transparent;
     }
-    &__right{
-        padding-top:1rem;
+    &__right {
+        padding-top: 1rem;
     }
 }

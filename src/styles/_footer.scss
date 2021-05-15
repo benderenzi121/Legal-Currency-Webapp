@@ -1,7 +1,7 @@
 @import "./commonVariables";
 
 .footer {
-    background-color: #3d372c;
+    background-color: $light-chocolate;
     position: relative;
     bottom: 0;
     width: 100%;
@@ -28,7 +28,7 @@
     }
     &__column {
         text-align: center;
-        color: #fdf3c3;
+        color: $creme-white;
         padding-left: 2rem;
         &__title {
             font-size: 1rem;

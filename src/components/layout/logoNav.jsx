@@ -17,7 +17,7 @@ const LogoNav = ({ auth: { isAuthenticated, loading, user }, logout }) => (
                 </div>
                 <div className="col-lg header__item">
                     <Link to="/home">
-                        <h1 className="header__title">Amazing Games TCG</h1>
+                        <h1 className="header__title">LegalCurrency</h1>
                     </Link>
                 </div>
             </div>
