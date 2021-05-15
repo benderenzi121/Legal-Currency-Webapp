@@ -16,7 +16,7 @@ const LogoNav = ({ auth: { isAuthenticated, loading, user }, logout }) => (
                     <img src={amazinglogo} className="nav__logo"></img>
                 </div>
                 <div className="col-lg header__item">
-                    <Link to="/home">
+                    <Link to="/products">
                         <h1 className="header__title">LegalCurrency</h1>
                     </Link>
                 </div>

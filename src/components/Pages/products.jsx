@@ -34,7 +34,7 @@ const Products = ({ products: { products, loading }, getProducts }) => {
                 <Nav />
                 <Alert />
 
-                <div className="product-list">
+                <div className="product-list container-fluid">
                     <h1 className="product-list__title"> products </h1>
                     <ListProduct products={currentProducts} loading={loading} />
                     <Pagination productsPerPage={productsPerPage} totalProducts={products.length} paginate={paginate} />

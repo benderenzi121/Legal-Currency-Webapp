@@ -143,12 +143,11 @@ router.post(
                 let i = 0;
                 for (i = 0; i < iscart.orderItems.length; i++) {
                     console.log(iscart.orderItems[i]);
-                    if (iscart.orderItems[i].product._id.toString() == product._id.toString()) {
+                    if (iscart.orderItems[i].product._id.toString() == product._id.toString() && iscart.orderItems[i].size == size) {
                         found = true;
                         console.log("found that product!");
                         iscart.orderItems[i].qty += quantity;
                         iscart.orderItems[i].total = product.price * iscart.orderItems[i].qty;
-                        iscart.orderItems[i].sizes.push(size);
 
                         try {
                             iscart.markModified("orderItems");
@@ -171,7 +170,7 @@ router.post(
                                     product: product,
                                     qty: quantity,
                                     total: total,
-                                    sizes: size,
+                                    size: size,
                                 },
                             },
                         },
@@ -183,7 +182,7 @@ router.post(
             else {
                 const cart = new Cart({
                     user,
-                    orderItems: { product: product, qty: quantity, total: total, sizes: [size] },
+                    orderItems: { product: product, qty: quantity, total: total, size: size },
                 });
 
                 await cart.save();
