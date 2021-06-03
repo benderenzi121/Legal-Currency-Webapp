@@ -26,14 +26,14 @@ const Admin = ({ permission, loadPermissions }) => {
         <div className="container-fluid">
             <Router>
                 <div className="row">
-                    <div className="col-2">
-                        <h1>Sidebar Nav</h1>
-                        <ul>
+                    <div className="col-2 admin__sidebar">
+                        <h1>Admin Navigation</h1>
+                        <ul classname="admin__sidebar__list">
                             <Link to="/admin/create-product">
-                                <li>add a product</li>
+                                <li>Add a Product</li>
                             </Link>
                             <Link to="/admin/products">
-                                <li>view/ updateproducts</li>{" "}
+                                <li>View / Update Products</li>{" "}
                             </Link>
                         </ul>
                     </div>

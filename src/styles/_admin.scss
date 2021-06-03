@@ -1,0 +1,16 @@
+.admin {
+    &__sidebar {
+        background-color: $grulio;
+        color: $chocolate;
+        margin: 1rem;
+        h1 {
+            text-align: center;
+        }
+
+        ul {
+            a {
+                color: $chocolate;
+            }
+        }
+    }
+}

@@ -85,7 +85,9 @@ const Product = ({ getProduct, product: { product, loading }, isAuthenticated, m
                                     <option value={"small"}>Small</option>
                                     <option value={"medium"}>Medium</option>
                                     <option value={"large"}>Large</option>
-                                    <option value={"x large"}>X Large</option>
+                                    <option value={"x large"}>x Large</option>
+                                    <option value={"xx large"}>xx Large</option>
+                                    <option value={"xxx large"}>xxx Large (+$4.00 at checkout)</option>
                                 </select>
                                 <div className="product-list__item__footer product__footer">
                                     <input
@@ -115,7 +117,7 @@ const Product = ({ getProduct, product: { product, loading }, isAuthenticated, m
                         <div className="col-lg">
                             <div className="row">
                                 <div className="adminProduct__rightCol">
-                                    <p className="adminProduct__price">${product.price}</p>
+                                    <p className="adminProduct__price">${product.price.toFixed(2)}</p>
                                 </div>
                             </div>
                         </div>

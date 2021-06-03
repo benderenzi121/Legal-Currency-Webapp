@@ -105,7 +105,7 @@ router.get("/get-orders", [auth], async (req, res) => {
     let userPayload = decoded.user;
 
     try {
-        let orders = await Order.find({ user: userPayload._id }).sort({ placedOn: "descending" });
+        let orders = await Order.find({ user: userPayload.id.toString() }).sort({ placedOn: "descending" });
         res.send(orders);
     } catch (err) {
         res.status(400).json({ msg: "No orders associated with this user" });

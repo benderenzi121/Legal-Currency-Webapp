@@ -51,8 +51,7 @@ class App extends Component {
                 <Provider store={store}>
                     <Router>
                         <div className="content-wrapper">
-                            <Route path="/" exact component={Landing} />
-                            <Route path="/home" exact component={Home} />
+                            <Route path="/" exact component={Products} />
                             <Route path="/login" exact component={SignIn} />
                             <PrivateRoute path="/cart" exact component={Cart} />
                             <Route path="/products" exact component={Products} />

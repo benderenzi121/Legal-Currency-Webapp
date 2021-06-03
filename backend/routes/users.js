@@ -12,7 +12,7 @@ auth = require("../middleware/auth");
 router.get("/", [auth, adminAuth], async (req, res) => {
     try {
         const users = await User.find();
-        console.log(users);
+
         return res.status(200).send(users);
     } catch (err) {
         return res.status(400).send({ msg: "please refresh the page" });
@@ -35,10 +35,10 @@ router.get("/userShipping", [auth], async (req, res) => {
     try {
         // Finds the User associated with token
         let dbUser = await User.findOne({ userEmail });
-        console.log(dbUser.shipping);
+
         //Queries shipping information from database
         let dbShipping = await Shipping.findById(dbUser.shipping[0]);
-        console.log(dbShipping);
+
         //returns Users default shipping information
         return res.status(200).send(dbShipping);
     } catch (err) {

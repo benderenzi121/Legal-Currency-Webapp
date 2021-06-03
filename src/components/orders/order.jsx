@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { getOrder } from "../../actions/order";
 
 import Header from "../layout/header.jsx";
-import { ListItemSecondaryAction } from "@material-ui/core";
 
 const Order = ({ match, getOrder, order, loading }) => {
     useEffect(() => {
@@ -29,7 +28,7 @@ const Order = ({ match, getOrder, order, loading }) => {
                             <tbody>
                                 <tr>
                                     <th>Title</th>
-                                    <th>Sizes</th>
+                                    <th>Size</th>
                                     <th>Quantity</th>
                                     <th>Price</th>
                                     <th>Total</th>
@@ -48,7 +47,7 @@ const Order = ({ match, getOrder, order, loading }) => {
                                                     <p className="cart__table__item__title">{item.product.title} </p>
                                                 </div>
                                             </td>
-                                            <td>{Array.isArray(item.sizes) ? item.sizes.map((size) => <p> {size}</p>) : <p>{item.sizes}</p>}</td>
+                                            <td>{item.size}</td>
                                             <td>
                                                 <p>{item.qty}</p>
                                             </td>
@@ -67,8 +66,8 @@ const Order = ({ match, getOrder, order, loading }) => {
                         <div className="order__details">
                             {order.shippingPrice !== null && order.total !== null ? (
                                 <Fragment>
-                                    <p>Shipping price: $ {order.shippingPrice.toFixed(2)}</p>
-                                    <p>Total: $ {order.total.toFixed(2)}</p>
+                                    <p>Shipping price: $ {Number(order.shippingPrice).toFixed(2)}</p>
+                                    <p>Total: $ {Number(order.total).toFixed(2)}</p>
                                 </Fragment>
                             ) : (
                                 <p>loading...</p>
@@ -82,7 +81,6 @@ const Order = ({ match, getOrder, order, loading }) => {
 };
 Order.propTypes = {
     getOrder: PropTypes.func.isRequired,
-    order: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({

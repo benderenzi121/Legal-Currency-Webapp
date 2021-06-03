@@ -48,10 +48,10 @@ const Nav = ({ auth: { isAuthenticated, loading }, logout }) => {
                     <ul className="navbar-nav ml-auto nav__right">
                         <li>
                             <Link to="/products" className="nav__text">
-                                All Products
+                                Products
                             </Link>
                         </li>
-                        <li>
+                        {/* <li>
                             <form onSubmit={onSubmit}>
                                 <div className="nav__search">
                                     <input
@@ -64,7 +64,7 @@ const Nav = ({ auth: { isAuthenticated, loading }, logout }) => {
                                     />
                                 </div>
                             </form>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
             </nav>

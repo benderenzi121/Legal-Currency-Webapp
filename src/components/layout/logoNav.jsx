@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import amazinglogo from "../../static/img/amazinglogo.png";
+import piggylogo from "../../static/img/PiggyLogo.png";
 import { connect } from "react-redux";
 const login = (
     <Link to="/login" className="header__link">
@@ -13,7 +14,7 @@ const LogoNav = ({ auth: { isAuthenticated, loading, user }, logout }) => (
         <div className="col">
             <div className="row">
                 <div className="col-lg-1 header__item">
-                    <img src={amazinglogo} className="nav__logo"></img>
+                    <img src={piggylogo} className="nav__logo"></img>
                 </div>
                 <div className="col-lg header__item">
                     <Link to="/products">

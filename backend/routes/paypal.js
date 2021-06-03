@@ -40,22 +40,28 @@ router.post("/pay", [auth, check("shipping", "shipping is required").not().isEmp
         let items = [];
         let total = 0;
         const { shipping } = req.body;
+        if (orderItems.length == 0) {
+            res.status(400).send("No items in Cart");
+        }
 
         for (let i = 0; i < orderItems.length; i++) {
-            let sizes = "";
-
-            sizes += ` ${orderItems[i].sizes}, \n`;
-
+            let price = 0;
+            if (orderItems[i].size == "xxx large") {
+                price = orderItems[i].product.price + 4;
+                total += price * orderItems[i].qty;
+            } else {
+                price = orderItems[i].product.price;
+                total += price * orderItems[i].qty;
+            }
             const item = {
                 name: String(orderItems[i].product.title),
                 sku: String(orderItems[i].product._id),
-                price: String(orderItems[i].product.price.toFixed(2)),
+                price: String(orderItems[i].total / orderItems[i].qty),
                 quantity: orderItems[i].qty,
-                description: orderItems[i].product.description + ` sizes: ${sizes + " "}  `,
+                description: orderItems[i].product.description + `, size: ${orderItems[i].size}  `,
                 currency: "USD",
             };
             items.push(item);
-            total += orderItems[i].total;
         }
 
         cart.shippingPrice = shipping;
@@ -155,12 +161,11 @@ router.post(
                 res.status(400).send("error");
             } else {
                 try {
-                    console.log(JSON.stringify(payment));
                     //create an order object before deleting the cart object
                     const cart = await Cart.findOne({ user: userPayload.id });
                     let orderCart = cart;
                     let orderItems = cart.orderItems;
-                    console.log(orderCart);
+
                     let products = [];
                     for (let i = 0; i < orderItems.length; i++) {
                         products.push(orderItems[i].product);
@@ -176,9 +181,9 @@ router.post(
 
                     //create order object
                     const order = new Order({
-                        user: userPayload._id,
+                        user: userPayload.id,
                         orderItems: orderItems,
-                        total: Number(payment.transactions[0].amount.total),
+                        total: payment.transactions[0].amount.total,
                     });
                     await order.save();
 

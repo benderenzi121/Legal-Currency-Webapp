@@ -83,7 +83,7 @@ router.put(
 
         try {
             let product = await Product.findByIdAndUpdate(id, payload, { new: true });
-            console.log(product);
+
             res.status(200).json(product);
         } catch (err) {
             console.error(err);
@@ -119,7 +119,7 @@ router.post(
             return res.status(400).json({ errors: errors.array() });
         }
         const { title, description, price, tag, date, imagePath, inStock } = req.body;
-        console.log(req.body);
+
         try {
             let product = await Product.findOne({ title });
 
@@ -217,7 +217,6 @@ router.put("/featured-toggle", [auth, adminAuth, check("id", "Must provide a pro
     }
     const { id } = req.body;
     try {
-        console.log(id);
         const product = await Product.findById(id);
         if (product.featured == true) {
             product.featured = false;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { executePayment } from "../../actions/payment";
@@ -21,7 +22,7 @@ const Success = ({ executePayment, loadUser }) => {
     useEffect(() => {
         loadUser();
         let params = getParams();
-        console.log(params);
+
         const PayerID = params.PayerID;
         const paymentId = params.paymentId;
         executePayment({ paymentId, PayerID });
@@ -30,7 +31,12 @@ const Success = ({ executePayment, loadUser }) => {
     return (
         <div className="container-fluid">
             <Header />
-            <h1> Success!!!</h1>
+            <div className="container success">
+                <h3>Order was placed. You can view your order history here </h3>
+                <Link to={`/orders`}>
+                    <button className="btn btn-primary success__btn">Order History</button>{" "}
+                </Link>
+            </div>
         </div>
     );
 };

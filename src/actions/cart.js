@@ -15,7 +15,6 @@ export const getCart = () => async (dispatch) => {
         dispatch({
             type: GET_CART_FAIL,
             payload: { msg: err.response.statusText, status: err.response.status },
-            loading: false,
         });
     }
 };

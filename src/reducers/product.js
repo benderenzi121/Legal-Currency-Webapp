@@ -29,7 +29,6 @@ export default function (state = initialState, action) {
             };
         case UPDATE_PRODUCT_SUCCESS:
         case GET_PRODUCT_SUCCESS:
-            console.log("hi", state, "hi", payload);
             return {
                 ...state,
                 product: payload,

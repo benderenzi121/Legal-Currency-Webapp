@@ -46,64 +46,60 @@ const CartList = ({ cart, removeFromCart, getCart, isAuthenticated }) => {
                 <tr>
                     <th>Title</th>
                     <th>Size</th>
-                    <th>Quantity</th>
                     <th>Price</th>
-                    <th>Total</th>
-                    <th></th>
+                    <th>Item Total</th>
+                    <th>Quantity</th>
                 </tr>
 
-                {cart.map((item) => (
-                    <tr className="cart__table__item" key={item.product._id + item.size}>
-                        <td>
-                            <div className="col">
-                                <img className="cart__table__item__img" src={item.product.imagePath} />
-                            </div>
-                            <div className="col">
-                                <p className="cart__table__item__title">{item.product.title} </p>
-                            </div>
-                        </td>
-                        <td>{item.size}</td>
-                        <td>
-                            <div className="row">
-                                <button onClick={async () => removeFromCart(item.product._id.toString(), 1, item.size)}>
-                                    <i className="fas fa-minus"></i>
-                                </button>
-
+                {cart !== null ? (
+                    cart.map((item) => (
+                        <tr className="cart__table__item" key={item.product._id + item.size}>
+                            <td>
                                 <div className="col">
-                                    <p>{item.qty}</p>
+                                    <img className="cart__table__item__img" src={item.product.imagePath} />
                                 </div>
+                                <div className="col">
+                                    <p className="cart__table__item__title">{item.product.title} </p>
+                                </div>
+                            </td>
+                            <td>{item.size}</td>
 
-                                <button onClick={async () => addToCart(item.product._id.toString(), 1, isAuthenticated, item.size)}>
-                                    <i className="fas fa-plus"></i>
-                                </button>
-                            </div>
-                        </td>
+                            <td>
+                                <p>{item.product.price.toFixed(2)}</p>
+                            </td>
+                            <td>
+                                <p>{item.total.toFixed(2)}</p>
+                            </td>
+                            <td>
+                                <div className="row">
+                                    <button
+                                        className="cart__table__item__button"
+                                        onClick={async () => removeFromCart(item.product._id.toString(), 1, item.size)}
+                                    >
+                                        <i className="fas fa-minus"></i>
+                                    </button>
+
+                                    <div className="col">
+                                        <p>{item.qty}</p>
+                                    </div>
+
+                                    <button
+                                        className="cart__table__item__button cart__table__item__button-right "
+                                        onClick={async () => addToCart(item.product._id.toString(), 1, isAuthenticated, item.size)}
+                                    >
+                                        <i className="fas fa-plus "></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    ))
+                ) : (
+                    <tr>
                         <td>
-                            <p>{item.product.price.toFixed(2)}</p>
-                        </td>
-                        <td>
-                            <p>{item.total.toFixed(2)}</p>
-                        </td>
-                        <td>
-                            <input
-                                id={`quantity-${item.product._id}`}
-                                type="number"
-                                defaultValue={1}
-                                onChange={(e) => checkQuantity(`quantity-${item.product._id}`, e.target.value, item.qty)}
-                            />
-                            <button
-                                onClick={async () =>
-                                    removeFromCart(
-                                        item.product._id.toString(),
-                                        document.getElementById(`quantity-${item.product._id}`).getElementsByTagName("input")[0].value,
-                                    )
-                                }
-                            >
-                                Remove
-                            </button>
+                            <p>loading...</p>
                         </td>
                     </tr>
-                ))}
+                )}
             </tbody>
         </Fragment>
     );

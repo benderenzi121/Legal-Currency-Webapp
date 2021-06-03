@@ -28,9 +28,15 @@ router.get("/get-cart", [auth], async (req, res) => {
     //decode token and find associated user
     const decoded = jwt.verify(token, secret.jwtSecret);
     let userPayload = decoded.user;
-    let cart = await Cart.findOne({ user: userPayload.id });
-    console.log(cart);
-    res.status(200).send(cart.orderItems);
+    try {
+        let cart = await Cart.findOne({ user: userPayload.id });
+        if (cart != null) {
+            res.status(200).send(cart.orderItems);
+        }
+    } catch (err) {
+        console.error(err);
+        res.status(400).send([]);
+    }
 });
 router.post(
     "/remove-from-cart",
@@ -73,7 +79,11 @@ router.post(
                     found = true;
                     console.log(cart + "before decrement" + cart.orderItems[i].qty + "////////");
                     cart.orderItems[i].qty -= quantity;
-                    cart.orderItems[i].total = product.price * cart.orderItems[i].qty;
+                    if (cart.orderItems[i].size == "xxx large") {
+                        cart.orderItems[i].total = (product.price + 4) * cart.orderItems[i].qty;
+                    } else {
+                        cart.orderItems[i].total = product.price * cart.orderItems[i].qty;
+                    }
                     if (cart.orderItems[i].qty < 1) {
                         cart.orderItems.splice(i, 1);
                         console.log(cart);
@@ -130,9 +140,15 @@ router.post(
             let user = await User.findById(userPayload.id);
             //get the product from db
             let product = await Product.findById(productId);
-            console.log(product);
+
             //calculate price of item(s) added to cart
-            let total = quantity * product.price;
+            let xxxl = false;
+            let total;
+            if (size == "xxx large") {
+                total = quantity * (product.price + 4);
+            } else {
+                total = quantity * product.price;
+            }
 
             //create cart object
             //Check to see if cart already exists
@@ -148,7 +164,12 @@ router.post(
                         found = true;
                         console.log("found that product!");
                         iscart.orderItems[i].qty += quantity;
-                        iscart.orderItems[i].total = product.price * iscart.orderItems[i].qty;
+
+                        if (iscart.orderItems[i].size == "xxx large") {
+                            iscart.orderItems[i].total = (product.price + 4) * iscart.orderItems[i].qty;
+                        } else {
+                            iscart.orderItems[i].total = product.price * iscart.orderItems[i].qty;
+                        }
 
                         try {
                             iscart.markModified("orderItems");

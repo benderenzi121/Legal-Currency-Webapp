@@ -116,7 +116,7 @@ const Product = ({ getProduct, updateProductQuantity, toggleFeatured, updateProd
                                 <Link to={`/admin/products/${product._id}/tags`}>
                                     <button className="btn btn-primary">Edit tags</button>
                                 </Link>
-                                <div className="row">
+                                {/* <div className="row">
                                     <div className="adminProduct__input">
                                         <div className="adminProduct__input-featured">
                                             <div className="row">
@@ -129,7 +129,7 @@ const Product = ({ getProduct, updateProductQuantity, toggleFeatured, updateProd
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
 

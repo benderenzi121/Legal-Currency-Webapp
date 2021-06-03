@@ -2,10 +2,10 @@ import React, { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getOrders } from "../../actions/order";
+import { getOrders, getOrder } from "../../actions/order";
 import { loadUser } from "../../actions/auth";
 import { ListItemAvatar } from "@material-ui/core";
-const OrderList = ({ order: { orders, loading }, getOrders, loadUser }) => {
+const OrderList = ({ order: { orders, loading }, getOrders, getOrder, loadUser }) => {
     useEffect(() => {
         loadUser();
         getOrders();
@@ -34,7 +34,7 @@ const OrderList = ({ order: { orders, loading }, getOrders, loadUser }) => {
                             <td>{item.total}</td>
                             <td>
                                 <Link to={`/orders/${item._id}`}>
-                                    <button>Details</button>
+                                    <button onClick={async () => getOrder(item._id)}>Details</button>
                                 </Link>
                             </td>
                         </tr>
@@ -47,8 +47,9 @@ const OrderList = ({ order: { orders, loading }, getOrders, loadUser }) => {
 OrderList.propTypes = {
     getOrders: PropTypes.func.isRequired,
     loadUser: PropTypes.func.isRequired,
+    getOrder: PropTypes.func.isRequired,
 };
 const mapStateToProps = (state) => ({
     order: state.order,
 });
-export default connect(mapStateToProps, { getOrders, loadUser })(OrderList);
+export default connect(mapStateToProps, { getOrders, loadUser, getOrder })(OrderList);

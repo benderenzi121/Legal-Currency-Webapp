@@ -32,9 +32,10 @@ const Cart = ({ cart: { cart }, getCart, loadUser, createPayment }) => {
                         <CartList cart={cart} />
                     </table>
                     <select value={shipping} onChange={handleChange}>
-                        <option value={5}>Standard Shipping</option>
-                        <option value={10}>Express Shipping</option>
+                        <option value={5}>Standard Shipping $5.00</option>
+                        <option value={10}>Express Shipping $10.00</option>
                     </select>
+                    <p></p>
                     <button onClick={async () => createPayment({ shipping })}> Checkout with Paypal </button>
                 </div>
             </div>

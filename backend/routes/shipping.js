@@ -60,7 +60,7 @@ router.post(
             res.sendStatus(200);
         } catch (err) {
             res.sendStatus(400);
-            console.log(err);
+            console.error(err);
         }
     },
 );
