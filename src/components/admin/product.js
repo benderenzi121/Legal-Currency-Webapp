@@ -13,16 +13,64 @@ const Product = ({ getProduct, updateProductQuantity, toggleFeatured, updateProd
     const [formData, setFormData] = useState({
         price: "",
         change: "",
+        smallChange: "",
+        mediumChange: "",
+        largeChange: "",
+        xlargeChange: "",
+        xxlargeChange: "",
+        xxxlargeChange: "",
         imagePath: "",
     });
     const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
+    const onSubmitSmall = async (e) => {
+        e.preventDefault();
+
+        const id = product._id;
+
+        updateProductQuantity({ id, change: Number(smallChange), size: "small" });
+    };
+    const onSubmitMedium = async (e) => {
+        e.preventDefault();
+
+        const id = product._id;
+
+        updateProductQuantity({ id, change: Number(mediumChange), size: "medium" });
+    };
+    const onSubmitLarge = async (e) => {
+        e.preventDefault();
+
+        const id = product._id;
+
+        updateProductQuantity({ id, change: Number(largeChange), size: "large" });
+    };
+    const onSubmitXLarge = async (e) => {
+        e.preventDefault();
+
+        const id = product._id;
+
+        updateProductQuantity({ id, change: Number(xlargeChange), size: "x large" });
+    };
+    const onSubmitXXLarge = async (e) => {
+        e.preventDefault();
+
+        const id = product._id;
+
+        updateProductQuantity({ id, change: Number(xxlargeChange), size: "xx large" });
+    };
+    const onSubmitXXXLarge = async (e) => {
+        e.preventDefault();
+
+        const id = product._id;
+
+        updateProductQuantity({ id, change: Number(xxxlargeChange), size: "xxx large" });
+    };
     const onSubmitQuantity = async (e) => {
         e.preventDefault();
 
         const id = product._id;
         const change = Number(formData.change);
-        updateProductQuantity({ id, change });
+        updateProductQuantity({ id, change, small });
     };
     const onSubmitImage = async (e) => {
         e.preventDefault();
@@ -40,7 +88,20 @@ const Product = ({ getProduct, updateProductQuantity, toggleFeatured, updateProd
         updateProductData({ id, price });
     };
 
-    const { title, description, price, imagePath, change, pricePaid } = formData;
+    const {
+        title,
+        description,
+        price,
+        imagePath,
+        smallChange,
+        mediumChange,
+        largeChange,
+        xlargeChange,
+        xxlargeChange,
+        xxxlargeChange,
+        change,
+        pricePaid,
+    } = formData;
     return (
         <div className="adminProduct">
             {loading || product == null ? (
@@ -78,17 +139,18 @@ const Product = ({ getProduct, updateProductQuantity, toggleFeatured, updateProd
 
                                 <div className="row">
                                     <div className="adminProduct__input">
-                                        <p>Qty: {product.inStock}</p>
-                                        <form className="form" onSubmit={onSubmitQuantity}>
-                                            <div className="form-group">
-                                                <div className="col">
-                                                    <div className="row">
+                                        {/* put updated quantity amounts here */}
+
+                                        <div className="col">
+                                            <div className="row">
+                                                <form className="form" onSubmit={onSubmitSmall}>
+                                                    <div className="form-group">
                                                         <input
                                                             className="adminProduct__input__form"
                                                             type="number"
-                                                            placeholder="Add to stock (#)"
-                                                            name="change"
-                                                            value={change}
+                                                            placeholder="Add small(#)"
+                                                            name="smallChange"
+                                                            value={smallChange}
                                                             onChange={onChange}
                                                             required
                                                         />
@@ -98,9 +160,99 @@ const Product = ({ getProduct, updateProductQuantity, toggleFeatured, updateProd
                                                             value="Update"
                                                         />
                                                     </div>
-                                                </div>
+                                                </form>
+                                                <form className="form" onSubmit={onSubmitMedium}>
+                                                    <div className="form-group">
+                                                        <input
+                                                            className="adminProduct__input__form"
+                                                            type="number"
+                                                            placeholder="Add medium(#)"
+                                                            name="mediumChange"
+                                                            value={mediumChange}
+                                                            onChange={onChange}
+                                                            required
+                                                        />
+                                                        <input
+                                                            type="submit"
+                                                            className="adminProduct__input__submit btn btn-primary "
+                                                            value="Update"
+                                                        />
+                                                    </div>
+                                                </form>
+                                                <form className="form" onSubmit={onSubmitLarge}>
+                                                    <div className="form-group">
+                                                        <input
+                                                            className="adminProduct__input__form"
+                                                            type="number"
+                                                            placeholder="Add large(#)"
+                                                            name="largeChange"
+                                                            value={largeChange}
+                                                            onChange={onChange}
+                                                            required
+                                                        />
+                                                        <input
+                                                            type="submit"
+                                                            className="adminProduct__input__submit btn btn-primary "
+                                                            value="Update"
+                                                        />
+                                                    </div>
+                                                </form>
+                                                <form className="form" onSubmit={onSubmitXLarge}>
+                                                    <div className="form-group">
+                                                        <input
+                                                            className="adminProduct__input__form"
+                                                            type="number"
+                                                            placeholder="Add x large (#)"
+                                                            name="xlargeChange"
+                                                            value={xlargeChange}
+                                                            onChange={onChange}
+                                                            required
+                                                        />
+                                                        <input
+                                                            type="submit"
+                                                            className="adminProduct__input__submit btn btn-primary "
+                                                            value="Update"
+                                                        />
+                                                    </div>
+                                                </form>
+                                                <form className="form" onSubmit={onSubmitXXLarge}>
+                                                    <div className="form-group">
+                                                        <input
+                                                            className="adminProduct__input__form"
+                                                            type="number"
+                                                            placeholder="Add xx large(#)"
+                                                            name="xxlargeChange"
+                                                            value={xxlargeChange}
+                                                            onChange={onChange}
+                                                            required
+                                                        />
+                                                        <input
+                                                            type="submit"
+                                                            className="adminProduct__input__submit btn btn-primary "
+                                                            value="Update"
+                                                        />
+                                                    </div>
+                                                </form>
+                                                <form className="form" onSubmit={onSubmitXXXLarge}>
+                                                    <div className="form-group">
+                                                        <input
+                                                            className="adminProduct__input__form"
+                                                            type="number"
+                                                            placeholder="Add xxx large(#)"
+                                                            name="xxxlargeChange"
+                                                            value={xxxlargeChange}
+                                                            onChange={onChange}
+                                                            required
+                                                        />
+                                                        <input
+                                                            type="submit"
+                                                            className="adminProduct__input__submit btn btn-primary "
+                                                            value="Update"
+                                                        />
+                                                    </div>
+                                                </form>
                                             </div>
-                                        </form>
+                                        </div>
                                     </div>
                                 </div>
 

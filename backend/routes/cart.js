@@ -59,7 +59,6 @@ router.post(
         const decoded = jwt.verify(token, secret.jwtSecret);
         let userPayload = decoded.user;
         const { productId, quantity, size } = req.body;
-        console.log(size);
 
         // fail safe for receiving a negative quantity from the front end
         if (quantity < 1) {
@@ -77,7 +76,6 @@ router.post(
             for (i = 0; i < cart.orderItems.length; i++) {
                 if (cart.orderItems[i].product._id.toString() == product._id.toString() && cart.orderItems[i].size == size) {
                     found = true;
-                    console.log(cart + "before decrement" + cart.orderItems[i].qty + "////////");
                     cart.orderItems[i].qty -= quantity;
                     if (cart.orderItems[i].size == "xxx large") {
                         cart.orderItems[i].total = (product.price + 4) * cart.orderItems[i].qty;
@@ -86,7 +84,7 @@ router.post(
                     }
                     if (cart.orderItems[i].qty < 1) {
                         cart.orderItems.splice(i, 1);
-                        console.log(cart);
+
                         res.status(200).send(cart.orderItems);
                         await cart.save();
                         break;
@@ -142,12 +140,34 @@ router.post(
             let product = await Product.findById(productId);
 
             //calculate price of item(s) added to cart
-            let xxxl = false;
+
             let total;
             if (size == "xxx large") {
                 total = quantity * (product.price + 4);
             } else {
                 total = quantity * product.price;
+            }
+
+            //check to see if there is enough of the current quantity in stock
+            switch (size) {
+                case "small":
+                    if (quantity > product.inStock.sm) return res.status(401).json({ error: "invalid quantity amount" });
+                    break;
+                case "medium":
+                    if (quantity > product.inStock.md) return res.status(401).json({ error: "invalid quantity amount" });
+                    break;
+                case "large":
+                    if (quantity > product.inStock.lg) return res.status(401).json({ error: "invalid quantity amount" });
+                    break;
+                case "x large":
+                    if (quantity > product.inStock.xl) return res.status(401).json({ error: "invalid quantity amount" });
+                    break;
+                case "xx large":
+                    if (quantity > product.inStock.xxl) return res.status(401).json({ error: "invalid quantity amount" });
+                    break;
+                case "xxx large":
+                    if (quantity > product.inStock.xxxl) return res.status(401).json({ error: "invalid quantity amount" });
+                    break;
             }
 
             //create cart object
@@ -159,10 +179,8 @@ router.post(
                 let found = false;
                 let i = 0;
                 for (i = 0; i < iscart.orderItems.length; i++) {
-                    console.log(iscart.orderItems[i]);
                     if (iscart.orderItems[i].product._id.toString() == product._id.toString() && iscart.orderItems[i].size == size) {
                         found = true;
-                        console.log("found that product!");
                         iscart.orderItems[i].qty += quantity;
 
                         if (iscart.orderItems[i].size == "xxx large") {

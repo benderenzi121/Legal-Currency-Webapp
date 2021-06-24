@@ -4,6 +4,8 @@ import { getCart } from "../../actions/cart";
 import { createPayment } from "../../actions/payment";
 import PropTypes from "prop-types";
 import CartList from "../cart/cartList.jsx";
+import Alert from "../layout/alert";
+import { setAlert } from "../../actions/alert";
 
 import Header from "../layout/header.jsx";
 import { loadUser } from "../../actions/auth";
@@ -26,7 +28,7 @@ const Cart = ({ cart: { cart }, getCart, loadUser, createPayment }) => {
         <Fragment>
             <div className="container-fluid">
                 <Header />
-
+                <Alert />
                 <div className="cart">
                     <table className="cart__table">
                         <CartList cart={cart} />

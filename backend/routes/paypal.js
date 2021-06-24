@@ -53,6 +53,45 @@ router.post("/pay", [auth, check("shipping", "shipping is required").not().isEmp
                 price = orderItems[i].product.price;
                 total += price * orderItems[i].qty;
             }
+            switch (orderItems[i].size) {
+                case "small":
+                    if (orderItems[i].qty > orderItems[i].product.inStock.sm)
+                        return res.status(401).json({
+                            error: `not enough ${orderItems[i].product.title} size small in stock. there are ${orderItems[i].product.inStock.sm} remaining in stock.`,
+                        });
+                    break;
+                case "medium":
+                    if (orderItems[i].qty > orderItems[i].product.inStock.md)
+                        return res.status(401).json({
+                            error: `not enough ${orderItems[i].product.title} size medium in stock. there are ${orderItems[i].product.inStock.md} remaining in stock.`,
+                        });
+                    break;
+                case "large":
+                    if (orderItems[i].qty > orderItems[i].product.inStock.lg)
+                        return res.status(401).json({
+                            error: `not enough ${orderItems[i].product.title} size large in stock. there are ${orderItems[i].product.inStock.lg} remaining in stock.`,
+                        });
+                    break;
+                case "x large":
+                    if (orderItems[i].qty > orderItems[i].product.inStock.xl)
+                        return res.status(401).json({
+                            error: `not enough ${orderItems[i].product.title} size x large in stock. there are ${orderItems[i].product.inStock.xl} remaining in stock.`,
+                        });
+                    break;
+                case "xx large":
+                    if (orderItems[i].qty > orderItems[i].product.inStock.xxl)
+                        return res.status(401).json({
+                            error: `not enough ${orderItems[i].product.title} size xx large in stock. there are ${orderItems[i].product.inStock.xxl} remaining in stock.`,
+                        });
+                    break;
+                case "xxx large":
+                    if (orderItems[i].qty > orderItems[i].product.inStock.xxxl)
+                        return res.status(401).json({
+                            error: `not enough ${orderItems[i].product.title} size xxx large in stock. there are ${orderItems[i].product.inStock.xxxl} remaining in stock.`,
+                        });
+                    break;
+            }
+
             const item = {
                 name: String(orderItems[i].product.title),
                 sku: String(orderItems[i].product._id),
@@ -168,13 +207,32 @@ router.post(
 
                     let products = [];
                     for (let i = 0; i < orderItems.length; i++) {
-                        products.push(orderItems[i].product);
+                        products.push(orderItems[i]);
                     }
 
                     for (let i = 0; i < products.length; i++) {
-                        let prod = await Product.findById(products[i]._id);
+                        let prod = await Product.findById(products[i].product._id);
 
-                        prod.inStock -= orderItems[i].qty;
+                        switch (products[i].size) {
+                            case "small":
+                                prod.inStock.sm -= products[i].qty;
+                                break;
+                            case "medium":
+                                prod.inStock.md -= products[i].qty;
+                                break;
+                            case "large":
+                                prod.inStock.lg -= products[i].qty;
+                                break;
+                            case "x large":
+                                prod.inStock.xl -= products[i].qty;
+                                break;
+                            case "xx large":
+                                prod.inStock.xxl -= products[i].qty;
+                                break;
+                            case "xxx large":
+                                prod.inStock.xxxl -= products[i].qty;
+                                break;
+                        }
                         prod.markModified("inStock");
                         await prod.save();
                     }

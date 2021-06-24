@@ -7,7 +7,7 @@ import { removeFromCart, getCart } from "../../actions/cart";
 
 import axios from "axios";
 
-const CartList = ({ cart, removeFromCart, getCart, isAuthenticated }) => {
+const CartList = ({ cart, removeFromCart, getCart, isAuthenticated, setAlert }) => {
     useEffect(() => {
         getCart();
     }, [getCart]);
@@ -36,6 +36,10 @@ const CartList = ({ cart, removeFromCart, getCart, isAuthenticated }) => {
             }
         } catch (err) {
             console.log(err);
+            const errors = err.response.data.errors;
+            if (errors) {
+                errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+            }
             setAlert("Please Login", "danger");
         }
     };
@@ -107,10 +111,11 @@ const CartList = ({ cart, removeFromCart, getCart, isAuthenticated }) => {
 CartList.propTypes = {
     removeFromCart: PropTypes.func.isRequired,
     getCart: PropTypes.func.isRequired,
+    setAlert: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
     cart: state.cart.cart,
     isAuthenticated: state.auth,
 });
-export default connect(mapStateToProps, { removeFromCart, getCart })(CartList);
+export default connect(mapStateToProps, { removeFromCart, getCart, setAlert })(CartList);

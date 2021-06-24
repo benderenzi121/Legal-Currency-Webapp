@@ -110,7 +110,7 @@ export const createProduct =
 //Updates value of product in the database
 
 export const updateProductQuantity =
-    ({ id, change }) =>
+    ({ id, change, size }) =>
     async (dispatch) => {
         const config = {
             headers: {
@@ -118,7 +118,7 @@ export const updateProductQuantity =
             },
         };
 
-        const body = { id, change };
+        const body = { id, change, size };
 
         try {
             const res = await axios.put("http://localhost:5000/api/products/update-stock", body, config);

@@ -19,6 +19,7 @@ router.put(
         authAdmin,
         check("id", "Product id required").not().isEmpty(),
         check("change", "change (increment/decrement) integer required").not().isEmpty(),
+        check("size", "size of qty to update is required").not().isEmpty(),
     ],
     async (req, res) => {
         const errors = validationResult(req);
@@ -26,14 +27,34 @@ router.put(
             res.status(400).json({ errors: errors.array() });
         }
 
-        const { id, change } = req.body;
+        const { id, change, size } = req.body;
+
         try {
             let product = await Product.findOne({ _id: id });
 
-            product.inStock += change;
-
+            switch (size) {
+                case "small":
+                    product.inStock.sm += change;
+                    break;
+                case "medium":
+                    product.inStock.md += change;
+                    break;
+                case "large":
+                    product.inStock.lg += change;
+                    break;
+                case "x large":
+                    product.inStock.xl += change;
+                    break;
+                case "xx large":
+                    product.inStock.xxl += change;
+                    break;
+                case "xxx large":
+                    product.inStock.xxxl += change;
+                    break;
+            }
+            product.markModified("inStock");
             await product.save();
-            res.status(200).send(product);
+            return res.status(200).send(product);
         } catch (err) {
             console.error(err);
             res.status(500).send(err);
@@ -111,7 +132,7 @@ router.post(
         check("description", "description is required").not().isEmpty(),
         check("price", "price is required").not().isEmpty(),
         check("imagePath", "please provide a url for an image").not().isEmpty(),
-        check("imagePath", "please provide a quantity being added to stock").not().isEmpty(),
+        check("inStock", "please provide a quantity being added to stock").not().isEmpty(),
     ], //NEEDS MIDDLEWEAR still)
     async (req, res) => {
         const errors = validationResult(req);
@@ -138,7 +159,7 @@ router.post(
             });
 
             await product.save();
-            res.status(200).send(await Product.find());
+            res.status(200).send(product);
         } catch (err) {
             console.error(err);
             res.status(500).send(err);
@@ -170,16 +191,36 @@ router.get("/product-list", async (req, res) => {
     try {
         //if no tags selected return all products
         if (!tags) {
-            let products = await Product.find({ inStock: { $gte: 1 } });
+            let products = await Product.find({
+                $or: [
+                    { "inStock.sm": { $gte: 1 } },
+                    { "inStock.md": { $gte: 1 } },
+                    { "inStock.lg": { $gte: 1 } },
+                    { "inStock.xl": { $gte: 1 } },
+                    { "inStock.xxl": { $gte: 1 } },
+                    { "inStock.xxxl": { $gte: 1 } },
+                ],
+            });
+            console.log(products);
             //if no products return an error
-            if (!products) {
-                res.status(400).json({ errors: [{ msg: "no products in database?" }] });
+            if (products.length < 1) {
+                return res.status(400).json({ errors: [{ msg: "no products in database?" }] });
             }
             return res.status(200).send(products);
         }
         //find all products that have any of the associated tags
         for (let i = 0; i < tags.length; i++) {
-            let prod = await Product.find({ tag: tags[i], inStock: { $gte: 1 } });
+            let prod = await Product.find({
+                tag: tags[i],
+                $or: [
+                    { "inStock.sm": { $gte: 1 } },
+                    { "inStock.md": { $gte: 1 } },
+                    { "inStock.lg": { $gte: 1 } },
+                    { "inStock.xl": { $gte: 1 } },
+                    { "inStock.xxl": { $gte: 1 } },
+                    { "inStock.xxxl": { $gte: 1 } },
+                ],
+            });
             results.push(prod);
         }
 
@@ -188,7 +229,7 @@ router.get("/product-list", async (req, res) => {
         return res.status(200).send(results);
     } catch (err) {
         console.error(err);
-        return res.status(400).json({ errors: [{ msg: "no products in database?" }] });
+        return res.status(400).json({ errors: [{ msg: "no products in databaseasdasd?" }] });
     }
 });
 

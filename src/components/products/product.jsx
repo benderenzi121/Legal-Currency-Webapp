@@ -34,7 +34,7 @@ const Product = ({ getProduct, product: { product, loading }, isAuthenticated, m
             }
         } catch (err) {
             console.log(err);
-            setAlert("Please Login", "danger");
+            setAlert("Not enough in stock", "danger");
         }
     };
 
@@ -66,12 +66,10 @@ const Product = ({ getProduct, product: { product, loading }, isAuthenticated, m
                                 <p>{product.description}</p>
 
                                 <div className="row">
-                                    <div className="adminProduct__input">
-                                        <p>Qty: {product.inStock}</p>
-                                    </div>
+                                    <div className="adminProduct__input">{/* put updated quantity amounts here */}</div>
                                 </div>
 
-                                <div className="row">
+                                {/* <div className="row">
                                     {product.tag.map((tag) => (
                                         <div key={tag} className="col-lg-4 ">
                                             <p key={tag} className="product-list__item__tag adminProduct__tags">
@@ -79,7 +77,7 @@ const Product = ({ getProduct, product: { product, loading }, isAuthenticated, m
                                             </p>
                                         </div>
                                     ))}
-                                </div>
+                                </div> */}
                                 <p>Size: </p>
                                 <select value={size} onChange={handleChange}>
                                     <option value={"small"}>Small</option>

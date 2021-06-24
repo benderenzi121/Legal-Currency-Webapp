@@ -28,7 +28,7 @@ const AdminProducts = ({ getProductsAdmin, products }) => {
                     <tbody>
                         <tr>
                             <th>Title</th>
-                            <th>Quantity</th>
+
                             <th>Price</th>
                             <th>Details</th>
                         </tr>
@@ -42,9 +42,7 @@ const AdminProducts = ({ getProductsAdmin, products }) => {
                                         <p className="cart__table__item__title">{product.title} </p>
                                     </div>
                                 </td>
-                                <td>
-                                    <p>{product.inStock}</p>
-                                </td>
+
                                 <td>
                                     <p>{product.price.toFixed(2)}</p>
                                 </td>

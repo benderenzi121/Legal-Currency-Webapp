@@ -12,16 +12,29 @@ const CreateProduct = ({ permission, createProduct, loadUser }) => {
         price: "",
         tags: "",
         imagePath: "",
-        inStock: "",
+        smallQty: "",
+        mediumQty: "",
+        largeQty: "",
+        xlargeQty: "",
+        xxlargeQty: "",
+        xxxlargeQty: "",
         pricePaid: "",
     });
 
-    const { title, description, price, tags, imagePath, inStock, pricePaid } = formData;
+    const { title, description, price, tags, imagePath, smallQty, mediumQty, largeQty, xlargeQty, xxlargeQty, xxxlargeQty, pricePaid } = formData;
 
     const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const onSubmit = async (e) => {
         e.preventDefault();
+        const inStock = {
+            sm: Number(smallQty),
+            md: Number(mediumQty),
+            lg: Number(largeQty),
+            xl: Number(xlargeQty),
+            xxl: Number(xxlargeQty),
+            xxxl: Number(xxxlargeQty),
+        };
         createProduct({ title, description, price, tags, imagePath, inStock, pricePaid });
     };
 
@@ -43,8 +56,36 @@ const CreateProduct = ({ permission, createProduct, loadUser }) => {
                     <div className="form-group">
                         <input type="url" placeholder="image Path" name="imagePath" value={imagePath} onChange={onChange} required />
                     </div>
-                    <div className="form-group">
-                        <input type="number" placeholder="Quantity" name="inStock" value={inStock} onChange={onChange} required />
+                    <div className="form-group row">
+                        <input className="col" type="number" placeholder="small qty" name="smallQty" value={smallQty} onChange={onChange} required />
+                        <input
+                            className="col"
+                            type="number"
+                            placeholder="medium qty"
+                            name="mediumQty"
+                            value={mediumQty}
+                            onChange={onChange}
+                            required
+                        />
+                        <input className="col" type="number" placeholder="large qty" name="largeQty" value={largeQty} onChange={onChange} required />
+                        <input
+                            className="col"
+                            type="number"
+                            placeholder="xlarge qty"
+                            name="xlargeQty"
+                            value={xlargeQty}
+                            onChange={onChange}
+                            required
+                        />
+                        <input
+                            className="col"
+                            type="number"
+                            placeholder="xxxlarge qty"
+                            name="xxxlargeQty"
+                            value={xxxlargeQty}
+                            onChange={onChange}
+                            required
+                        />
                     </div>
                     <div className="form-group">
                         <input type="number" placeholder="purchase price" name="pricePaid" value={pricePaid} onChange={onChange} required />

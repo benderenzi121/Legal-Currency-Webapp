@@ -1,50 +1,76 @@
-const { TrendingUpOutlined } = require('@material-ui/icons');
-const mongoose = require('mongoose');
-
+const { TrendingUpOutlined } = require("@material-ui/icons");
+const mongoose = require("mongoose");
 
 const ProductSchema = new mongoose.Schema({
-
     title: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
     },
     description: {
         type: String,
-        required: true
+        required: true,
     },
-    price:{
+    price: {
         type: Number,
-        required: true
+        required: true,
     },
-    tag:{
-        type: [String]
+    tag: {
+        type: [String],
     },
-    date:{
-        type:Date,
-        default: Date.now
+    date: {
+        type: Date,
+        default: Date.now,
     },
-    imagePath:{
+    imagePath: {
         type: String,
-        required: true
+        required: true,
     },
-    inStock:{
-        type: Number,
-        required:true
-    },
-    pricePaid:{
-        type:Number, 
-        required:true,
-        default:0.00
+    inStock: {
+        type: Object,
+        required: true,
 
+        sm: {
+            type: Number,
+            default: 0,
+            required: true,
+        },
+        md: {
+            type: Number,
+            default: 0,
+            required: true,
+        },
+        lg: {
+            type: Number,
+            default: 0,
+            required: true,
+        },
+        xl: {
+            type: Number,
+            default: 0,
+            required: true,
+        },
+        xxl: {
+            type: Number,
+            default: 0,
+            required: true,
+        },
+        xxxl: {
+            type: Number,
+            default: 0,
+            required: true,
+        },
     },
-    featured:{
+    pricePaid: {
+        type: Number,
+        required: true,
+        default: 0.0,
+    },
+    featured: {
         type: Boolean,
         required: true,
-        default: false
-    }
+        default: false,
+    },
 });
 
-
-
-module.exports = Product = mongoose.model('product', ProductSchema)
+module.exports = Product = mongoose.model("product", ProductSchema);

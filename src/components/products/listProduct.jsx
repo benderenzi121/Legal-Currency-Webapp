@@ -19,7 +19,7 @@ const ListProduct = ({ products, loading }) => {
                             <h3 className="product-list__item__title">{product.title}</h3>
                             <p>{product.description}</p>
                             <p>$ {product.price.toFixed(2)}</p>
-                            <p>qty: {product.inStock}</p>
+                            {/* put updated quantity amounts here */}
                             <div className="row">
                                 {product.tag.map((tag) => (
                                     <div key={tag} className="col-lg-4">
